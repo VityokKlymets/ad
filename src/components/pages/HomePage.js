@@ -4,7 +4,7 @@ class HomePage extends Component{
 
   render = () => {
    return (<div>
-       <h1>Hey I'm home page</h1>
+       <h1>Hey I'm home page 2</h1>
    </div>);
   };
 }
