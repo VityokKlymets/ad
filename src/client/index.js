@@ -1,4 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import HomePage from "./components/pages/HomePage";
-ReactDOM.hydrate(<HomePage />, document.getElementById("root"));
+import Routes from "../Routes";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.hydrate(
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>,
+  document.getElementById("root")
+);

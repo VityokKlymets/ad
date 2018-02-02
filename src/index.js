@@ -5,8 +5,8 @@ dotenv.config();
 const app = express();
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  const html = renderer();
+app.get("*", (req, res) => {
+  const html = renderer(req);
   res.send(html);
 });
 app.listen(process.env.SERVER_PORT, () => {
