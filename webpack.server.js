@@ -11,6 +11,18 @@ const config = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
   },
+  module : {
+    rules :[
+      {
+        test: /\.js?$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+        options: {
+          presets: ["env", "react", "stage-0"]
+        }
+      }
+    ]
+  }
   externals: [webpackNodeExternals()]
 };
 

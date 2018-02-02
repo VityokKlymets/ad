@@ -1,12 +1,30 @@
 const path = require("path");
-const merge = require("webpack-merge");
-const baseConfig = require("./webpack-base");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const config = {
+module.exports = {
   entry: "./src/client/index.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "public")
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
+      },
+      {
+        test: /\.js?$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+        options: {
+          presets: ["env", "react", "stage-0"]
+        }
+      }
+    ]
+  },
+  plugins: [new ExtractTextPlugin("bundle.css")]
 };
-module.exports = merge(baseConfig, config);
