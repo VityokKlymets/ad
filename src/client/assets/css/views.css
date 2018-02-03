@@ -112,11 +112,14 @@
   padding: 5px 0;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
 }
+.view .view-head h3,
 .view .view-head h1 {
-  font-size: 1.6em;
   margin: 0;
   font-weight: 200;
   text-transform: uppercase;
+}
+.view .view-head h1 {
+  font-size: 1.6em;
 }
 .view .view-head {
   font-family: "Handlee";

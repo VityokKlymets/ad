@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import "normalize.css/normalize.css";
 import "bootstrap/dist/css/bootstrap-grid.css";
 import "./assets/css/index.css";
-
 ReactDOM.hydrate(
   <BrowserRouter>
     <Routes />
