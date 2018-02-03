@@ -1,12 +1,15 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 import Routes from "../Routes";
-export default req => {
+export default (req, store) => {
   const content = renderToString(
-    <StaticRouter context={{}} location={req.path}>
-      <Routes />
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter context={{}} location={req.path}>
+        <Routes />
+      </StaticRouter>
+    </Provider>
   );
   const title = "Terc design";
   const html = `

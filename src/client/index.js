@@ -8,8 +8,10 @@ import "./assets/css/index.css";
 import { Provider } from "react-redux";
 import store from "./store/store";
 ReactDOM.hydrate(
+  <Provider store={store}>
     <BrowserRouter>
       <Routes />
-    </BrowserRouter>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

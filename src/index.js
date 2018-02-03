@@ -1,13 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import renderer from "./utils/renderer";
-
+import store from './store';
 dotenv.config();
 const app = express();
 app.use(express.static("public"));
 
 app.get("*", (req, res) => {
-  const html = renderer(req);
+  const html = renderer(req,store);
   res.send(html);
 });
 app.listen(process.env.SERVER_PORT, () => {
