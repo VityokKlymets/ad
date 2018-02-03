@@ -1,7 +1,9 @@
+import 'babel-polyfill';
 import express from "express";
 import dotenv from "dotenv";
 import renderer from "./utils/renderer";
-import store from './store';
+import store from './client/store/store';
+
 dotenv.config();
 const app = express();
 app.use(express.static("public"));

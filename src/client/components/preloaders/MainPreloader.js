@@ -5,8 +5,9 @@ class MainPreloader extends Component {
     loading: false
   };
   getImages = () => {
-    //   console.log(document);
+    // console.log(window);
     // const result = document.querySelectorAll("img");
+    // console.log(result);
   };
   render = () => {
     const { children } = this.props;

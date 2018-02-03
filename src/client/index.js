@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import React from "react";
 import ReactDOM from "react-dom";
 import Routes from "../Routes";
@@ -6,11 +7,13 @@ import "normalize.css/normalize.css";
 import "bootstrap/dist/css/bootstrap-grid.css";
 import "./assets/css/index.css";
 import { Provider } from "react-redux";
+import { renderRoutes } from "react-router-config";
 import store from "./store/store";
+console.log(document, window);
 ReactDOM.hydrate(
   <Provider store={store}>
     <BrowserRouter>
-      <Routes />
+      <div>{renderRoutes(Routes)}</div>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
