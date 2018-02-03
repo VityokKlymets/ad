@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import renderer from "./utils/renderer";
+
 dotenv.config();
 const app = express();
 app.use(express.static("public"));

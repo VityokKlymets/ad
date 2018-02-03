@@ -1,3 +1,13 @@
-body{
-  background: #232;
+body {
+  font-family: "Encode Sans Expanded", sans-serif;
+  background: url("/images/spiration-light.png");
 }
+a {
+  text-decoration: none;
+  color: #fff;
+}
+@import url("https://fonts.googleapis.com/css?family=Encode+Sans+Expanded");
+@import "./navbars.css";
+@import "./headers.css";
+@import "./views.css";
+@import "./inputs.css";

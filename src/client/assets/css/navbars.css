@@ -1,0 +1,27 @@
+.navbar {
+  color: #fff;
+}
+.navbar-top {
+  background: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+.navbar-top ul {
+  justify-content: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.navbar-top ul li {
+  text-transform: uppercase;
+  list-style: none;
+}
+.navbar-top ul li.active {
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.2) inset;
+}
+.navbar-top ul a {
+  color: #000;
+  display: inline-block;
+  padding: 0.9em 2em;
+}

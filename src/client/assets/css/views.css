@@ -1,0 +1,84 @@
+.InteriorView {
+  margin: 20px;
+}
+.InteriorView .image-view {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.InteriorView .image-view::before {
+  content: "";
+  display: block;
+  z-index: 3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s linear;
+  opacity: 0.3;
+  background-color: #000;
+  background-image: radial-gradient(
+      white,
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 40px
+    ),
+    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 30px
+    );
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+
+.InteriorView .image-view h1 {
+  opacity: 1;
+  transition: opacity 0.5s linear;
+  margin: 0;
+  position: absolute;
+  text-transform: capitalize;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  display: inline-block;
+  color: #fff;
+  padding: 5%;
+  border: 2px solid #fff;
+  letter-spacing: 0.1em;
+  font-weight: 200;
+}
+.InteriorView .image-view:hover::before,
+.InteriorView .image-view:hover h1 {
+  opacity: 0;
+}
+.InteriorView .image-view img{
+  width: 100%;
+}
+.InteriorView .image-description{
+  background: #fff;
+}
+.InteriorView .image-description .author{
+  display: flex;
+  align-items: center;
+  padding: .4em .5em;
+  border-bottom: 1px solid #ccc;
+}
+.InteriorView .image-description .author span{
+  text-transform: capitalize;
+  font-style: italic;
+}
+.InteriorView .avatar.small{
+  margin-right: 1em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}

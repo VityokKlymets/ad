@@ -22,11 +22,16 @@
   },
   "homepage": "https://github.com/VityokKlymets/terc-design#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
+    "normalize.css": "^7.0.0",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-parallax": "^1.6.0",
+    "react-router-dom": "^4.2.2",
+    "react-zoomable-image": "^1.0.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
