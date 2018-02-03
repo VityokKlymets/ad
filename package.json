@@ -31,7 +31,7 @@
     "react-dom": "^16.2.0",
     "react-parallax": "^1.6.0",
     "react-router-dom": "^4.2.2",
-    "react-zoomable-image": "^1.0.5"
+    "react-slick": "^0.17.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -44,6 +44,7 @@
     "nodemon": "^1.14.12",
     "npm-run-all": "^4.1.2",
     "style-loader": "^0.20.1",
+    "svg-loader": "0.0.2",
     "webpack": "^3.10.0",
     "webpack-node-externals": "^1.6.0"
   }

@@ -24,7 +24,8 @@ module.exports = {
         options: {
           presets: ["env", "react", "stage-0"]
         }
-      }
+      },
+      { test: /\.svg$/, loader: 'svg-loader' }
     ]
   },
   plugins: [new ExtractTextPlugin("bundle.css")]

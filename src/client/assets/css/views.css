@@ -1,13 +1,15 @@
-.InteriorView {
-  margin: 20px;
+.view {
+  margin: 30px 0;
 }
-.InteriorView .image-view {
+
+.image-view {
   overflow: hidden;
   cursor: pointer;
   position: relative;
+  box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);
 }
 
-.InteriorView .image-view::before {
+.image-view::before {
   content: "";
   display: block;
   z-index: 3;
@@ -35,7 +37,7 @@
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 
-.InteriorView .image-view h1 {
+.image-view h1 {
   opacity: 1;
   transition: opacity 0.5s linear;
   margin: 0;
@@ -52,27 +54,35 @@
   letter-spacing: 0.1em;
   font-weight: 200;
 }
-.InteriorView .image-view:hover::before,
-.InteriorView .image-view:hover h1 {
+.image-view:hover::before,
+.image-view:hover h1 {
   opacity: 0;
 }
-.InteriorView .image-view img{
+.image-view img {
   width: 100%;
 }
-.InteriorView .image-description{
+.view .image-description {
+  padding: 5px;
+  height: 100%;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 3px 30px rgba(0, 0, 0, 0.3);
 }
-.InteriorView .image-description .author{
+.view .image-description .author {
   display: flex;
   align-items: center;
-  padding: .4em .5em;
+  padding: 0.4em 0.5em;
   border-bottom: 1px solid #ccc;
 }
-.InteriorView .image-description .author span{
+.view .image-description .author span {
   text-transform: capitalize;
   font-style: italic;
 }
-.InteriorView .avatar.small{
+.view .image-description .controls {
+  margin-top: auto;
+}
+.view .image-description .avatar.small {
   margin-right: 1em;
   background-size: contain;
   background-repeat: no-repeat;
@@ -81,4 +91,82 @@
   height: 45px;
   border-radius: 50%;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.view .image-description .text h3 {
+  font-family: "Handlee";
+  font-weight: 200;
+  font-size: 2em;
+  margin: 0;
+  margin-top: 10px;
+}
+.view .image-description .text p {
+  line-height: 1.3em;
+  letter-spacing: 0.05em;
+}
+.view .image-description .text p::first-letter {
+  padding-left: 2em;
+}
+.view .view-head {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 5px 0;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+}
+.view .view-head h1 {
+  font-size: 1.6em;
+  margin: 0;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+.view .view-head {
+  font-family: "Handlee";
+  padding-top: 10px;
+  background: #fff;
+}
+.view .view-head .post-info-date {
+  display: flex;
+  justify-content: center;
+}
+.view .view-head .post-info-date span {
+  color: rgb(167, 163, 163);
+  font-size: 0.98em;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+}
+.view .view-head .post-info-date span::before,
+.view .view-head .post-info-date span::after {
+  content: "";
+  margin: 0 20px;
+  width: 200px;
+  height: 1px;
+  background: rgb(167, 163, 163);
+}
+
+.SliderView .slide {
+  cursor: pointer;
+  background-size: cover;
+  height: 500px;
+}
+.SliderView .slick-dots {
+  bottom: 10px;
+}
+.slick-dots li {
+  width: 20px;
+  height: 20px;
+}
+.SliderView .slick-dots li button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.SliderView .slick-dots li button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #000;
 }
