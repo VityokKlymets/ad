@@ -5,7 +5,7 @@ export default () => {
     <nav className="navbar navbar-top">
       <ul>
         <li>
-          <a href="#">about</a>
+          <a href="/about">about</a>
         </li>
         <li>
           <a href="#">our projects</a>

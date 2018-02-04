@@ -1,12 +1,22 @@
 import React, { Component } from "react";
-class AboutPage extends Component{
+import PostersView from "../views/PostersView/PostersView";
+class AboutPage extends Component {
   displayName = "AboutPage";
 
   render = () => {
-   return (<div>
-       <h1>AboutPage</h1>
-   </div>);
+    return (
+      <div>
+        <PostersView>
+          <PostersView.Poster>
+            <PostersView.Image src="/images/indoor-garden-wall-1-960x580.jpg" />
+          </PostersView.Poster>
+          <PostersView.Poster>
+            <PostersView.Image src="/images/The-Best-Interior-Design-Trends-for-2017.jpg" />
+          </PostersView.Poster>
+        </PostersView>
+      </div>
+    );
   };
 }
 
-export default AboutPage
+export default AboutPage;

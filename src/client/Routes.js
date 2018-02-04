@@ -1,6 +1,6 @@
 import React from "react";
-import HomePage from "./client/components/pages/HomePage";
-import AboutPage from "./client/components/pages/AboutPage";
+import HomePage from "./components/pages/HomePage";
+import AboutPage from "./components/pages/AboutPage";
 
 export default [
   {

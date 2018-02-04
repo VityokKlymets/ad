@@ -46,16 +46,21 @@ class InteriorView extends Component {
       </div>
     );
   };
+  renderViewHead = () => {
+    const { headText } = this.props;
+    return (
+      <div className="view-head">
+        <h1>{headText}</h1>
+        <div className="post-info-date">
+          <span>3.02.2017</span>
+        </div>
+      </div>
+    );
+  };
   render = () => {
     const { img, headText } = this.props;
     return (
       <div className="InteriorView view">
-        <div className="view-head">
-          <h1>{headText}</h1>
-          <div className="post-info-date">
-            <span>3.02.2017</span>
-          </div>
-        </div>
         <div className="row row-eq-height">
           <div className="col-8">{this.renderBox()}</div>
           <div className="col-4">{this.renderDescription()}</div>

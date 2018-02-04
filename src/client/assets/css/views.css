@@ -173,3 +173,29 @@
   border-radius: 50%;
   background: #000;
 }
+.PosterView .view-area {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.PosterView .posters {
+  transition: transform 0.55s ease-in;
+  position: absolute;
+}
+.PosterView .poster * {
+  box-sizing: border-box;
+  margin: 0;
+}
+.PosterView .poster {
+  position: relative;
+  background: #ccc;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+.poster .poster-full-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}

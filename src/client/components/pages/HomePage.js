@@ -20,17 +20,17 @@ class HomePage extends Component {
         <div>
           <MainHeader />
           <div className="container-fluid">
+            <InteriorView
+              zoomable
+              img="/images/indoor-garden-wall-1-960x580.jpg"
+              headText="Family Home With Dashes Of Pastel Colour Decor"
+            />
             <SliderView
               images={[
                 "/images/The-Best-Interior-Design-Trends-for-2017.jpg",
                 "/images/indoor-garden-wall-1-960x580.jpg"
               ]}
               headText="White Walls and Exposed Brick Go Minimalist in This Couple’s Retreat"
-            />
-            <InteriorView
-              zoomable
-              img="/images/indoor-garden-wall-1-960x580.jpg"
-              headText="Family Home With Dashes Of Pastel Colour Decor"
             />
           </div>
         </div>
