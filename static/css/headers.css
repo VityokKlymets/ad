@@ -1,0 +1,40 @@
+header {
+  background: url("/static/images/doodles.png");
+  background-position: 10% 60px;
+}
+.MainHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+}
+.MainHeader .social {
+  align-self: flex-start;
+  margin-left: auto;
+  padding: 15px 15px 0 0;
+}
+.MainHeader .social svg {
+  width: 35px;
+  height: 35px;
+  margin: 5px 0;
+  background: #fff;
+  transition: transform 0.1s linear;
+}
+.MainHeader .social a:hover svg {
+  transform: translateY(-5%);
+}
+.MainHeader h1 {
+  font-family: "Handlee";
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.MainHeader h1 span {
+  display: inline-block;
+  padding: .2em 0;
+  cursor: pointer;
+}
+.MainHeader h1 span:first-child {
+  transform: translateY(-30%);
+}

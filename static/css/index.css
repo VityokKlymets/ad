@@ -1,0 +1,12 @@
+body {
+  font-family: "Encode Sans Expanded", sans-serif;
+  background: url("/static/images/spiration-light.png");
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.container-fluid {
+  padding: 0 20px;
+}
