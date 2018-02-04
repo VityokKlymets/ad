@@ -173,6 +173,9 @@
   border-radius: 50%;
   background: #000;
 }
+.PosterView {
+  color: rgb(37, 52, 95);
+}
 .PosterView .view-area {
   position: relative;
   height: 100vh;
@@ -181,6 +184,7 @@
 .PosterView .posters {
   transition: transform 0.55s ease-in;
   position: absolute;
+  background: #fff;
 }
 .PosterView .poster * {
   box-sizing: border-box;
@@ -188,7 +192,6 @@
 }
 .PosterView .poster {
   position: relative;
-  background: #ccc;
   box-sizing: border-box;
 }
 .HorizontalPosters > .posters {
@@ -255,7 +258,37 @@
   height: 40px;
   fill: rgb(37, 52, 95);
 }
-
+.view-area .gui .menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  border-left: 1px solid rgb(37, 52, 95);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.view-area .gui .menu .menu-icon {
+  cursor: pointer;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(37, 52, 95);
+  background: #fff;
+}
+.view-area .gui .menu .menu-icon:hover {
+  background: rgb(37, 52, 95);
+}
+.view-area .gui .menu .menu-icon:hover svg {
+  fill: #fff;
+}
+.view-area .gui .menu .menu-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: rgb(37, 52, 95);
+}
 .VerticalPosters .poster-btn-wrapper {
   transform: translateY(-50%);
   display: flex;
@@ -266,23 +299,83 @@
   top: 50%;
   z-index: 3;
   padding: 15px 5px;
-  border: 2px solid #fff;
+  border: 1px solid rgb(37, 52, 95);
   border-radius: 20px;
 }
 .VerticalPosters .poster-btn-wrapper .poster-button {
-  transition: all 0.5s linear;
+  transition: background 0.5s linear;
   width: 14px;
   height: 14px;
-  background: #fff;
+  background: rgb(37, 52, 95);
   margin: 5px 0;
   border-radius: 50%;
   cursor: pointer;
 }
 .poster-btn-wrapper .poster-button.active {
-  border: 2px solid #fff;
+  border: 1px solid rgb(37, 52, 95);
   background: inherit;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
+}
+.poster-1 {
+  position: absolute;
+  left: 100px;
+  top: 25%;
+  bottom: 0;
+  right: 100px;
+  justify-content: center;
+  background: #fff;
+  display: flex;
+}
+.poster-1 .text {
+  display: flex;
+  flex-direction: column;
+}
+.poster .poster-1 button {
+  background: #fff;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0.5em 2em;
+  margin: 50px 0;
+  display: block;
+  color: rgb(37, 52, 95);
+  border: 2px solid rgb(37, 52, 95);
+  align-self: flex-end;
+}
+.poster-1 .left button {
+  align-self: flex-start;
+}
+.poster .poster-1 button:hover {
+  background: rgb(37, 52, 95);
+  color: #fff;
+  border-color: #fff;
+}
+.poster-1 h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+}
+.poster-1 .left {
+  order: 1;
+}
+.poster-1 .right {
+  order: 2;
+}
+
+.poster-1 p {
+  font-size: 1.4em;
+  text-transform: capitalize;
+}
+.poster-1 p::first-letter {
+  padding-left: 1em;
+}
+.poster-1 img {
+  width: 400px;
+  height: 400px;
+}
+.poster.visible .poster-1 img {
+  animation: slidetoRight 0.6s ease-in-out 1;
 }
 @keyframes bouncing {
   0% {
@@ -293,5 +386,15 @@
   }
   100% {
     transform: translateY(0%);
+  }
+}
+@keyframes slidetoRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

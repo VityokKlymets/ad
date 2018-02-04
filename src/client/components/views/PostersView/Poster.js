@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 class Poster extends Component {
   displayName = "Poster";
   state = {
-    isFirst: this.props.currentPoster === 0,
-    isLast: this.props.currentPoster === this.props.postersCount - 1
+    visible: this.props.currentPoster === this.props.rec.currentRow
   };
   render = () => {
     const { children, slideDown, slideUp } = this.props;
-    const { isFirst, isLast } = this.state;
+    const { visible } = this.state;
+    console.log(visible);
     return (
-      <div className="poster">
+      <div className={`poster ${visible ? "visible" : ""}`}>
         {React.cloneElement(children, { rec: this.props.rec })}
       </div>
     );

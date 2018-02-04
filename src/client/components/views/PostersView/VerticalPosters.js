@@ -30,25 +30,24 @@ class VerticalPosters extends Component {
     const { incRow } = this.props.rec;
     const { currentPoster, postersCount } = this.state;
     const nextPoster = currentPoster + 1;
-    if (nextPoster < postersCount) {
-      incRow();
-    }
+    const needToChange = nextPoster < postersCount;
+    if (!needToChange) return;
+    incRow();
     this.setState({
-      currentPoster: nextPoster < postersCount ? nextPoster : currentPoster,
+      currentPoster: nextPoster,
       isFirstPoster: false,
-      isLastPoster: nextPoster === postersCount-1
+      isLastPoster: nextPoster === postersCount - 1
     });
   };
   slideUp = () => {
     const { currentPoster } = this.state;
     const { decRow } = this.props.rec;
     const nextPoster = currentPoster - 1;
-    if (nextPoster >= 0) {
-      decRow();
-    }
-
+    const needToChange = nextPoster >= 0;
+    if (!needToChange) return;
+    decRow();
     this.setState({
-      currentPoster: nextPoster > 0 ? nextPoster : 0,
+      currentPoster: nextPoster,
       isLastPoster: false,
       isFirstPoster: nextPoster === 0
     });
@@ -86,13 +85,13 @@ class VerticalPosters extends Component {
   renderArrows = () => {
     const { isLastPoster } = this.state;
     return isLastPoster ? (
-      <div className="arrow up-arrow" onClick={() => slideUp()}>
+      <div className="arrow up-arrow" onClick={this.slideUp}>
         <svg width="24" height="24" viewBox="0 0 24 24">
           <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
         </svg>
       </div>
     ) : (
-      <div className="arrow down-arrow" onClick={() => slideDown()}>
+      <div className="arrow down-arrow" onClick={this.slideDown}>
         <svg width="24" height="24" viewBox="0 0 24 24">
           <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" />
         </svg>
