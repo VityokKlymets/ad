@@ -190,8 +190,22 @@
   position: relative;
   background: #ccc;
   box-sizing: border-box;
+}
+.HorizontalPosters > .posters {
+  display: flex;
+  flex-direction: row;
+  width: 100vh;
+}
+.VerticalPosters > .posters {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
+}
+.VerticalPosters .poster {
   height: 100vh;
+}
+.HorizontalPosters .poster {
+  width: 100vw;
 }
 .poster .poster-full-image {
   background-repeat: no-repeat;
@@ -199,7 +213,7 @@
   width: 100%;
   height: 100%;
 }
-.posters .arrow {
+.VerticalPosters .arrow {
   position: absolute;
   left: 50%;
   bottom: 30px;
@@ -212,7 +226,7 @@
   animation: bouncing 0.5s ease-in infinite;
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.5);
 }
-.poster .arrow svg {
+.VerticalPosters .arrow svg {
   width: 100%;
   height: 100%;
   fill: rgb(0, 7, 43);
@@ -241,7 +255,8 @@
   height: 40px;
   fill: rgb(37, 52, 95);
 }
-.poster-gui {
+
+.VerticalPosters .poster-btn-wrapper {
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -254,7 +269,7 @@
   border: 2px solid #fff;
   border-radius: 20px;
 }
-.poster-gui .poster-button {
+.VerticalPosters .poster-btn-wrapper .poster-button {
   transition: all 0.5s linear;
   width: 14px;
   height: 14px;
@@ -263,7 +278,7 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.poster-gui .poster-button.active {
+.poster-btn-wrapper .poster-button.active {
   border: 2px solid #fff;
   background: inherit;
   width: 15px;

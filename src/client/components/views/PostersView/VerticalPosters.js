@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { canUseDOM } from "../../../utils/Util";
-class Posters extends Component {
-  displayName = "Posters";
+class VerticalPosters extends Component {
+  displayName = "VerticalPosters";
   state = {
     currentPoster: 0,
     isFirstPoster: true,
@@ -9,7 +9,13 @@ class Posters extends Component {
     postersCount: this.props.children.length
   };
   canUseDOM = canUseDOM();
+  canInteractive = () => {
+    const { currentColumn } = this.props.rec;
+    const { column } = this.props;
+    return currentColumn === column;
+  };
   onKeyDown = e => {
+    if (!this.canInteractive()) return;
     const keyCode = e.keyCode;
     switch (keyCode) {
       case 40:
@@ -21,17 +27,26 @@ class Posters extends Component {
     }
   };
   slideDown = () => {
+    const { incRow } = this.props.rec;
     const { currentPoster, postersCount } = this.state;
     const nextPoster = currentPoster + 1;
+    if (nextPoster < postersCount) {
+      incRow();
+    }
     this.setState({
       currentPoster: nextPoster < postersCount ? nextPoster : currentPoster,
       isFirstPoster: false,
-      isLastPoster: nextPoster === postersCount
+      isLastPoster: nextPoster === postersCount-1
     });
   };
   slideUp = () => {
     const { currentPoster } = this.state;
+    const { decRow } = this.props.rec;
     const nextPoster = currentPoster - 1;
+    if (nextPoster >= 0) {
+      decRow();
+    }
+
     this.setState({
       currentPoster: nextPoster > 0 ? nextPoster : 0,
       isLastPoster: false,
@@ -68,6 +83,22 @@ class Posters extends Component {
     }
     return buttons;
   };
+  renderArrows = () => {
+    const { isLastPoster } = this.state;
+    return isLastPoster ? (
+      <div className="arrow up-arrow" onClick={() => slideUp()}>
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
+        </svg>
+      </div>
+    ) : (
+      <div className="arrow down-arrow" onClick={() => slideDown()}>
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" />
+        </svg>
+      </div>
+    );
+  };
   render = () => {
     const {
       currentPoster,
@@ -77,8 +108,15 @@ class Posters extends Component {
     } = this.state;
     const { children } = this.props;
     return (
-      <div>
-        <div className="poster-gui">{this.renderPostersButtons()}</div>
+      <div className="VerticalPosters">
+        {this.canInteractive() && (
+          <div className="poster-gui">
+            <div className="poster-btn-wrapper">
+              {this.renderPostersButtons()}
+            </div>
+            {this.renderArrows()}
+          </div>
+        )}
         <div
           className="posters"
           style={{
@@ -91,7 +129,8 @@ class Posters extends Component {
               currentPoster: idx,
               postersCount,
               slideDown: this.slideDown,
-              slideUp: this.slideUp
+              slideUp: this.slideUp,
+              rec: this.props.rec
             });
           })}
           }
@@ -101,4 +140,4 @@ class Posters extends Component {
   };
 }
 
-export default Posters;
+export default VerticalPosters;

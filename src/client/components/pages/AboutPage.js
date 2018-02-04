@@ -20,9 +20,16 @@ class AboutPage extends Component {
               </div>
             </div>
           </PostersView.GUI>
-          <PostersView.VerticalPosters>
+          <PostersView.VerticalPosters row={0} column={0}>
             <PostersView.Poster>
-              <PostersView.Image src="/images/indoor-garden-wall-1-960x580.jpg" />
+              <PostersView.HorizontalPosters row={0} column={0}>
+                <PostersView.Poster>
+                  <PostersView.Image src="/images/The-Best-Interior-Design-Trends-for-2017.jpg" />
+                </PostersView.Poster>
+                <PostersView.Poster>
+                  <PostersView.Image src="/images/cvet-forma-abstrakciya-7024.jpg" />
+                </PostersView.Poster>
+              </PostersView.HorizontalPosters>
             </PostersView.Poster>
             <PostersView.Poster>
               <PostersView.Image src="/images/The-Best-Interior-Design-Trends-for-2017.jpg" />
