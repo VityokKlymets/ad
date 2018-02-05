@@ -6,12 +6,16 @@ class HorizontalPosters extends Component {
     currentPoster: 0,
     isFirstPoster: true,
     isLastPoster: false,
-    postersCount: this.props.children.length
+    postersCount: this.props.children.length,
+    row: this.props.rec.o.row,
+    column: this.props.rec.o.column
   };
+  row = this.props.rec.o.row;
+  column = this.props.rec.o.column;
   canUseDOM = canUseDOM();
   canInteractive = () => {
     const { currentRow } = this.props.rec;
-    const { row } = this.props;
+    const { row } = this.state;
     return currentRow === row;
   };
   onKeyDown = e => {
@@ -138,7 +142,13 @@ class HorizontalPosters extends Component {
               postersCount,
               slideLeft: this.slideLeft,
               slideRight: this.slideRight,
-              rec: this.props.rec
+              rec: {
+                ...this.props.rec,
+                o: {
+                  row: this.row,
+                  column: ++this.column
+                }
+              }
             });
           })}
           }

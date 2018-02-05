@@ -6,16 +6,24 @@ class Poster extends Component {
   state = {
     visible: this.props.currentPoster === this.props.rec.currentRow
   };
+  renderPosterContent = () => {
+    const { children } = this.props;
+    let isPostersView = false;
+    if (!children) return null;
+    isPostersView =
+      children.type.name === "VerticalPosters" ||
+      children.type.name === "HorizontalPosters";
+
+    return isPostersView ? (
+      React.cloneElement(children, { rec: this.props.rec })
+    ) : (
+      <div className="free-space">
+        {React.cloneElement(children, { rec: this.props.rec })}
+      </div>
+    );
+  };
   render = () => {
     const { children, slideDown, slideUp, bgSrc } = this.props;
-    let isPostersView = false;
-    if (children)
-      isPostersView =
-        children.type.name === "VerticalPosters" ||
-        children.type.name === "HorizontalPosters";
-    if (isPostersView) {
-      console.log(this.props);
-    }
     const { visible } = this.state;
     return (
       <div className={`poster ${visible ? "visible" : ""}`}>
@@ -27,16 +35,7 @@ class Poster extends Component {
             }}
           />
         )}
-
-        {children ? (
-          isPostersView ? (
-            React.cloneElement(children, { rec: this.props.rec })
-          ) : (
-            <div className="free-space">
-              {React.cloneElement(children, { rec: this.props.rec })}
-            </div>
-          )
-        ) : null}
+        {this.renderPosterContent()}
       </div>
     );
   };

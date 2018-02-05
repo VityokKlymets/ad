@@ -6,12 +6,17 @@ class VerticalPosters extends Component {
     currentPoster: 0,
     isFirstPoster: true,
     isLastPoster: false,
-    postersCount: this.props.children.length
+    postersCount: this.props.children.length,
+    row: this.props.rec.o.row,
+    column: this.props.rec.o.column
   };
+  row = this.props.rec.o.row;
+  column = this.props.rec.o.column;
+
   canUseDOM = canUseDOM();
   canInteractive = () => {
     const { currentColumn } = this.props.rec;
-    const { column } = this.props;
+    const { column } = this.state;
     return currentColumn === column;
   };
   onKeyDown = e => {
@@ -84,20 +89,23 @@ class VerticalPosters extends Component {
   };
   renderArrows = () => {
     const { isLastPoster } = this.state;
-    return <div className='gui-arrows'>{isLastPoster ? (
-      <div className="arrow up-arrow" onClick={this.slideUp}>
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
-        </svg>
+    return (
+      <div className="gui-arrows">
+        {isLastPoster ? (
+          <div className="arrow up-arrow" onClick={this.slideUp}>
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
+            </svg>
+          </div>
+        ) : (
+          <div className="arrow down-arrow" onClick={this.slideDown}>
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" />
+            </svg>
+          </div>
+        )}
       </div>
-    ) : (
-      <div className="arrow down-arrow" onClick={this.slideDown}>
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" />
-        </svg>
-      </div>
-    )}
-    </div>
+    );
   };
   render = () => {
     const {
@@ -130,10 +138,15 @@ class VerticalPosters extends Component {
               postersCount,
               slideDown: this.slideDown,
               slideUp: this.slideUp,
-              rec: this.props.rec
+              rec: {
+                ...this.props.rec,
+                o: {
+                  row: ++this.row,
+                  column: this.column
+                }
+              }
             });
           })}
-          }
         </div>
       </div>
     );

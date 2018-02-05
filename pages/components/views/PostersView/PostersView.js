@@ -6,8 +6,8 @@ import HorizontalPosters from "./HorizontalPosters";
 class PostersView extends Component {
   displayName = "PostersView";
   state = {
-    currentRow: 0,
-    currentColumn: 0
+    currentRow: 1,
+    currentColumn: 1
   };
   incRow = () => this.setState({ currentRow: this.state.currentRow + 1 });
   decRow = () => this.setState({ currentRow: this.state.currentRow - 1 });
@@ -20,7 +20,11 @@ class PostersView extends Component {
       incRow: this.incRow,
       incCol: this.incCol,
       decRow: this.decRow,
-      decCol: this.decCol
+      decCol: this.decCol,
+      o: {
+        column: 1,
+        row: 0
+      }
     };
     const { children } = this.props;
     return (

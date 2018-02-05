@@ -7,7 +7,7 @@ class AboutPage extends Component {
   render = () => {
     return (
       <div>
-        <Head title="terc design - about" />
+        <Head title="terc design" />
         <PostersView>
           <PostersView.GUI>
             <div>
@@ -31,33 +31,9 @@ class AboutPage extends Component {
               </div>
             </div>
           </PostersView.GUI>
-          <PostersView.VerticalPosters row={0} column={0}>
+          <PostersView.VerticalPosters>
             <PostersView.Poster>
-              <div className="poster-1">
-                <h1>nothing else yet</h1>
-              </div>
-            </PostersView.Poster>
-            <PostersView.Poster>
-              <PostersView.HorizontalPosters row={1} column={0}>
-                <PostersView.Poster>
-                  <div className="poster-1">
-                    <div
-                      style={{
-                        backgroundImage: "url(/static/images/chair.jpg)"
-                      }}
-                      className="post-img"
-                    />
-                    <div className="text">
-                      <h1>Where does it come from</h1>
-                      <p>
-                        Contrary to popular belief, Lorem Ipsum is not simply
-                        random text. It has roots in a piece of classical Latin
-                        literature from 45 BC, making it over 2000 years old.
-                      </p>
-                      <button>read more</button>
-                    </div>
-                  </div>
-                </PostersView.Poster>
+              <PostersView.HorizontalPosters>
                 <PostersView.Poster>
                   <div className="poster-1">
                     <div
@@ -79,8 +55,28 @@ class AboutPage extends Component {
                     </div>
                   </div>
                 </PostersView.Poster>
+                <PostersView.Poster>
+                  <div className="poster-1">
+                    <div
+                      style={{
+                        backgroundImage: "url(/static/images/chair.jpg)"
+                      }}
+                      className="post-img"
+                    />
+                    <div className="text">
+                      <h1>Where does it come from</h1>
+                      <p>
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has roots in a piece of classical Latin
+                        literature from 45 BC, making it over 2000 years old.
+                      </p>
+                      <button>read more</button>
+                    </div>
+                  </div>
+                </PostersView.Poster>
               </PostersView.HorizontalPosters>
             </PostersView.Poster>
+            <PostersView.Poster />
           </PostersView.VerticalPosters>
         </PostersView>
       </div>
