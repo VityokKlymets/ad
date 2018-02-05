@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Poster from "./Poster";
-import GUI from "./GUI";
 import VerticalPosters from "./VerticalPosters";
 import HorizontalPosters from "./HorizontalPosters";
 class PostersView extends Component {
@@ -26,16 +25,16 @@ class PostersView extends Component {
         row: 0
       }
     };
-    const { children } = this.props;
+    const { children, gui } = this.props;
+    const guiProps = {};
     return (
       <div className="PosterView">
         <div className="view-area">
-          {children.map((child, idx) => {
-            return React.cloneElement(child, {
-              key: idx,
-              rec
-            });
+          {React.cloneElement(children, {
+            rec
           })}
+          }
+          {gui && React.cloneElement(gui, guiProps)}
         </div>
       </div>
     );
@@ -43,6 +42,5 @@ class PostersView extends Component {
   static VerticalPosters = VerticalPosters;
   static HorizontalPosters = HorizontalPosters;
   static Poster = Poster;
-  static GUI = GUI;
 }
 export default PostersView;
