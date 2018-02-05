@@ -2,21 +2,29 @@ import React from "react";
 const textColor = "rgb(37, 52, 95)";
 export default ({ header, text, reverse, image, btnText = "show more" }) => {
   return (
-    <div className="post">
-      {image && (
-        <div
-          className="post-img"
-          style={{ backgroundImage: `url(${image})` }}
-        />
-      )}
-      <div className="text">
-        {header && <h1>{header}</h1>}
-        {text && <p>{text}</p>}
-        {<button>{btnText}</button>}
+    <div className="free-space">
+      <div className="post">
+        {image && (
+          <div
+            className="post-img"
+            style={{ backgroundImage: `url(${image})` }}
+          />
+        )}
+        <div className="text">
+          {header && <h1>{header}</h1>}
+          {text && <p>{text}</p>}
+          {<button>{btnText}</button>}
+        </div>
       </div>
       <style jsx>{`
-        .post {
-          background: #fff;
+        .free-space {
+          position: absolute;
+          bottom: 10%;
+          top: 10%;
+          left: 5%;
+          right: 10%;
+        }
+        .post {          
           justify-content: center;
           align-items: center;
           display: flex;
@@ -27,8 +35,9 @@ export default ({ header, text, reverse, image, btnText = "show more" }) => {
         .text {
           height: 100%;
         }
-        h1,p{
-            padding-bottom : 20px;
+        h1,
+        p {
+          padding-bottom: 20px;
         }
         button {
           font-size: 1.3em;
