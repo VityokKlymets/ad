@@ -31,24 +31,24 @@ class HorizontalPosters extends Component {
     const { currentPoster, postersCount } = this.state;
     const { incCol } = this.props.rec;
     const nextPoster = currentPoster + 1;
-    if (nextPoster < postersCount) {
-      incCol();
-    }
+    const needUpdate = nextPoster < postersCount;
+    if (!needUpdate) return;
+    incCol();
     this.setState({
-      currentPoster: nextPoster < postersCount ? nextPoster : currentPoster,
+      currentPoster: nextPoster,
       isFirstPoster: false,
-      isLastPoster: nextPoster === postersCount
+      isLastPoster: nextPoster === postersCount - 1
     });
   };
   slideLeft = () => {
     const { currentPoster } = this.state;
     const { decCol } = this.props.rec;
     const nextPoster = currentPoster - 1;
-    if (nextPoster >= 0) {
-      decCol();
-    }
+    const needUpdate = nextPoster >= 0;
+    if (!needUpdate) return;
+    decCol();
     this.setState({
-      currentPoster: nextPoster > 0 ? nextPoster : 0,
+      currentPoster: nextPoster,
       isLastPoster: false,
       isFirstPoster: nextPoster === 0
     });
@@ -82,6 +82,30 @@ class HorizontalPosters extends Component {
     }
     return buttons;
   };
+  renderArrows = () => {
+    const { isLastPoster, isFirstPoster } = this.state;
+    return (
+      <div>
+        <div
+          className={`arrow left-arrow ${!isFirstPoster ? "active" : ""}`}
+          onClick={this.slideLeft}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+          </svg>
+        </div>
+
+        <div
+          className={`arrow right-arrow ${!isLastPoster ? "active" : ""}`}
+          onClick={this.slideRight}
+        >
+          <svg version="1.1" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+          </svg>
+        </div>
+      </div>
+    );
+  };
   render = () => {
     const {
       currentPoster,
@@ -93,7 +117,12 @@ class HorizontalPosters extends Component {
     return (
       <div className="HorizontalPosters">
         {this.canInteractive() && (
-          <div className="poster-gui"></div>
+          <div className="poster-gui">
+            <div className="poster-btn-wrapper">
+              {this.renderPostersButtons()}
+            </div>
+            {this.renderArrows()}
+          </div>
         )}
         <div
           className="posters"

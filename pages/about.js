@@ -33,58 +33,53 @@ class AboutPage extends Component {
           </PostersView.GUI>
           <PostersView.VerticalPosters row={0} column={0}>
             <PostersView.Poster>
-              <PostersView.HorizontalPosters row={0} column={0}>
+              <div className="poster-1">
+                <h1>nothing else yet</h1>
+              </div>
+            </PostersView.Poster>
+            <PostersView.Poster>
+              <PostersView.HorizontalPosters row={1} column={0}>
                 <PostersView.Poster>
-                  <PostersView.Image src="/static/images/indoor-garden-wall-1-960x580.jpg" />
+                  <div className="poster-1">
+                    <div
+                      style={{
+                        backgroundImage: "url(/static/images/chair.jpg)"
+                      }}
+                      className="post-img"
+                    />
+                    <div className="text">
+                      <h1>Where does it come from</h1>
+                      <p>
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has roots in a piece of classical Latin
+                        literature from 45 BC, making it over 2000 years old.
+                      </p>
+                      <button>read more</button>
+                    </div>
+                  </div>
                 </PostersView.Poster>
                 <PostersView.Poster>
-                  <PostersView.Image src="/static/images/cvet-forma-abstrakciya-7024.jpg" />
-                </PostersView.Poster>
-                <PostersView.Poster>
-                  <PostersView.Image src="/static/images/derevr-listia-kraski-priamougolnik.jpg" />
+                  <div className="poster-1">
+                    <div
+                      style={{
+                        backgroundImage:
+                          "url(/static/images/stunning-coffee.jpg)"
+                      }}
+                      className="post-img"
+                    />
+                    <div className="text">
+                      <h1>White Walls and Exposed Brick</h1>
+                      <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit
+                        voluptatem accusantium doloremque laudantium, totam rem
+                        aperiam, eaque ipsa quae ab illo inventore veritatis et
+                        quasi architecto beatae vitae dicta sunt explicabo.
+                      </p>
+                      <button>read more</button>
+                    </div>
+                  </div>
                 </PostersView.Poster>
               </PostersView.HorizontalPosters>
-            </PostersView.Poster>
-            <PostersView.Poster invert>
-              <div className="poster-1">
-                <div>
-                  <img
-                    src="/static/images/chair.jpg"
-                    className="img-responsive"
-                    alt="chair"
-                  />
-                </div>
-                <div className="text">
-                  <h1>Where does it come from</h1>
-                  <p>
-                    Contrary to popular belief, Lorem Ipsum is not simply random
-                    text. It has roots in a piece of classical Latin literature
-                    from 45 BC, making it over 2000 years old.
-                  </p>
-                  <button>read more</button>
-                </div>
-              </div>
-            </PostersView.Poster>
-            <PostersView.Poster invert>
-              <div className="poster-1">
-                <div className="right">
-                  <img
-                    src="/static/images/stunning-coffee.jpg"
-                    className="img-responsive"
-                    alt="chair"
-                  />
-                </div>
-                <div className="text left">
-                  <h1>White Walls and Exposed Brick</h1>
-                  <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam, eaque ipsa quae ab illo inventore veritatis et
-                    quasi architecto beatae vitae dicta sunt explicabo.
-                  </p>
-                  <button>read more</button>
-                </div>
-              </div>
             </PostersView.Poster>
           </PostersView.VerticalPosters>
         </PostersView>

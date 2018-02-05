@@ -84,7 +84,7 @@ class VerticalPosters extends Component {
   };
   renderArrows = () => {
     const { isLastPoster } = this.state;
-    return isLastPoster ? (
+    return <div className='gui-arrows'>{isLastPoster ? (
       <div className="arrow up-arrow" onClick={this.slideUp}>
         <svg width="24" height="24" viewBox="0 0 24 24">
           <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
@@ -96,7 +96,8 @@ class VerticalPosters extends Component {
           <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" />
         </svg>
       </div>
-    );
+    )}
+    </div>
   };
   render = () => {
     const {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Poster from "./Poster";
-import Image from "./Image";
 import GUI from "./GUI";
 import VerticalPosters from "./VerticalPosters";
 import HorizontalPosters from "./HorizontalPosters";
@@ -40,7 +39,6 @@ class PostersView extends Component {
   static VerticalPosters = VerticalPosters;
   static HorizontalPosters = HorizontalPosters;
   static Poster = Poster;
-  static Image = Image;
   static GUI = GUI;
 }
 export default PostersView;

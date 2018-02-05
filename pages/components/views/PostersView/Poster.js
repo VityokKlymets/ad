@@ -7,11 +7,36 @@ class Poster extends Component {
     visible: this.props.currentPoster === this.props.rec.currentRow
   };
   render = () => {
-    const { children, slideDown, slideUp } = this.props;
+    const { children, slideDown, slideUp, bgSrc } = this.props;
+    let isPostersView = false;
+    if (children)
+      isPostersView =
+        children.type.name === "VerticalPosters" ||
+        children.type.name === "HorizontalPosters";
+    if (isPostersView) {
+      console.log(this.props);
+    }
     const { visible } = this.state;
     return (
       <div className={`poster ${visible ? "visible" : ""}`}>
-        {React.cloneElement(children, { rec: this.props.rec })}
+        {bgSrc && (
+          <div
+            className="poster-full-image"
+            style={{
+              backgroundImage: `url(${bgSrc})`
+            }}
+          />
+        )}
+
+        {children ? (
+          isPostersView ? (
+            React.cloneElement(children, { rec: this.props.rec })
+          ) : (
+            <div className="free-space">
+              {React.cloneElement(children, { rec: this.props.rec })}
+            </div>
+          )
+        ) : null}
       </div>
     );
   };
@@ -20,6 +45,7 @@ Poster.propTypes = {
   currentPoster: PropTypes.number,
   postersCount: PropTypes.number,
   slideDown: PropTypes.func,
-  slideUp: PropTypes.func
+  slideUp: PropTypes.func,
+  bgSrc: PropTypes.string
 };
 export default Poster;
