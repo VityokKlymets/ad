@@ -6,7 +6,7 @@ class Poster extends Component {
     visible: this.props.currentPoster === this.props.rec.currentRow
   };
   render = () => {
-    const { children, bgsrc} = this.props;
+    const { children, bgsrc ,rec} = this.props;
     const invert = !!this.props.invert;
     const { visible } = this.state;
     return (
@@ -19,7 +19,8 @@ class Poster extends Component {
             }}
           />
         )}
-        {children && React.cloneElement(children,{invert})}
+        {children &&
+          React.cloneElement(children, { invert, rec })}
       </div>
     );
   };
