@@ -1,9 +1,16 @@
 import React from "react";
 const textColor = "rgb(37, 52, 95)";
-export default ({ header, text, reverse, image, btnText = "show more" }) => {
+export default ({
+  header,
+  text,
+  reverse,
+  image,
+  btnText = "show more",
+  visible = false
+}) => {
   return (
     <div className="free-space">
-      <div className="post">
+      <div className={`post ${visible ? "visible" : ""}`}>
         {image && (
           <div
             className="post-img"
@@ -24,7 +31,7 @@ export default ({ header, text, reverse, image, btnText = "show more" }) => {
           left: 5%;
           right: 10%;
         }
-        .post {          
+        .post {
           justify-content: center;
           align-items: center;
           display: flex;
@@ -68,6 +75,19 @@ export default ({ header, text, reverse, image, btnText = "show more" }) => {
           background-position: center;
           min-width: 50%;
           height: 100%;
+        }
+        .post.visible .post-img {
+          animation: slidetoRight 1s ease-in-out 1;
+        }
+        @keyframes slidetoRight {
+          from {
+            opacity: 0;
+            transform: translateX(-100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
       `}</style>
     </div>

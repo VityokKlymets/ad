@@ -223,8 +223,8 @@
 }
 .VerticalPosters > .poster-gui .arrow {
   left: 50%;
-  width: 30px;
   bottom: 2%;
+  width: 30px;
   height: 30px;
   background: #fff;
   border-radius: 50%;
@@ -262,7 +262,7 @@
   z-index: 3;
   border-radius: 20px;
   position: absolute;
-  border: 1px solid rgb(37, 52, 95);
+  border: 1px solid #000;
 }
 .HorizontalPosters > .poster-gui .poster-btn-wrapper {
   flex-direction: row;
@@ -279,18 +279,16 @@
   padding: 15px 5px;
 }
 .poster-gui .poster-button {
-  width: 14px;
-  height: 14px;
-  background: rgb(37, 52, 95);
+  width: 10px;
+  height: 10px;
+  background: #000;
   cursor: pointer;
   border-radius: 50%;
   transition: background 0.5s linear;
 }
 .poster-gui .poster-button.active {
-  border: 1px solid rgb(37, 52, 95);
+  border: 1px solid #000;
   background: inherit;
-  width: 14px;
-  height: 14px;
 }
 .VerticalPosters > .poster-gui .poster-button {
   margin: 5px 0;

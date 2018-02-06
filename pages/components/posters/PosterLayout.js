@@ -1,5 +1,4 @@
 import React from "react";
-import css from "./styles/posterlayout";
 export default props => {
   return (
     <div className="free-space">
@@ -8,7 +7,16 @@ export default props => {
           ...props,
           ...props.children.props
         })}
-      <style jsx>{css}</style>
+      <style jsx>{`
+        .free-space {
+          position: absolute;
+          bottom: 10%;
+          top: 10%;
+          left: 5%;
+          right: 11%;
+          z-index: 2;
+        }
+      `}</style>
     </div>
   );
 };
