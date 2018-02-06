@@ -35,6 +35,7 @@ class HeadPost extends Component {
             height: 100%;
             background: url(/static/images/germaniia-wernigerode-doma-ploshchad-fontan.jpg)
               no-repeat;
+            background-size : cover;
           }
           @keyframes fadeIn {
             from {

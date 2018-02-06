@@ -30,6 +30,7 @@ class HeadPost extends Component {
             height: 100%;
             background: url(/static/images/shotlandiia-edinburg-gorod-doma-peizazh-gory-nebo-solntse.jpg)
               no-repeat;
+              background-size : cover;
           }
         `}</style>
       </div>

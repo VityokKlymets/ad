@@ -33,6 +33,7 @@ class HeadPost extends Component {
             height: 100%;
             background: url(/static/images/gorod-vancouver-canada.jpg)
               no-repeat;
+              background-size : cover;
           }
           @keyframes fadeIn {
             from {
