@@ -223,8 +223,8 @@
 }
 .VerticalPosters > .poster-gui .arrow {
   left: 50%;
-  bottom: 2%;
   width: 30px;
+  bottom: 2%;
   height: 30px;
   background: #fff;
   border-radius: 50%;

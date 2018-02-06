@@ -2,13 +2,12 @@ import React, { Component } from "react";
 
 class Poster extends Component {
   displayName = "Poster";
-  state = {
-    visible: this.props.currentPoster === this.props.rec.currentRow
-  };
   render = () => {
-    const { children, bgsrc ,rec} = this.props;
+    const { children, bgsrc, rec } = this.props;
     const invert = !!this.props.invert;
-    const { visible } = this.state;
+    const visible =
+      this.props.rec.currentColumn === this.props.rec.o.column &&
+      this.props.rec.currentRow === this.props.rec.o.row;
     return (
       <div className={`poster ${visible ? "visible" : ""}`}>
         {bgsrc && (
@@ -19,8 +18,7 @@ class Poster extends Component {
             }}
           />
         )}
-        {children &&
-          React.cloneElement(children, { invert, rec })}
+        {children && React.cloneElement(children, { invert, rec, visible })}
       </div>
     );
   };

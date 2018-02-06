@@ -10,9 +10,6 @@ class VerticalPosters extends Component {
     row: this.props.rec.o.row,
     column: this.props.rec.o.column
   };
-  row = this.props.rec.o.row;
-  column = this.props.rec.o.column;
-
   canUseDOM = canUseDOM();
   canInteractive = () => {
     const { currentColumn } = this.props.rec;
@@ -112,8 +109,9 @@ class VerticalPosters extends Component {
       currentPoster,
       postersCount,
       isFirstPoster,
-      isLastPoster
+      isLastPoster,
     } = this.state;
+    let {row,column} = this.state;
     const { children } = this.props;
     return (
       <div className="VerticalPosters">
@@ -141,8 +139,8 @@ class VerticalPosters extends Component {
               rec: {
                 ...this.props.rec,
                 o: {
-                  row: ++this.row,
-                  column: this.column
+                  row: row++,
+                  column
                 }
               }
             });
