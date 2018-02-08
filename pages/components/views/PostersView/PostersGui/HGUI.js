@@ -6,22 +6,6 @@ class HGUI extends Component {
       posterCount : this.props.count,
       invert : !!this.props.invert
   }
-  renderPostersButtons = () => {
-    const { currentPoster, posterCount } = this.state;
-    const buttons = [];
-    for (let i = 0; i < posterCount; i++) {
-      buttons.push(
-        <div
-          key={i}
-          className={`poster-button ${i === currentPoster ? "active" : ""}`}
-          onClick={() => {
-            this.setState({ currentPoster: i });
-          }}
-        />
-      );
-    }
-    return buttons;
-  };
   slideLeft = () =>{
       this.props.slideLeft();
   }
@@ -41,8 +25,7 @@ class HGUI extends Component {
     const lastPoster = currentPoster === posterCount-1;
     return (
       <div className={`poster-gui ${invert? 'invert' : ''}`}>
-        <div className="poster-btn-wrapper">{this.renderPostersButtons()}</div>
-        <div>
+        <div className='gui-arrows'>
           <div
             className={`arrow left-arrow ${!firstPoster ? "active" : ""}`}
             onClick={this.slideLeft}

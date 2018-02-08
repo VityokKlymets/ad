@@ -4,7 +4,8 @@ class VGUI extends Component {
   state = {
     currentPoster: this.props.current,
     posterCount: this.props.count,
-    invert: !!this.props.invert
+    invert: !!this.props.invert,
+    next: this.props.next
   };
   renderPostersButtons = () => {
     const { currentPoster, posterCount } = this.state;
@@ -32,16 +33,18 @@ class VGUI extends Component {
     this.setState({
       currentPoster: props.current,
       posterCount: props.count,
-      invert: props.invert
+      invert: props.invert,
+      next: props.next
     });
   };
   render = () => {
-    const { currentPoster, posterCount, invert } = this.state;
+    const { currentPoster, posterCount, invert, next } = this.state;
     const lastPoster = currentPoster === posterCount - 1;
     return (
       <div className={`poster-gui ${invert ? "invert" : ""}`}>
         <div className="poster-btn-wrapper">{this.renderPostersButtons()}</div>
         <div className="gui-arrows">
+          {next && <div className="next-poster-text">{next}</div>}
           {lastPoster ? (
             <div className="arrow up-arrow" onClick={this.slideUp}>
               <svg width="24" height="24" viewBox="0 0 24 24">

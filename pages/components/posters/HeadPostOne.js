@@ -10,22 +10,14 @@ class HeadPost extends Component {
     const { visible } = this.props;
     return (
       <div>
-        <PosterLayout>
-          <h1 className={`${visible ? "visible" : ""}`}>
-            Where can I get some
-          </h1>
-        </PosterLayout>
+        <h1 className={`${visible ? "visible" : ""}`}>terc design</h1>
         <style jsx>{`
           h1 {
             font-family: serif;
-            position: absolute;
             color: ${textColor};
-            text-transform: uppercase;
-            font-weight : bold;
-            border: 2px solid ${textColor};
-            right: 0;
-            top: 0;
-            padding: 0.5em 1em;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-size : 2em;
           }
           h1.visible {
             animation: fadeIn 2s ease-in-out 1;
@@ -36,7 +28,10 @@ class HeadPost extends Component {
             height: 100%;
             background: url(/static/images/germaniia-wernigerode-doma-ploshchad-fontan.jpg)
               no-repeat;
-            background-size : cover;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
           @keyframes fadeIn {
             from {

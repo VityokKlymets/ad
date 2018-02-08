@@ -67,8 +67,14 @@ class VerticalPosters extends Component {
   render = () => {
     const { currentPoster, postersCount } = this.state;
     let { row, column } = this.props.rec;
-    const { children: posters } = this.props;
+    const posters =
+      this.props.children instanceof Array
+        ? this.props.children
+        : [this.props.children];
     const guiInvert = !!posters[currentPoster].props.invert;
+    const nextText = posters[currentPoster].props.next
+      ? posters[currentPoster].props.next
+      : "";
     return (
       <div className="VerticalPosters">
         {this.canInteractive() && (
@@ -76,6 +82,7 @@ class VerticalPosters extends Component {
             current={currentPoster}
             count={postersCount}
             invert={guiInvert}
+            next={nextText}
           />
         )}
         <div

@@ -1,5 +1,6 @@
 import React from "react";
-const textColor = "rgb(37, 52, 95)";
+const textColor = "#8b8c8e";
+const headColor = "rgb(37, 52, 95)";
 export default ({
   header,
   text,
@@ -29,7 +30,7 @@ export default ({
           bottom: 10%;
           top: 10%;
           left: 5%;
-          right: 10%;
+          right: 12%;
         }
         .post {
           justify-content: center;
@@ -41,10 +42,17 @@ export default ({
         }
         .text {
           height: 100%;
+          font-family: serif;
+          display: flex;
+          flex-direction : column;
         }
-        h1,
+        h1 {
+          text-align: center;
+          color: ${headColor};
+        }
         p {
-          padding-bottom: 20px;
+          padding: 30px 0;
+          border-top: 1px solid ${textColor};
         }
         button {
           font-size: 1.3em;
@@ -56,18 +64,15 @@ export default ({
           display: block;
           color: rgb(37, 52, 95);
           border: 2px solid rgb(37, 52, 95);
-          align-self: flex-end;
+          margin-bottom : auto;
         }
         button:hover {
           background: rgb(37, 52, 95);
           color: #fff;
           border-color: #fff;
         }
-        p {
-          text-transform: capitalize;
-        }
         p::first-letter {
-          padding-left: 1em;
+          padding-left: 20px;
         }
         .post-img {
           background-repeat: no-repeat;
