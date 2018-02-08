@@ -3,11 +3,11 @@ import React, { Component } from "react";
 class Poster extends Component {
   displayName = "Poster";
   render = () => {
-    const { children, bgsrc, rec } = this.props;
+    const { children, bgsrc, rec ,nextText} = this.props;
     const invert = !!this.props.invert;
     const visible =
-      this.props.rec.currentColumn === this.props.rec.o.column &&
-      this.props.rec.currentRow === this.props.rec.o.row;
+      this.props.rec.currentColumn === this.props.rec.column &&
+      this.props.rec.currentRow === this.props.rec.row;
     return (
       <div className={`poster ${visible ? "visible" : ""}`}>
         {bgsrc && (

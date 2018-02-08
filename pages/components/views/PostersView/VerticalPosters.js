@@ -1,19 +1,15 @@
 import React, { Component } from "react";
 import { canUseDOM } from "../../utils/Util";
+import VGUI from "./PostersGui/VGUI";
 class VerticalPosters extends Component {
   displayName = "VerticalPosters";
   state = {
     currentPoster: 0,
-    isFirstPoster: true,
-    isLastPoster: false,
-    postersCount: this.props.children.length,
-    row: this.props.rec.o.row,
-    column: this.props.rec.o.column
+    postersCount: this.props.children.length
   };
   canUseDOM = canUseDOM();
   canInteractive = () => {
-    const { currentColumn } = this.props.rec;
-    const { column } = this.state;
+    const { currentColumn, column } = this.props.rec;
     return currentColumn === column;
   };
   onKeyDown = e => {
@@ -68,60 +64,19 @@ class VerticalPosters extends Component {
   removeListeners = () => {
     window.removeEventListener("keydown", this.onKeyDown, false);
   };
-  renderPostersButtons = () => {
-    const { postersCount, currentPoster } = this.state;
-    const buttons = [];
-    for (let i = 0; i < postersCount; i++) {
-      buttons.push(
-        <div
-          key={i}
-          className={`poster-button ${i === currentPoster ? "active" : ""}`}
-          onClick={() => {
-            this.setState({ currentPoster: i });
-          }}
-        />
-      );
-    }
-    return buttons;
-  };
-  renderArrows = () => {
-    const { isLastPoster } = this.state;
-    return (
-      <div className="gui-arrows">
-        {isLastPoster ? (
-          <div className="arrow up-arrow" onClick={this.slideUp}>
-            <svg width="24" height="24" viewBox="0 0 24 24">
-              <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
-            </svg>
-          </div>
-        ) : (
-          <div className="arrow down-arrow" onClick={this.slideDown}>
-            <svg width="24" height="24" viewBox="0 0 24 24">
-              <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" />
-            </svg>
-          </div>
-        )}
-      </div>
-    );
-  };
   render = () => {
-    const {
-      currentPoster,
-      postersCount,
-      isFirstPoster,
-      isLastPoster,
-    } = this.state;
-    let {row,column} = this.state;
-    const { children } = this.props;
+    const { currentPoster, postersCount } = this.state;
+    let { row, column } = this.props.rec;
+    const { children: posters } = this.props;
+    const guiInvert = !!posters[currentPoster].props.invert;
     return (
       <div className="VerticalPosters">
         {this.canInteractive() && (
-          <div className="poster-gui">
-            <div className="poster-btn-wrapper">
-              {this.renderPostersButtons()}
-            </div>
-            {this.renderArrows()}
-          </div>
+          <VGUI
+            current={currentPoster}
+            count={postersCount}
+            invert={guiInvert}
+          />
         )}
         <div
           className="posters"
@@ -129,19 +84,15 @@ class VerticalPosters extends Component {
             transform: `translateY(-${currentPoster * 100}vh)`
           }}
         >
-          {children.map((child, idx) => {
-            return React.cloneElement(child, {
+          {posters.map((poster, idx) => {
+            return React.cloneElement(poster, {
               key: idx,
               currentPoster: idx,
               postersCount,
-              slideDown: this.slideDown,
-              slideUp: this.slideUp,
               rec: {
                 ...this.props.rec,
-                o: {
-                  row: row++,
-                  column
-                }
+                row: row++,
+                column
               }
             });
           })}

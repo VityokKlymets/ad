@@ -27,7 +27,7 @@ class AboutPage extends Component {
                 </PostersView.Poster>
               </PostersView.HorizontalPosters>
             </PostersView.Poster>
-            <PostersView.Poster>
+            <PostersView.Poster invert>
               <PostersView.HorizontalPosters>
                 <PostersView.Poster>
                   <Post
@@ -44,20 +44,6 @@ class AboutPage extends Component {
                   />
                 </PostersView.Poster>
               </PostersView.HorizontalPosters>
-            </PostersView.Poster>
-            <PostersView.Poster>
-              <PosterLayout>
-                <h1>
-                  Nothing her yet<style jsx>{`
-                    text-transform: uppercase;
-                    color: #231345;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                  `}</style>
-                </h1>
-              </PosterLayout>
             </PostersView.Poster>
           </PostersView.VerticalPosters>
         </PostersView>

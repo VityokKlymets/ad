@@ -20,10 +20,8 @@ class PostersView extends Component {
       incCol: this.incCol,
       decRow: this.decRow,
       decCol: this.decCol,
-      o: {
-        column: 1,
-        row: 1
-      }
+      row : 1,
+      column : 1
     };
     const { children, gui } = this.props;
     const guiProps = {};

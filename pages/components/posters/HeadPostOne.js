@@ -17,10 +17,11 @@ class HeadPost extends Component {
         </PosterLayout>
         <style jsx>{`
           h1 {
-            font-family: "Handlee";
+            font-family: serif;
             position: absolute;
             color: ${textColor};
             text-transform: uppercase;
+            font-weight : bold;
             border: 2px solid ${textColor};
             right: 0;
             top: 0;
