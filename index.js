@@ -1,23 +1,25 @@
-const body = require("body-parser");
-const co = require("co");
 const express = require("express");
+const bodyParser = require("body-parser");
 const next = require("next");
+const dotenv = require("dotenv");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const PORT = 3000;
 
-co(function*() {
-  yield app.prepare();
+dotenv.config();
+
+app.prepare().then(() => {
   const server = express();
-  server.use(body.json());
-  server.use((req, res, next) => {
-    next();
-  });
+
+  server.use(bodyParser.json());
+
   server.get("*", (req, res) => {
     return handle(req, res);
   });
-  server.listen(PORT);
-  console.log(`Listening on ${PORT}`);
-}).catch(error => console.error(error.stack));
+
+  server.listen(process.env.PORT, err => {
+    if (err) throw err;
+    console.log(`Server ready on http://localhost:${process.env.PORT}`);
+  });
+});
