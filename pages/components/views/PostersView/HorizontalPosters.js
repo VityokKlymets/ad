@@ -74,7 +74,10 @@ class HorizontalPosters extends Component {
       this.props.children instanceof Array
         ? this.props.children
         : [this.props.children];
-    const guiInvert = !!posters[currentPoster].props.invert;
+    const guiInvert =
+      posters[currentPoster].props.invert === undefined
+        ? false
+        : posters[currentPoster].props.invert;
     return (
       <div className="HorizontalPosters">
         <HGUI current={currentPoster} count={postersCount} invert={guiInvert} />

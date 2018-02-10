@@ -18,7 +18,7 @@ class Poster extends Component {
             }}
           />
         )}
-        {children && React.cloneElement(children, { invert, rec, visible })}
+        {children && React.cloneElement(children, { invert, rec, visible})}
       </div>
     );
   };

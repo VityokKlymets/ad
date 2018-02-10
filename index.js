@@ -1,3 +1,5 @@
+
+const mongoose = require('mongoose');
 const express = require("express");
 const bodyParser = require("body-parser");
 const next = require("next");
@@ -7,12 +9,15 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+const collections = require("./src/routes/collections");
 dotenv.config();
+mongoose.connect('mongodb://localhost/terc');
 
 app.prepare().then(() => {
   const server = express();
 
   server.use(bodyParser.json());
+  server.use('/api/collections/',collections);
 
   server.get("*", (req, res) => {
     return handle(req, res);
