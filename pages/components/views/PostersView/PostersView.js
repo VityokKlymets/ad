@@ -8,6 +8,8 @@ class PostersView extends Component {
     currentRow: 1,
     currentColumn: 1
   };
+  resetCol = () => this.setState({ currentColumn: 1 });
+  resetRow = () => this.setState({ currentRow: 1 });
   incRow = () => this.setState({ currentRow: this.state.currentRow + 1 });
   decRow = () => this.setState({ currentRow: this.state.currentRow - 1 });
   incCol = () => this.setState({ currentColumn: this.state.currentColumn + 1 });
@@ -20,8 +22,10 @@ class PostersView extends Component {
       incCol: this.incCol,
       decRow: this.decRow,
       decCol: this.decCol,
-      row : 1,
-      column : 1
+      resetCol: this.resetCol,
+      resetRow: this.resetRow,
+      row: 1,
+      column: 1
     };
     const { children, gui } = this.props;
     const guiProps = {};

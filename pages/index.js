@@ -5,28 +5,48 @@ import PosterGui from "./components/posters/PosterGui";
 import PosterProvider from "./components/views/PostersView/PosterProvider";
 import Post from "./components/posters/Post";
 import HeadPostOne from "./components/posters/HeadPostOne";
-import PosterLayout from "./components/posters/PosterLayout";
 import CollectionsPoster from "./components/posters/CollectionsPoster";
+import Rain from "./components/effects/Rain";
+import Contact from "./components/posters/Contact";
+import MainPreloader from "./components/preloaders/MainPreloader";
+import CollectionsPoster3D from "./components/posters/CollectionsPoster3D";
+
 class AboutPage extends Component {
   displayName = "AboutPage";
-  renderFirstLinePosters = () => (
-    <PostersView.Poster>
-      <CollectionsPoster collections={this.props.collections}/>
+  renderSecondLinePosters = () => (
+    <PostersView.Poster next="Текст">
+      <CollectionsPoster collections={this.props.collections} />
     </PostersView.Poster>
   );
-  renderSecondLinePosters = () => (
+  renderFirstLinePosters = () => (
     <PostersView.Poster invert next="Наши Коллекции">
       <HeadPostOne />
     </PostersView.Poster>
   );
+  renderThirdLinePosters = () => {
+    return (
+      <PostersView.Poster>
+        <Contact />
+      </PostersView.Poster>
+    );
+  };
+  renderFourLinePosters = () => {
+    return (
+      <PostersView.Poster>
+        <CollectionsPoster3D />
+      </PostersView.Poster>
+    );
+  };
   render = () => {
     return (
       <div>
         <Head title="terc design" />
         <PostersView gui={<PosterGui />}>
           <PostersView.VerticalPosters>
-            {this.renderSecondLinePosters()}
+            {this.renderFourLinePosters()}
             {this.renderFirstLinePosters()}
+            {this.renderSecondLinePosters()}
+            {this.renderThirdLinePosters()}
           </PostersView.VerticalPosters>
         </PostersView>
       </div>

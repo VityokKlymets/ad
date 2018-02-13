@@ -26,7 +26,15 @@ class HorizontalPosters extends Component {
         break;
     }
   };
-
+  slide = () => {
+    const { resetCol } = this.props.rec;
+    resetCol();
+    this.setState({
+      currentPoster: 0,
+      isFirstPoster: true,
+      isLastPoster: false
+    });
+  };
   slideRight = () => {
     const { currentPoster, postersCount } = this.state;
     const { incCol } = this.props.rec;

@@ -24,14 +24,18 @@ export default ({
           {<button>{btnText}</button>}
         </div>
       </div>
+      <style jsx global>
+        {`
+          .free-space {
+            position: absolute;
+            bottom: 10%;
+            top: 10%;
+            left: 5%;
+            right: 12%;
+          }
+        `}
+      </style>
       <style jsx>{`
-        .free-space {
-          position: absolute;
-          bottom: 10%;
-          top: 10%;
-          left: 5%;
-          right: 12%;
-        }
         .post {
           justify-content: center;
           align-items: center;
@@ -44,7 +48,7 @@ export default ({
           height: 100%;
           font-family: serif;
           display: flex;
-          flex-direction : column;
+          flex-direction: column;
         }
         h1 {
           text-align: center;
@@ -64,7 +68,7 @@ export default ({
           display: block;
           color: rgb(37, 52, 95);
           border: 2px solid rgb(37, 52, 95);
-          margin-bottom : auto;
+          margin-bottom: auto;
         }
         button:hover {
           background: rgb(37, 52, 95);

@@ -13,7 +13,6 @@ class VerticalPosters extends Component {
     return currentColumn === column;
   };
   onKeyDown = e => {
-    if (!this.canInteractive()) return;
     const keyCode = e.keyCode;
     switch (keyCode) {
       case 40:
@@ -77,14 +76,13 @@ class VerticalPosters extends Component {
       : "";
     return (
       <div className="VerticalPosters">
-        {this.canInteractive() && (
-          <VGUI
-            current={currentPoster}
-            count={postersCount}
-            invert={guiInvert}
-            next={nextText}
-          />
-        )}
+        <VGUI
+          current={currentPoster}
+          count={postersCount}
+          invert={guiInvert}
+          next={nextText}
+        />
+
         <div
           className="posters"
           style={{

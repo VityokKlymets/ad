@@ -9,7 +9,12 @@ class HeadPost extends Component {
     const textColor = "rgb(255, 255, 255)";
     const { visible } = this.props;
     return (
-      <div>
+      <div
+        style={{
+          backgroundImage:
+            "url(/static/images/germaniia-wernigerode-doma-ploshchad-fontan.jpg)"
+        }}
+      >
         <h1 className={`${visible ? "visible" : ""}`}>terc design</h1>
         <style jsx>{`
           h1 {
@@ -17,7 +22,7 @@ class HeadPost extends Component {
             color: ${textColor};
             text-transform: capitalize;
             font-weight: bold;
-            font-size : 2em;
+            font-size: 2em;
           }
           h1.visible {
             animation: fadeIn 2s ease-in-out 1;
@@ -26,8 +31,8 @@ class HeadPost extends Component {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: url(/static/images/germaniia-wernigerode-doma-ploshchad-fontan.jpg)
-              no-repeat;
+
+            background-repeat: no-repeat;
             background-size: cover;
             display: flex;
             justify-content: center;

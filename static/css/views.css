@@ -13,7 +13,7 @@ Poster view styles
   overflow: hidden;
 }
 .PosterView .posters {
-  transition: transform 0.55s ease-in;
+  transition: transform .5s ease-in-out;
   position: absolute;
   background: #fff;
 }
@@ -55,14 +55,17 @@ Poster view styles
   position: absolute;
   z-index: 3;
 }
-.next-poster-text {
+.poster-gui .next-poster-text{
   text-transform: uppercase;
   margin: 1em 0;
-  color: #fff;
+  color: rgb(37, 52, 95);
   font-weight: bold;
   letter-spacing: 2px;
   border-radius: 20px;
   padding: 3px 3px;
+}
+.poster-gui.invert .next-poster-text {
+  color: #fff;
 }
 .VerticalPosters > .poster-gui .gui-arrows {
   display: flex;
@@ -115,9 +118,7 @@ Poster view styles
   position: absolute;
   border: 1px solid rgb(37, 52, 95);
 }
-
-
-.VerticalPosters > .poster-gui .poster-btn-wrapper {
+.poster-gui .poster-btn-wrapper {
   transform: translateY(-50%);
   flex-direction: column;
   align-items: center;
@@ -129,7 +130,7 @@ Poster view styles
   border-color: #efefef;
 }
 .poster-gui.invert .poster-button {
-  background: #efefef;
+  background: #efefef; 
 }
 .poster-gui.invert .poster-button.active {
   border: 1px solid #efefef;
