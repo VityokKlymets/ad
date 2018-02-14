@@ -10,17 +10,17 @@ class CollectionsPoster3D extends Component {
       0.1,
       2000
     );
-    this.camera.position.set(5, 4, 7);
+    this.camera.position.set(4, 7, 10);
   };
   loadMesh = mesh => {
-    const geometry = mesh.scene;
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    console.log(geometry);
-    this.scene.add(geometry);
+    const object = mesh.scene;
+    this.scene.add(object);
   };
   initRenderer = () => {
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(600,400);
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.setSize(600, 500);
   };
   initScene = () => {
     this.scene = new THREE.Scene();
@@ -28,12 +28,17 @@ class CollectionsPoster3D extends Component {
     this.loader = new THREE.ColladaLoader();
     this.loader.load("/static/obj/designChair.dae", this.loadMesh);
 
-    let directionLight = new THREE.DirectionalLight(0xffffff, 0.2);
-    directionLight.position.set(1, 1, 0).normalize();
-    this.scene.add(directionLight);
-
     let ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     this.scene.add(ambientLight);
+
+    let spotLight = new THREE.SpotLight(0xffffff);
+    this.scene.add(spotLight);
+
+    let light = new THREE.DirectionalLight(0xffffff, 1, 100);
+    this.scene.add(light);
+
+    let gridHelper = new THREE.GridHelper(10, 20);
+    this.scene.add(gridHelper);
   };
   initControls = () => {
     this.controls = new THREE.OrbitControls(this.camera);
@@ -62,21 +67,30 @@ class CollectionsPoster3D extends Component {
   };
   render = () => {
     return (
-      <div id="renderer">
-        <style global jsx>{`
-          #renderer {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
+      <div className="free-space">
+        <div id="renderer" />
+        <div className="text">
+          <h1>Lorem ipsum dolor sit.</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam rem
+            pariatur ea non laboriosam atque nobis laborum sequi, asperiores
+            cupiditate, ab itaque assumenda odit fugiat ratione odio dolores hic
+            culpa.
+          </p>
+        </div>
+        <style jsx global>{`
           canvas {
-            border:1px solid #ccc;
             cursor: pointer;
+          }
+        `}</style>
+        <style jsx>{`
+          h1 {
+            padding: 0;
+            margin: 0;
+          }
+          p {
+            padding: 10px 0;
+            font-size: 1.4em;
           }
         `}</style>
       </div>

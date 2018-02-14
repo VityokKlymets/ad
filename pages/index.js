@@ -43,9 +43,9 @@ class AboutPage extends Component {
         <Head title="terc design" />
         <PostersView gui={<PosterGui />}>
           <PostersView.VerticalPosters>
-            {this.renderFourLinePosters()}
             {this.renderFirstLinePosters()}
             {this.renderSecondLinePosters()}
+            {this.renderFourLinePosters()}
             {this.renderThirdLinePosters()}
           </PostersView.VerticalPosters>
         </PostersView>

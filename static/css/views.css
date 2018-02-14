@@ -17,10 +17,7 @@ Poster view styles
   position: absolute;
   background: #fff;
 }
-.PosterView .poster * {
-  box-sizing: border-box;
-  margin: 0;
-}
+
 .PosterView .poster {
   position: relative;
   box-sizing: border-box;

@@ -32,6 +32,26 @@ export default ({
             top: 10%;
             left: 5%;
             right: 12%;
+            display: flex;
+          }
+          h1 {
+            text-align: center;
+            color: ${headColor};
+            text-transform : capitalize;
+          }
+          p {
+            padding: 30px 0;
+            border-top: 1px solid ${textColor};
+            color : ${textColor};
+          }
+          p::first-letter {
+            padding-left: 20px;
+          }
+          .text {
+            height: 100%;
+            font-family: serif;
+            display: flex;
+            flex-direction: column;
           }
         `}
       </style>

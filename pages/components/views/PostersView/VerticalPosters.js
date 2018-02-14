@@ -23,6 +23,11 @@ class VerticalPosters extends Component {
         break;
     }
   };
+  setPoster = poster => {
+    this.setState({
+      currentPoster: poster
+    });
+  };
   slideDown = () => {
     const { incRow } = this.props.rec;
     const { currentPoster, postersCount } = this.state;
@@ -81,6 +86,9 @@ class VerticalPosters extends Component {
           count={postersCount}
           invert={guiInvert}
           next={nextText}
+          setPoster={this.setPoster}
+          slideUp={this.slideUp}
+          slideDown={this.slideDown}
         />
 
         <div

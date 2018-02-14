@@ -88,7 +88,13 @@ class HorizontalPosters extends Component {
         : posters[currentPoster].props.invert;
     return (
       <div className="HorizontalPosters">
-        <HGUI current={currentPoster} count={postersCount} invert={guiInvert} />
+        <HGUI
+          current={currentPoster}
+          slideLeft={this.slideLeft}
+          slideRight={this.slideRight}
+          count={postersCount}
+          invert={guiInvert}
+        />
         <div
           className="posters"
           style={{
