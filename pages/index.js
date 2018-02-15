@@ -13,14 +13,14 @@ import CollectionsPoster3D from "./components/posters/CollectionsPoster3D";
 class AboutPage extends Component {
   displayName = "AboutPage";
   renderSecondLinePosters = () => (
-    <PostersView.Poster next="Текст">
+    <PostersView.Poster next="Возможности">
       <CollectionsPoster collections={this.props.collections} />
     </PostersView.Poster>
   );
   renderFirstLinePosters = () => (
     <PostersView.Poster invert next="Наши Коллекции">
       <PostersView.HorizontalPosters>
-        <PostersView.Poster >
+        <PostersView.Poster>
           <HeadPost src="/static/images/germaniia-wernigerode-doma-ploshchad-fontan.jpg" />
         </PostersView.Poster>
         <PostersView.Poster>
@@ -32,16 +32,16 @@ class AboutPage extends Component {
       </PostersView.HorizontalPosters>
     </PostersView.Poster>
   );
-  renderThirdLinePosters = () => {
+  renderFourLinePosters = () => {
     return (
       <PostersView.Poster>
         <Contact />
       </PostersView.Poster>
     );
   };
-  renderFourLinePosters = () => {
+  renderThirdLinePosters = () => {
     return (
-      <PostersView.Poster>
+      <PostersView.Poster next="Свяжитесь с нами">
         <CollectionsPoster3D />
       </PostersView.Poster>
     );
@@ -55,8 +55,8 @@ class AboutPage extends Component {
             <PostersView.VerticalPosters>
               {this.renderFirstLinePosters()}
               {this.renderSecondLinePosters()}
-              {this.renderFourLinePosters()}
               {this.renderThirdLinePosters()}
+              {this.renderFourLinePosters()}
             </PostersView.VerticalPosters>
           </PostersView>
         </div>
