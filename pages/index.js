@@ -3,7 +3,7 @@ import PostersView from "./components/views/PostersView/PostersView";
 import Head from "./head/Head";
 import PosterGui from "./components/posters/PosterGui";
 import Post from "./components/posters/Post";
-import HeadPostOne from "./components/posters/HeadPostOne";
+import HeadPost from "./components/posters/HeadPost";
 import CollectionsPoster from "./components/posters/CollectionsPoster";
 import Rain from "./components/effects/Rain";
 import Contact from "./components/posters/Contact";
@@ -19,7 +19,17 @@ class AboutPage extends Component {
   );
   renderFirstLinePosters = () => (
     <PostersView.Poster invert next="Наши Коллекции">
-      <HeadPostOne />
+      <PostersView.HorizontalPosters>
+        <PostersView.Poster >
+          <HeadPost src="/static/images/germaniia-wernigerode-doma-ploshchad-fontan.jpg" />
+        </PostersView.Poster>
+        <PostersView.Poster>
+          <HeadPost src="/static/images/derevr-listia-kraski-priamougolnik.jpg" />
+        </PostersView.Poster>
+        <PostersView.Poster>
+          <HeadPost src="/static/images/cvet-forma-abstrakciya-7024.jpg" />
+        </PostersView.Poster>
+      </PostersView.HorizontalPosters>
     </PostersView.Poster>
   );
   renderThirdLinePosters = () => {

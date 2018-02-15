@@ -29,12 +29,13 @@ class VerticalPosters extends Component {
     });
   };
   slideDown = () => {
-    const { incRow } = this.props.rec;
+    const { incRow ,resetCol} = this.props.rec;
     const { currentPoster, postersCount } = this.state;
     const nextPoster = currentPoster + 1;
     const needToChange = nextPoster < postersCount;
     if (!needToChange) return;
     incRow();
+    resetCol();
     this.setState({
       currentPoster: nextPoster,
       isFirstPoster: false,
@@ -43,11 +44,12 @@ class VerticalPosters extends Component {
   };
   slideUp = () => {
     const { currentPoster } = this.state;
-    const { decRow } = this.props.rec;
+    const { decRow ,resetCol} = this.props.rec;
     const nextPoster = currentPoster - 1;
     const needToChange = nextPoster >= 0;
     if (!needToChange) return;
     decRow();
+    resetCol();
     this.setState({
       currentPoster: nextPoster,
       isLastPoster: false,

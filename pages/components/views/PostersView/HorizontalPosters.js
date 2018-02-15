@@ -4,7 +4,7 @@ import HGUI from "./PostersGui/HGUI";
 class HorizontalPosters extends Component {
   displayName = "HorizontalPosters";
   state = {
-    currentPoster: 0,
+    currentPoster: this.props.rec.currentColumn-1,
     postersCount: this.props.children.length,
     row: this.props.rec.row,
     column: this.props.rec.column
