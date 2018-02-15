@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PostersView from "./components/views/PostersView/PostersView";
 import Head from "./head/Head";
 import PosterGui from "./components/posters/PosterGui";
-import PosterProvider from "./components/views/PostersView/PosterProvider";
 import Post from "./components/posters/Post";
 import HeadPostOne from "./components/posters/HeadPostOne";
 import CollectionsPoster from "./components/posters/CollectionsPoster";
@@ -39,17 +38,19 @@ class AboutPage extends Component {
   };
   render = () => {
     return (
-      <div>
-        <Head title="terc design" />
-        <PostersView gui={<PosterGui />}>
-          <PostersView.VerticalPosters>
-            {this.renderFirstLinePosters()}
-            {this.renderSecondLinePosters()}
-            {this.renderFourLinePosters()}
-            {this.renderThirdLinePosters()}
-          </PostersView.VerticalPosters>
-        </PostersView>
-      </div>
+      <MainPreloader>
+        <div>
+          <Head title="terc design" />
+          <PostersView gui={<PosterGui />}>
+            <PostersView.VerticalPosters>
+              {this.renderFirstLinePosters()}
+              {this.renderSecondLinePosters()}
+              {this.renderFourLinePosters()}
+              {this.renderThirdLinePosters()}
+            </PostersView.VerticalPosters>
+          </PostersView>
+        </div>
+      </MainPreloader>
     );
   };
 }

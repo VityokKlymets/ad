@@ -36,6 +36,8 @@ class Contact extends Component {
           h1 {
             margin: auto 0;
             align-self : center;
+            color : #333;
+            text-transform : uppercase;
           }
           .social {
             border-top : 1px solid #ccc;
