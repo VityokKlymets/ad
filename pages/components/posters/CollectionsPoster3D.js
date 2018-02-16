@@ -17,10 +17,12 @@ class CollectionsPoster3D extends Component {
     this.scene.add(object);
   };
   initRenderer = () => {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    this.renderer.setSize(600, 500);
+    this.renderer.setSize(windowWidth, windowHeight);
   };
   initScene = () => {
     this.scene = new THREE.Scene();
@@ -67,30 +69,11 @@ class CollectionsPoster3D extends Component {
   };
   render = () => {
     return (
-      <div className="free-space">
+      <div>
         <div id="renderer" />
-        <div className="text">
-          <h1>Lorem ipsum dolor sit.</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam rem
-            pariatur ea non laboriosam atque nobis laborum sequi, asperiores
-            cupiditate, ab itaque assumenda odit fugiat ratione odio dolores hic
-            culpa.
-          </p>
-        </div>
         <style jsx global>{`
           canvas {
             cursor: pointer;
-          }
-        `}</style>
-        <style jsx>{`
-          h1 {
-            padding: 0;
-            margin: 0;
-          }
-          p {
-            padding: 10px 0;
-            font-size: 1.4em;
           }
         `}</style>
       </div>
