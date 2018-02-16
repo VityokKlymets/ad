@@ -21,9 +21,9 @@ export default ({title}) => {
           />
           <link href="/static/css/index.css" rel="stylesheet" />
           <link href="/static/css/views.css" rel="stylesheet" />
-          <script src="/static/js/three.min.js"></script>
+          {/* <script src="/static/js/three.min.js"></script>
           <script src="/static/js/OrbitControls.js"></script>
-          <script src="/static/js/ColladaLoader.js"></script>
+          <script src="/static/js/ColladaLoader.js"></script> */}
         </Head>
    </div>
   )
