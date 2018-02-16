@@ -8,12 +8,11 @@ import CollectionsPoster from "./components/posters/CollectionsPoster";
 import Rain from "./components/effects/Rain";
 import Contact from "./components/posters/Contact";
 import MainPreloader from "./components/preloaders/MainPreloader";
-import CollectionsPoster3D from "./components/posters/CollectionsPoster3D";
-
-class AboutPage extends Component {
-  displayName = "AboutPage";
+import AboutAs from "./components/posters/AboutAs";
+class IndexPage extends Component {
+  displayName = "IndexPage";
   renderSecondLinePosters = () => (
-    <PostersView.Poster next="Возможности">
+    <PostersView.Poster next="о нас">
       <CollectionsPoster collections={this.props.collections} />
     </PostersView.Poster>
   );
@@ -25,9 +24,6 @@ class AboutPage extends Component {
         </PostersView.Poster>
         <PostersView.Poster>
           <HeadPost src="/static/images/derevr-listia-kraski-priamougolnik.jpg" />
-        </PostersView.Poster>
-        <PostersView.Poster>
-          <HeadPost src="/static/images/cvet-forma-abstrakciya-7024.jpg" />
         </PostersView.Poster>
       </PostersView.HorizontalPosters>
     </PostersView.Poster>
@@ -42,7 +38,7 @@ class AboutPage extends Component {
   renderThirdLinePosters = () => {
     return (
       <PostersView.Poster next="Свяжитесь с нами">
-        <CollectionsPoster3D />
+        <AboutAs />
       </PostersView.Poster>
     );
   };
@@ -65,4 +61,4 @@ class AboutPage extends Component {
   };
 }
 
-export default AboutPage;
+export default IndexPage;

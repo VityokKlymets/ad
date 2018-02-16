@@ -37,12 +37,12 @@ export default ({
           h1 {
             text-align: center;
             color: ${headColor};
-            text-transform : capitalize;
+            text-transform: capitalize;
           }
           p {
             padding: 30px 0;
             border-top: 1px solid ${textColor};
-            color : ${textColor};
+            color: ${textColor};
           }
           p::first-letter {
             padding-left: 20px;
@@ -112,6 +112,16 @@ export default ({
           from {
             opacity: 0;
             transform: translateX(-100%);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes slidetoLeft {
+          from {
+            opacity: 0;
+            transform: translateX(100%);
           }
           to {
             opacity: 1;

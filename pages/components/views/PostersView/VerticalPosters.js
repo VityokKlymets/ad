@@ -23,13 +23,17 @@ class VerticalPosters extends Component {
         break;
     }
   };
+  onMouseWheel = e => {
+    const deltaY = e.deltaY;
+    deltaY > 0 ? this.slideDown() : this.slideUp();
+  };
   setPoster = poster => {
     this.setState({
       currentPoster: poster
     });
   };
   slideDown = () => {
-    const { incRow ,resetCol} = this.props.rec;
+    const { incRow, resetCol } = this.props.rec;
     const { currentPoster, postersCount } = this.state;
     const nextPoster = currentPoster + 1;
     const needToChange = nextPoster < postersCount;
@@ -44,7 +48,7 @@ class VerticalPosters extends Component {
   };
   slideUp = () => {
     const { currentPoster } = this.state;
-    const { decRow ,resetCol} = this.props.rec;
+    const { decRow, resetCol } = this.props.rec;
     const nextPoster = currentPoster - 1;
     const needToChange = nextPoster >= 0;
     if (!needToChange) return;
@@ -65,10 +69,14 @@ class VerticalPosters extends Component {
   };
   addListeners = () => {
     if (!this.canUseDOM) return;
+    const context = this.refs.posters;
+
     window.addEventListener("keydown", this.onKeyDown, false);
+    context.addEventListener("wheel", this.onMouseWheel, false);
   };
   removeListeners = () => {
     window.removeEventListener("keydown", this.onKeyDown, false);
+    context.removeEventListener("wheel", this.onMouseWheel, false);
   };
   render = () => {
     const { currentPoster, postersCount } = this.state;
@@ -82,7 +90,7 @@ class VerticalPosters extends Component {
       ? posters[currentPoster].props.next
       : "";
     return (
-      <div className="VerticalPosters">
+      <div className="VerticalPosters" ref="posters">
         <VGUI
           current={currentPoster}
           count={postersCount}
