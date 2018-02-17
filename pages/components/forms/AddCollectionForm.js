@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import TextInput from "../inputs/TextInput";
+import OptionInput from "../inputs/OptionInput";
+import FileInput from "../inputs/FileInput";
 class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
   state = {
     data: {
       name: "",
-      description: ""
+      description: "",
+      items: []
     }
   };
+  onItemDataChange = (e, idx) => {
+    let items = this.state.data.items.slice();
+    items[idx][e.target.name] = e.target.value;
+    this.setState({
+      data: { ...this.state.data, items }
+    });
+  };
+  onItemOptionChange = (value, idx) => {
+    let items = this.state.data.items.slice();
+    items[idx].tags = value;
+    this.setState({
+      data: { ...this.state.data, items }
+    });
+  };
+  onOptionInput = data => {};
   onChange = e => {
     this.setState({
       data: { ...this.state.data, [e.target.name]: e.target.value }
@@ -26,26 +44,92 @@ class AddCollectionForm extends Component {
       this.props.submit(this.state.data);
     }
   };
+  onAddItemClick = () => {
+    const newItem = {
+      name: "",
+      description: "",
+      tags: [],
+      params: {},
+      image: ""
+    };
+    this.setState({
+      data: {
+        ...this.state.data,
+        items: [...this.state.data.items, newItem]
+      }
+    });
+  };
+  renderItemsField = (item, idx) => {
+    return (
+      <div key={idx}>
+        <h3>{`Item ${idx + 1}`}</h3>
+        <div className="row">
+          <div className="col">
+            <FileInput />
+          </div>
+          <div className="col">
+            <TextInput
+              value={item.name}
+              onChange={e => this.onItemDataChange(e, idx)}
+              name="name"
+              label="Name"
+            />
+            <TextInput
+              value={item.description}
+              onChange={e => this.onItemDataChange(e, idx)}
+              name="description"
+              label="Description"
+              textarea
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <div>
+              <i>Tags :</i>
+            </div>
+            <OptionInput
+              onChange={({ value }) => {
+                this.onItemOptionChange(value, idx);
+              }}
+              options={[]}
+              onInput={this.onOptionInput}
+              name="tags"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
   render = () => {
     const { errors, data } = this.state;
     return (
       <div className="row justify-content-center">
-        <div className="col-8">
-          <form className='pt-4' onSubmit={this.onSubmit}>
+        <div className="col-8 pt-4">
+          <h3>Add Collection</h3>
+          <form className="pt-4 pb-5" onSubmit={this.onSubmit}>
             <TextInput
               value={data.name}
               onChange={this.onChange}
               name="name"
               label="Name"
             />
-             <TextInput
+            <TextInput
               value={data.description}
               onChange={this.onChange}
               name="description"
               label="Description"
               textarea
             />
-            <button className="btn btn-primary">Add</button>
+            {data.items.map((item, idx) => {
+              return this.renderItemsField(item, idx);
+            })}
+            <div className="d-flex justify-content-end">
+              <div className="btn btn-secondary" onClick={this.onAddItemClick}>
+                add item
+              </div>
+            </div>
+            <button className="btn btn-primary">Add Collection</button>
           </form>
         </div>
       </div>

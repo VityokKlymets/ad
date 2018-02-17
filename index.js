@@ -1,5 +1,4 @@
 const collections = require("./src/routes/collections");
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const next = require("next");
