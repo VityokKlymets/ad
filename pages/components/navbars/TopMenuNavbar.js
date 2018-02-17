@@ -5,12 +5,12 @@ class TopMenuNavbar extends Component {
   render = () => {
     return (
       <div>
-        <navbar>
+        <div className='navbar'>
           <a href="/collections">Collections</a>
           <a href="/about">About us</a>
           <a href="/contact">Contact</a>
           <a href="/">Home</a>
-        </navbar>
+        </div>
         <style jsx>
           {`
             a {
@@ -22,11 +22,7 @@ class TopMenuNavbar extends Component {
             a:hover {
               color: #333;
             }
-            navbar {
-              position: fixed;
-              left: 0;
-              top: 0;
-              width: 100vw;
+            .navbar {
               display: flex;
               justify-content: center;
               border-bottom: 1px solid #ccc;

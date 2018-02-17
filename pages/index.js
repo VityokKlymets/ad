@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PostersView from "./components/views/PostersView/PostersView";
-import Head from "./head/Head";
 import PosterGui from "./components/posters/PosterGui";
 import Post from "./components/posters/Post";
 import HeadPost from "./components/posters/HeadPost";
@@ -9,6 +8,7 @@ import Contact from "./components/posters/Contact";
 import MainPreloader from "./components/preloaders/MainPreloader";
 import AboutAs from "./components/posters/AboutAs";
 import page from "./components/page";
+import api from './components/api';
 import { connect } from 'react-redux';
 class index extends Component {
   displayName = "index";
@@ -47,7 +47,6 @@ class index extends Component {
     return (
       <MainPreloader>
         <div>
-          <Head title="terc design" />
           <PostersView gui={<PosterGui />}>
             <PostersView.VerticalPosters>
               {this.renderFirstLinePosters()}
@@ -60,6 +59,10 @@ class index extends Component {
       </MainPreloader>
     );
   };
+  static async getInitialProps(req) {
+    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
+    const collections = await api.collections.fetchActual(baseUrl);
+    return {collections}
+  }
 }
-
 export default page(connect(state=>state)(index));

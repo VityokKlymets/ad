@@ -76,7 +76,6 @@ class VerticalPosters extends Component {
   };
   removeListeners = () => {
     window.removeEventListener("keydown", this.onKeyDown, false);
-    context.removeEventListener("wheel", this.onMouseWheel, false);
   };
   render = () => {
     const { currentPoster, postersCount } = this.state;

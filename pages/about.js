@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import CollectionsPoster3D from './components/posters/CollectionsPoster3D';
-import Head  from './head/Head'
 import page from './components/page'
+import { connect } from 'react-redux';
 class about extends Component{
   displayName = "about";
 
   render = () => {
    return (<div>
-       <Head/>
        <CollectionsPoster3D/>
    </div>);
   };
 }
-
-export default page(about);
+export default page(connect(state=>state)(about));

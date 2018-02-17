@@ -106,8 +106,7 @@ class AboutAs extends Component {
               height: 100%;
               background: linear-gradient(
                 30deg,
-                #e1e1e1 19%,
-                #444 20%,
+                #e1e1e1 20%,
                 #fff 20%,
                 #fff 80%,
                 #e1e1e1 80%

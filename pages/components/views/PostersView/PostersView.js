@@ -38,6 +38,39 @@ class PostersView extends Component {
           }
           {gui && React.cloneElement(gui, guiProps)}
         </div>
+        <style jsx global>{`
+          .PosterView .view-area {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+          }
+          .PosterView .posters {
+            transition: transform 0.5s ease-in-out;
+            position: absolute;
+            background: #fff;
+          }
+
+          .PosterView .poster {
+            position: relative;
+            box-sizing: border-box;
+          }
+          .HorizontalPosters > .posters {
+            display: flex;
+            flex-direction: row;
+            width: 100vh;
+          }
+          .VerticalPosters > .posters {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+          }
+          .VerticalPosters .poster {
+            height: 100vh;
+          }
+          .HorizontalPosters .poster {
+            width: 100vw;
+          }
+        `}</style>
       </div>
     );
   };

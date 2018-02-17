@@ -1,3 +1,5 @@
+const collections = require("./src/routes/collections");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const next = require("next");
@@ -13,7 +15,7 @@ app.prepare().then(() => {
   const server = express();
 
   server.use(bodyParser.json());
-
+  server.use("/api/collections", collections);
   server.get("*", (req, res) => {
     return handle(req, res);
   });
