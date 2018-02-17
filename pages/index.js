@@ -5,12 +5,13 @@ import PosterGui from "./components/posters/PosterGui";
 import Post from "./components/posters/Post";
 import HeadPost from "./components/posters/HeadPost";
 import CollectionsPoster from "./components/posters/CollectionsPoster";
-import Rain from "./components/effects/Rain";
 import Contact from "./components/posters/Contact";
 import MainPreloader from "./components/preloaders/MainPreloader";
 import AboutAs from "./components/posters/AboutAs";
-class IndexPage extends Component {
-  displayName = "IndexPage";
+import page from "./components/page";
+import { connect } from 'react-redux';
+class index extends Component {
+  displayName = "index";
   renderSecondLinePosters = () => (
     <PostersView.Poster next="о нас">
       <CollectionsPoster collections={this.props.collections} />
@@ -61,4 +62,4 @@ class IndexPage extends Component {
   };
 }
 
-export default IndexPage;
+export default page(connect(state=>state)(index));
