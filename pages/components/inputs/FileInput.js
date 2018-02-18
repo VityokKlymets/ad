@@ -26,7 +26,16 @@ class FileInput extends Component {
       reader.readAsDataURL(file);
     });
   };
-  onChange = () => {};
+  onChange = e => {
+    const files = e.target.files;
+
+    this.setState({
+      length: files.length
+    });
+    const data = this.loadFile(e.target.files[0]).then(data => {
+      this.props.onChange(data);
+    });
+  };
   render = () => {
     const { length } = this.state;
     return (
@@ -66,10 +75,9 @@ class FileInput extends Component {
             border-radius: 5px;
             margin-left: 0.4em;
           }
-          figcaption{
-              padding-top: .4em;
-              color : #ccc;
-              
+          figcaption {
+            padding-top: 0.4em;
+            color: #ccc;
           }
         `}</style>
       </div>

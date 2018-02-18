@@ -5,13 +5,15 @@ import NavBar from "./components/navbars/TopMenuNavbar";
 import { connect } from "react-redux";
 class adminpanel extends Component {
   displayName = "adminpanel";
-
+  submit = collection => {
+    console.log(collection);
+  };
   render = () => {
     return (
       <div>
         <NavBar />
         <div className="container-fluid">
-          <AddCollectionForm />
+          <AddCollectionForm submit={this.submit} />
         </div>
       </div>
     );

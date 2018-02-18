@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TextInput from "../inputs/TextInput";
 import OptionInput from "../inputs/OptionInput";
 import FileInput from "../inputs/FileInput";
+import ParamsInput from "../inputs/ParamsInput";
 class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
   state = {
@@ -10,20 +11,6 @@ class AddCollectionForm extends Component {
       description: "",
       items: []
     }
-  };
-  onItemDataChange = (e, idx) => {
-    let items = this.state.data.items.slice();
-    items[idx][e.target.name] = e.target.value;
-    this.setState({
-      data: { ...this.state.data, items }
-    });
-  };
-  onItemOptionChange = (value, idx) => {
-    let items = this.state.data.items.slice();
-    items[idx].tags = value;
-    this.setState({
-      data: { ...this.state.data, items }
-    });
   };
   onOptionInput = data => {};
   onChange = e => {
@@ -50,7 +37,7 @@ class AddCollectionForm extends Component {
       description: "",
       tags: [],
       params: {},
-      image: ""
+      image: []
     };
     this.setState({
       data: {
@@ -59,13 +46,47 @@ class AddCollectionForm extends Component {
       }
     });
   };
+  setItems = items => {
+    this.setState({
+      data: { ...this.state.data, items }
+    });
+  };
+  onItemImageChange = (data, idx) => {
+    let items = this.state.data.items.slice();
+    items[idx].image = data;
+    this.setItems(items);
+  };
+  onItemDataChange = (e, idx) => {
+    let items = this.state.data.items.slice();
+    items[idx][e.target.name] = e.target.value;
+    this.setItems(items);
+  };
+  onItemOptionChange = (value, idx) => {
+    let items = this.state.data.items.slice();
+    items[idx].tags = value;
+    this.setItems(items);
+  };
+  onItemParamsChange = (data, idx) => {
+    let items = this.state.data.items.slice();
+    items[idx].params = data;
+    this.setItems(items);
+  };
   renderItemsField = (item, idx) => {
     return (
       <div key={idx}>
         <h3>{`Item ${idx + 1}`}</h3>
         <div className="row">
           <div className="col">
-            <FileInput />
+            <FileInput onChange={data => this.onItemImageChange(data, idx)} />
+            <ParamsInput
+              params={{
+                width: { type: "text" },
+                height: { type: "text" }
+              }}
+              onChange={data => {
+                this.onItemParamsChange(data, idx);
+              }}
+            />
           </div>
           <div className="col">
             <TextInput
