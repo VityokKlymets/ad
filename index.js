@@ -3,16 +3,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const next = require("next");
 const dotenv = require("dotenv");
-
+const mongoose = require("mongoose");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
+mongoose.connect("mongodb://localhost/terc");
 dotenv.config();
-
+process.env.DIRNAME = __dirname;
 app.prepare().then(() => {
   const server = express();
-
   server.use(bodyParser.json());
   server.use("/api/collections", collections);
   server.get("*", (req, res) => {

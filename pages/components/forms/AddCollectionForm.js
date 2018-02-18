@@ -3,9 +3,11 @@ import TextInput from "../inputs/TextInput";
 import OptionInput from "../inputs/OptionInput";
 import FileInput from "../inputs/FileInput";
 import ParamsInput from "../inputs/ParamsInput";
+import Spinner from "../spinners/Spinner";
 class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
   state = {
+    loading: false,
     data: {
       name: "",
       description: "",
@@ -28,7 +30,10 @@ class AddCollectionForm extends Component {
     const errors = this.validate(this.state.data);
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
-      this.props.submit(this.state.data);
+      this.setState({ loading: true });
+      this.props.submit(this.state.data).then(() => {
+        this.setState({ loading: false });
+      });
     }
   };
   onAddItemClick = () => {
@@ -37,7 +42,7 @@ class AddCollectionForm extends Component {
       description: "",
       tags: [],
       params: {},
-      image: []
+      images: []
     };
     this.setState({
       data: {
@@ -53,7 +58,7 @@ class AddCollectionForm extends Component {
   };
   onItemImageChange = (data, idx) => {
     let items = this.state.data.items.slice();
-    items[idx].image = data;
+    items[idx].images = data;
     this.setItems(items);
   };
   onItemDataChange = (e, idx) => {
@@ -123,35 +128,40 @@ class AddCollectionForm extends Component {
     );
   };
   render = () => {
-    const { errors, data } = this.state;
+    const { errors, data, loading } = this.state;
     return (
       <div className="row justify-content-center">
         <div className="col-8 pt-4">
           <h3>Add Collection</h3>
-          <form className="pt-4 pb-5" onSubmit={this.onSubmit}>
-            <TextInput
-              value={data.name}
-              onChange={this.onChange}
-              name="name"
-              label="Name"
-            />
-            <TextInput
-              value={data.description}
-              onChange={this.onChange}
-              name="description"
-              label="Description"
-              textarea
-            />
-            {data.items.map((item, idx) => {
-              return this.renderItemsField(item, idx);
-            })}
-            <div className="d-flex justify-content-end">
-              <div className="btn btn-secondary" onClick={this.onAddItemClick}>
-                add item
+          <Spinner loading={loading} transparent>
+            <form className="pt-4 pb-5" onSubmit={this.onSubmit}>
+              <TextInput
+                value={data.name}
+                onChange={this.onChange}
+                name="name"
+                label="Name"
+              />
+              <TextInput
+                value={data.description}
+                onChange={this.onChange}
+                name="description"
+                label="Description"
+                textarea
+              />
+              {data.items.map((item, idx) => {
+                return this.renderItemsField(item, idx);
+              })}
+              <div className="d-flex justify-content-end">
+                <div
+                  className="btn btn-secondary"
+                  onClick={this.onAddItemClick}
+                >
+                  add item
+                </div>
               </div>
-            </div>
-            <button className="btn btn-primary">Add Collection</button>
-          </form>
+              <button className="btn btn-primary">Add Collection</button>
+            </form>
+          </Spinner>
         </div>
       </div>
     );

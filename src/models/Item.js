@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const path = require("path");
+const saveStaticFile = require("../utils/utils").saveStaticFile;
 
 const schema = new mongoose.Schema({
   name: { type: String, required: true, lowercase: true },
@@ -6,6 +8,16 @@ const schema = new mongoose.Schema({
   tags: [String],
   params: { type: Object, required: false },
   mesh: { type: String, required: false },
-  image: { type: String, required: true }
+  images: [String]
 });
+schema.methods.saveImages = function saveImages(images) {
+  const imagesSrc = [];
+  images.forEach(imageData => {
+    const data = imageData.fileResult;
+    const filePath = path.join("collections", "items", this._id.toString());
+    const fileName = this.name + imageData.format;
+    saveStaticFile(data, fileName, filePath);
+  });
+  this.images = imagesSrc;
+};
 module.exports = mongoose.model("Item", schema);

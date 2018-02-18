@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import AddCollectionForm from "./components/forms/AddCollectionForm";
 import page from "./components/page";
 import NavBar from "./components/navbars/TopMenuNavbar";
+import api from "./api/api";
 import { connect } from "react-redux";
 class adminpanel extends Component {
   displayName = "adminpanel";
   submit = collection => {
-    console.log(collection);
+    return api.collections.addCollection(collection);
   };
   render = () => {
     return (

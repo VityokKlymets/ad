@@ -8,7 +8,7 @@ import Contact from "./components/posters/Contact";
 import MainPreloader from "./components/preloaders/MainPreloader";
 import AboutAs from "./components/posters/AboutAs";
 import page from "./components/page";
-import api from './components/api';
+import api from './api/api';
 import { connect } from 'react-redux';
 class index extends Component {
   displayName = "index";
@@ -60,8 +60,7 @@ class index extends Component {
     );
   };
   static async getInitialProps(req) {
-    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
-    const collections = await api.collections.fetchActual(baseUrl);
+    const collections = await api.collections.fetchActual();
     return {collections}
   }
 }

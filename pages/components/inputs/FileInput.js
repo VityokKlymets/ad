@@ -27,14 +27,14 @@ class FileInput extends Component {
     });
   };
   onChange = e => {
-    const files = e.target.files;
-
+    const files = [...e.target.files];
+    console.log(files);
     this.setState({
       length: files.length
     });
-    const data = this.loadFile(e.target.files[0]).then(data => {
-      this.props.onChange(data);
-    });
+    Promise.all(files.map(file => this.loadFile(file))).then(data =>
+      this.props.onChange(data)
+    );
   };
   render = () => {
     const { length } = this.state;
@@ -54,7 +54,7 @@ class FileInput extends Component {
               </figcaption>
             </figure>
           </label>
-          <input id="file-loader" type="file" onChange={this.onChange} />
+          <input multiple={true} id="file-loader" type="file" onChange={this.onChange} />
         </div>
         <style jsx>{`
           #file-loader {
