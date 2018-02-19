@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 class index extends Component {
   displayName = "index";
   renderSecondLinePosters = () => (
-    <PostersView.Poster next="о нас">
+    <PostersView.Poster invert next="Контакти">
       <CollectionsPoster collections={this.props.collections} />
     </PostersView.Poster>
   );
@@ -51,7 +51,6 @@ class index extends Component {
             <PostersView.VerticalPosters>
               {this.renderFirstLinePosters()}
               {this.renderSecondLinePosters()}
-              {this.renderThirdLinePosters()}
               {this.renderFourLinePosters()}
             </PostersView.VerticalPosters>
           </PostersView>
@@ -59,9 +58,8 @@ class index extends Component {
       </MainPreloader>
     );
   };
-  static async getInitialProps(req) {
-    const collections = await api.collections.fetchActual();
-    return {collections}
+  static getInitialProps(ctx) {
+   return api.collections.fetchActual().then(collections =>({collections}));
   }
 }
 export default page(connect(state=>state)(index));

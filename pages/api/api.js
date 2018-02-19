@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import fetch from "isomorphic-fetch";
 const SendDataOption = data => {
   return {
@@ -8,6 +8,10 @@ const SendDataOption = data => {
     },
     body: JSON.stringify(data)
   };
+};
+const GET_OPTION = {
+  method: "GET",
+  credentials: "include"
 };
 const url = {
   collections: {
@@ -19,8 +23,10 @@ const url = {
 export default {
   collections: {
     fetchActual: () =>
-      fetch(url.collections.fetchActual).then(res => res.json().collections),
+      fetch(url.collections.fetchActual, GET_OPTION).then(res =>
+        res.json().then(rs => rs.collections)
+      ),
     addCollection: collection =>
-      axios.post(url.collections.addCollection,{collection})
+      axios.post(url.collections.addCollection, { collection })
   }
 };

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import TextInput from "../inputs/TextInput";
-import OptionInput from "../inputs/OptionInput";
-import FileInput from "../inputs/FileInput";
-import ParamsInput from "../inputs/ParamsInput";
 import Spinner from "../spinners/Spinner";
+import ItemInput from './ItemInput';
 class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
   state = {
@@ -14,7 +12,6 @@ class AddCollectionForm extends Component {
       items: []
     }
   };
-  onOptionInput = data => {};
   onChange = e => {
     this.setState({
       data: { ...this.state.data, [e.target.name]: e.target.value }
@@ -51,80 +48,20 @@ class AddCollectionForm extends Component {
       }
     });
   };
-  setItems = items => {
+  onItemChange = (item, idx) => {
+    const items = this.state.data.items.slice();
+    items[idx] = item;
     this.setState({
       data: { ...this.state.data, items }
     });
   };
-  onItemImageChange = (data, idx) => {
-    let items = this.state.data.items.slice();
-    items[idx].images = data;
-    this.setItems(items);
-  };
-  onItemDataChange = (e, idx) => {
-    let items = this.state.data.items.slice();
-    items[idx][e.target.name] = e.target.value;
-    this.setItems(items);
-  };
-  onItemOptionChange = (value, idx) => {
-    let items = this.state.data.items.slice();
-    items[idx].tags = value;
-    this.setItems(items);
-  };
-  onItemParamsChange = (data, idx) => {
-    let items = this.state.data.items.slice();
-    items[idx].params = data;
-    this.setItems(items);
-  };
-  renderItemsField = (item, idx) => {
+  renderItemsFields = (item, idx) => {
     return (
-      <div key={idx}>
-        <h3>{`Item ${idx + 1}`}</h3>
-        <div className="row">
-          <div className="col">
-            <FileInput onChange={data => this.onItemImageChange(data, idx)} />
-            <ParamsInput
-              params={{
-                width: { type: "text" },
-                height: { type: "text" }
-              }}
-              onChange={data => {
-                this.onItemParamsChange(data, idx);
-              }}
-            />
-          </div>
-          <div className="col">
-            <TextInput
-              value={item.name}
-              onChange={e => this.onItemDataChange(e, idx)}
-              name="name"
-              label="Name"
-            />
-            <TextInput
-              value={item.description}
-              onChange={e => this.onItemDataChange(e, idx)}
-              name="description"
-              label="Description"
-              textarea
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <div>
-              <i>Tags :</i>
-            </div>
-            <OptionInput
-              onChange={({ value }) => {
-                this.onItemOptionChange(value, idx);
-              }}
-              options={[]}
-              onInput={this.onOptionInput}
-              name="tags"
-            />
-          </div>
-        </div>
-      </div>
+      <ItemInput
+        key={idx}
+        item={item}
+        onChange={item => this.onItemChange(item, idx)}
+      />
     );
   };
   render = () => {
@@ -149,7 +86,7 @@ class AddCollectionForm extends Component {
                 textarea
               />
               {data.items.map((item, idx) => {
-                return this.renderItemsField(item, idx);
+                return this.renderItemsFields(item, idx);
               })}
               <div className="d-flex justify-content-end">
                 <div

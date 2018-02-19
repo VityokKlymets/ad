@@ -12,7 +12,7 @@ dotenv.config();
 process.env.DIRNAME = __dirname;
 app.prepare().then(() => {
   const server = express();
-  server.use(bodyParser.json());
+  server.use(bodyParser.json({ limit: "50mb", type: "application/json" }));
   server.use("/api/collections", collections);
   server.get("*", (req, res) => {
     return handle(req, res);

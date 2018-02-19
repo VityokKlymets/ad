@@ -2,22 +2,13 @@ const Collection = require("../models/Collection");
 const Item = require("../models/Item");
 const express = require("express");
 const router = express.Router();
-const saveImages = images => {
-  const src = [];
-
-  return src;
-};
-router.get("/get", (req, res) => {
-  const id = req.query.id;
-  console.log(id);
-});
 router.post("/", (req, res) => {
   const collection = req.body.collection;
   const collectionRecord = new Collection();
 
   collectionRecord.name = collection.name;
   collectionRecord.description = collection.description;
-
+  collectionRecord.saveImage(collection.image);
   collectionRecord.items = collection.items.map(item => {
     const itemRecord = new Item();
     itemRecord.name = item.name;
@@ -34,7 +25,12 @@ router.post("/", (req, res) => {
 });
 
 router.get("/actual", (req, res) => {
-  res.json({ collections: ["bi"] });
+  Collection.find({})
+    .sort("-createdAt")
+    .limit(3)
+    .then(collections => {
+      res.json({ collections: collections });
+    });
 });
 
 module.exports = router;

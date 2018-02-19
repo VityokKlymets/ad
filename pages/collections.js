@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CollectionSlideList from "./components/containers/CollectionSlideList";
+import ItemsSlideList from "./components/containers/ItemsSlideList";
 import TopMenuNavbar from "./components/navbars/TopMenuNavbar";
 import MainPreloader from "./components/preloaders/MainPreloader";
 import page from './components/page';
@@ -12,7 +12,7 @@ class collections extends Component {
       <MainPreloader>
         <div>
           <TopMenuNavbar />
-          <CollectionSlideList />
+          <ItemsSlideList />
         </div>
       </MainPreloader>
     );

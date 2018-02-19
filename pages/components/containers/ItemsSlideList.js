@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { canUseDOM } from "../utils/Util";
-class CollectionSlideList extends Component {
-  displayName = "CollectionSlideList";
+class ItemsSlideList extends Component {
+  displayName = "ItemsSlideList";
   state = {
     current: 1,
     list: [
@@ -137,4 +137,4 @@ class CollectionSlideList extends Component {
   };
 }
 
-export default CollectionSlideList;
+export default ItemsSlideList;

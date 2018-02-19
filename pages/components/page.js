@@ -9,16 +9,14 @@ const page = Page => {
         <div>
           <Head />
           <Provider store={store}>
-            <Page />
+            <Page {...this.props}/>
           </Provider>
         </div>
       );
     }
-    static async getInitialProps({ req }) {
-      if (Page.getInitialProps) return Page.getInitialProps(req);
-      else {
-        return {};
-      }
+    static async getInitialProps(ctx) {
+      const childProps = await Page.getInitialProps(ctx);
+      return childProps;
     }
   };
 };

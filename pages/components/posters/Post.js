@@ -1,27 +1,32 @@
 import React from "react";
-const textColor = "#8b8c8e";
-const headColor = "rgb(37, 52, 95)";
+const textColor = "#f4f3eb";
+const headColor = "#e8e5ce";
 export default ({
   header,
   text,
-  reverse,
   image,
-  btnText = "show more",
+  btnText = "Иследовать",
   visible = false
 }) => {
   return (
-    <div className="free-space">
-      <div className={`post ${visible ? "visible" : ""}`}>
-        {image && (
-          <div
-            className="post-img"
-            style={{ backgroundImage: `url(${image})` }}
-          />
-        )}
-        <div className="text">
-          {header && <h1>{header}</h1>}
-          {text && <p>{text}</p>}
-          {<button>{btnText}</button>}
+    <div>
+      {image && (
+        <div
+          className="post-img"
+          style={{
+            backgroundImage: `url(${image})`
+          }}
+        />
+      )}
+      <div className="free-space">
+        <div className="row">
+          <div className="col">{header && <h1>{header}</h1>}</div>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div className="text">{text && <p>{text}</p>}</div>
+            <button className="btn btn-secondary">{btnText}</button>
+          </div>
         </div>
       </div>
       <style jsx global>
@@ -32,103 +37,51 @@ export default ({
             top: 10%;
             left: 5%;
             right: 12%;
-            display: flex;
+          }
+          .text {
+            font-family: serif;
+            color: ${textColor};
+            font-size: 1.3em;
+            text-shadow: 1px 1px 2px #000;
           }
           h1 {
             text-align: center;
             color: ${headColor};
-            text-transform: capitalize;
+            text-shadow: 1px 2px 4px #000;
+            text-transform : uppercase;
           }
           p {
-            padding: 30px 0;
-            border-top: 1px solid ${textColor};
-            color: ${textColor};
+            padding : 0;
+          }
+         
+          button:hover {
+            color: #fff;
+            border-color: #fff;
           }
           p::first-letter {
             padding-left: 20px;
           }
-          .text {
+          .post-img {
+            position: absolute;
+            background-size: cover;
+            background-repeat: no-repeat;
+            left: 0;
+            top: 0;
+            width: 100%;
             height: 100%;
-            font-family: serif;
-            display: flex;
-            flex-direction: column;
+          }
+          .post-img:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.3;
           }
         `}
       </style>
-      <style jsx>{`
-        .post {
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          height: 100%;
-          font-size: 1.4em;
-          color: ${textColor};
-        }
-        .text {
-          height: 100%;
-          font-family: serif;
-          display: flex;
-          flex-direction: column;
-        }
-        h1 {
-          text-align: center;
-          color: ${headColor};
-        }
-        p {
-          padding: 30px 0;
-          border-top: 1px solid ${textColor};
-        }
-        button {
-          font-size: 1.3em;
-          background: #fff;
-          outline: none;
-          text-transform: uppercase;
-          cursor: pointer;
-          padding: 0.5em 2em;
-          display: block;
-          color: rgb(37, 52, 95);
-          border: 2px solid rgb(37, 52, 95);
-          margin-bottom: auto;
-        }
-        button:hover {
-          background: rgb(37, 52, 95);
-          color: #fff;
-          border-color: #fff;
-        }
-        p::first-letter {
-          padding-left: 20px;
-        }
-        .post-img {
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: center;
-          min-width: 50%;
-          height: 100%;
-        }
-        .post.visible .post-img {
-          animation: slidetoRight 1s ease-in-out 1;
-        }
-        @keyframes slidetoRight {
-          from {
-            opacity: 0;
-            transform: translateX(-100%);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        @keyframes slidetoLeft {
-          from {
-            opacity: 0;
-            transform: translateX(100%);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </div>
   );
 };

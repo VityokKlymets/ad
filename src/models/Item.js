@@ -12,11 +12,13 @@ const schema = new mongoose.Schema({
 });
 schema.methods.saveImages = function saveImages(images) {
   const imagesSrc = [];
-  images.forEach(imageData => {
+  images.forEach((imageData, idx) => {
     const data = imageData.fileResult;
     const filePath = path.join("collections", "items", this._id.toString());
-    const fileName = this.name + imageData.format;
-    saveStaticFile(data, fileName, filePath);
+    const fileName = `${this.name}${idx > 0 ? `(${idx})` : ""}${
+      imageData.format
+    }`;
+    imagesSrc.push(saveStaticFile(data, fileName, filePath));
   });
   this.images = imagesSrc;
 };
