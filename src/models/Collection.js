@@ -13,7 +13,7 @@ schema.methods.saveImage = function saveImage(imageData) {
   const data = imageData.fileResult;
   const filePath = path.join("collections", this._id.toString());
   const fileName = `${this.name}${imageData.format}`;
-  const imagesSrc = saveStaticFile(data, fileName, filePath);
-  this.images = imagesSrc;
+  const imageSrc = saveStaticFile(data, fileName, filePath);
+  this.image = imageSrc;
 };
 module.exports = mongoose.model("Collection", schema);

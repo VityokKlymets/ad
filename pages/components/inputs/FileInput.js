@@ -28,7 +28,6 @@ class FileInput extends Component {
   };
   onChange = e => {
     const files = [...e.target.files];
-    console.log(files);
     this.setState({
       length: files.length
     });
@@ -38,13 +37,14 @@ class FileInput extends Component {
   };
   render = () => {
     const { length } = this.state;
+    const placeholder= this.props.placeholder || 'Choose File'
     return (
       <div>
         <div>
           <label htmlFor="file-loader">
             <figure>
               <div>
-                <span>Choose File</span>
+                <span>{placeholder}</span>
                 <svg width="24" height="24" viewBox="0 0 24 24">
                   <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
                 </svg>

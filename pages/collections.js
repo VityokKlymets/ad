@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import ItemsSlideList from "./components/containers/ItemsSlideList";
 import TopMenuNavbar from "./components/navbars/TopMenuNavbar";
 import MainPreloader from "./components/preloaders/MainPreloader";
-import page from './components/page';
-import { connect } from 'react-redux';
+import page from "./components/page";
+import { connect } from "react-redux";
 class collections extends Component {
   displayName = "menu";
 
@@ -12,10 +11,12 @@ class collections extends Component {
       <MainPreloader>
         <div>
           <TopMenuNavbar />
-          <ItemsSlideList />
         </div>
       </MainPreloader>
     );
   };
+  static async getInitialProps({ req }) {
+    return {};
+  }
 }
-export default page(connect(state=>state)(collections));
+export default page(connect(state => state)(collections));

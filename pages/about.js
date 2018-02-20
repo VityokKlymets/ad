@@ -10,5 +10,8 @@ class about extends Component{
        <CollectionsPoster3D/>
    </div>);
   };
+  static async getInitialProps({ req }) {
+    return {}
+   }
 }
 export default page(connect(state=>state)(about));

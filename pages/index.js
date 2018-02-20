@@ -8,8 +8,8 @@ import Contact from "./components/posters/Contact";
 import MainPreloader from "./components/preloaders/MainPreloader";
 import AboutAs from "./components/posters/AboutAs";
 import page from "./components/page";
-import api from './api/api';
-import { connect } from 'react-redux';
+import api from "./api/api";
+import { connect } from "react-redux";
 class index extends Component {
   displayName = "index";
   renderSecondLinePosters = () => (
@@ -58,8 +58,11 @@ class index extends Component {
       </MainPreloader>
     );
   };
-  static getInitialProps(ctx) {
-   return api.collections.fetchActual().then(collections =>({collections}));
+  static getInitialProps({ req }) {
+    const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";
+    return api.collections
+      .fetchActual(baseUrl)
+      .then(collections => ({ collections }));
   }
 }
-export default page(connect(state=>state)(index));
+export default page(connect(state => state)(index));

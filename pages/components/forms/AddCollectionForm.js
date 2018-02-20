@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import TextInput from "../inputs/TextInput";
+import FileInput from "../inputs/FileInput";
 import Spinner from "../spinners/Spinner";
-import ItemInput from './ItemInput';
+import ItemInput from "./ItemInput";
 class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
   state = {
     loading: false,
     data: {
+      image: {},
       name: "",
       description: "",
       items: []
@@ -32,6 +34,11 @@ class AddCollectionForm extends Component {
         this.setState({ loading: false });
       });
     }
+  };
+  onImageChange = data => {
+    this.setState({
+      data: { ...this.state.data, image: data[0] }
+    });
   };
   onAddItemClick = () => {
     const newItem = {
@@ -68,10 +75,14 @@ class AddCollectionForm extends Component {
     const { errors, data, loading } = this.state;
     return (
       <div className="row justify-content-center">
-        <div className="col-8 pt-4">
+        <div className="col-9 pt-4">
           <h3>Add Collection</h3>
           <Spinner loading={loading} transparent>
             <form className="pt-4 pb-5" onSubmit={this.onSubmit}>
+              <FileInput
+                onChange={this.onImageChange}
+                placeholder="Choose collection image"
+              />
               <TextInput
                 value={data.name}
                 onChange={this.onChange}

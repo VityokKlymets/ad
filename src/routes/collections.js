@@ -23,7 +23,22 @@ router.post("/", (req, res) => {
     res.json({ record });
   });
 });
-
+router.get("/get", (req, res) => {
+  const id = req.query.id;
+  Collection.findById(id).then(collection => {
+    Promise.all(collection.items.map(item => Item.findById(item))).then(
+      items => {
+        res.json({
+          collection: {
+            name: collection.name,
+            description: collection.description,
+            items
+          }
+        });
+      }
+    );
+  });
+});
 router.get("/actual", (req, res) => {
   Collection.find({})
     .sort("-createdAt")

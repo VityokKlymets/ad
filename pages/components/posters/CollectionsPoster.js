@@ -14,6 +14,7 @@ class CollectionsPoster extends Component {
                 header={collection.name}
                 image={collection.image}
                 text={collection.description}
+                id={collection._id}
               />
             </PostersView.Poster>
           );

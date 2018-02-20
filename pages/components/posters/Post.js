@@ -1,7 +1,10 @@
 import React from "react";
+import Link from 'next/link'
+
 const textColor = "#f4f3eb";
 const headColor = "#e8e5ce";
 export default ({
+  id,
   header,
   text,
   image,
@@ -25,7 +28,7 @@ export default ({
         <div className="row justify-content-center">
           <div className="col-12">
             <div className="text">{text && <p>{text}</p>}</div>
-            <button className="btn btn-secondary">{btnText}</button>
+            <Link href={{ pathname: '/collection', query: { id } }}><button className="btn btn-secondary">{btnText}</button></Link>
           </div>
         </div>
       </div>
