@@ -16,4 +16,10 @@ schema.methods.saveImage = function saveImage(imageData) {
   const imageSrc = saveStaticFile(data, fileName, filePath);
   this.image = imageSrc;
 };
+
+schema.methods.checkAndUpdateImg = function checkAndUpdateImg(image) {
+  if (image instanceof Object) {
+    this.saveImage(image);
+  }
+};
 module.exports = mongoose.model("Collection", schema);

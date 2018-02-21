@@ -12,14 +12,30 @@ const schema = new mongoose.Schema({
 });
 schema.methods.saveImages = function saveImages(images) {
   const imagesSrc = [];
+  const filePath = path.join("collections", "items", this._id.toString());
   images.forEach((imageData, idx) => {
     const data = imageData.fileResult;
-    const filePath = path.join("collections", "items", this._id.toString());
     const fileName = `${this.name}${idx > 0 ? `(${idx})` : ""}${
       imageData.format
     }`;
     imagesSrc.push(saveStaticFile(data, fileName, filePath));
   });
   this.images = imagesSrc;
+};
+schema.methods.checkAndUpdateImgs = function checkAndUpdateImgs(images) {
+  const filePath = path.join("collections", "items", this._id.toString());
+  images.forEach((image, idx) => {
+    let newImage = "";
+    if (image instanceof Object) {
+      let data = imageData.fileResult;
+      let fileName = `${this.name}${idx > 0 ? `(${idx})` : ""}${
+        imageData.format
+      }`;
+      newImage = saveStaticFile(data, fileName, filePath);
+    } else {
+      newImage = image;
+    }
+    this.images[idx] = newImage;
+  });
 };
 module.exports = mongoose.model("Item", schema);

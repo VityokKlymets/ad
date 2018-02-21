@@ -9,7 +9,7 @@ class ItemPreview extends Component {
   };
   render = () => {
     const { item, current, idx } = this.props;
-    const id = item._id;
+    const id = item._id ;
     return (
       <div>
         <Link href={{ pathname: "/item", query: { id } }}>

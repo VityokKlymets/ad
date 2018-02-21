@@ -23,7 +23,7 @@ class Tabs extends Component {
             </div>
           ))}
         </div>
-        <div className="row">
+        <div className="row pt-4">
           <div className="col">
             {children.map((tab, idx) => {
               return (

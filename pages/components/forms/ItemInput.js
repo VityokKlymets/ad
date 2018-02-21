@@ -6,7 +6,17 @@ import ParamsInput from "../inputs/ParamsInput";
 class ItemInput extends Component {
   displayName = "ItemInput";
   state = {
-    item: this.props.item
+    item: this.props.item || {
+      name: "",
+      description: "",
+      tags: [],
+      params: {
+        width: "",
+        height: ""
+      },
+      images: []
+    },
+    errors: this.props.errors || {}
   };
   onChange = item => {
     this.props.onChange(item);
@@ -16,17 +26,18 @@ class ItemInput extends Component {
     this.setState({
       item
     });
-    this.props.onChange(this.state.item);
+    this.onChange(item);
   };
   onItemImageChange = data =>
     this.setItem({ ...this.state.item, images: data });
   onItemOptionChange = data => this.setItem({ ...this.state.item, tags: data });
-  onItemParamsChange = data =>
-    this.setItem({ ...this.state.item, params: data });
+  onItemParamsChange = data => {
+    this.setItem({ ...this.state.item, params: { ...data } });
+  };
   onItemDataChange = e =>
     this.setItem({ ...this.state.item, [e.target.name]: e.target.value });
   render = () => {
-    const { item } = this.state;
+    const { item, errors } = this.state;
     return (
       <div>
         <h3>{item.name}</h3>
@@ -34,10 +45,7 @@ class ItemInput extends Component {
           <div className="col">
             <FileInput onChange={this.onItemImageChange} />
             <ParamsInput
-              params={{
-                width: { type: "text" },
-                height: { type: "text" }
-              }}
+              params={item.params}
               onChange={this.onItemParamsChange}
             />
           </div>
@@ -47,6 +55,7 @@ class ItemInput extends Component {
               onChange={this.onItemDataChange}
               name="name"
               label="Name"
+              error={errors.name}
             />
             <TextInput
               value={item.description}
@@ -54,6 +63,7 @@ class ItemInput extends Component {
               name="description"
               label="Description"
               textarea
+              error={errors.description}
             />
           </div>
         </div>

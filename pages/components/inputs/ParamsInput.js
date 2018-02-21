@@ -3,7 +3,7 @@ import TextInput from "./TextInput";
 class ParamsInput extends Component {
   displayName = "ParamsInput";
   state = {
-    data: {},
+    data: this.props.params || {},
     params: this.props.params || {}
   };
   onAddParamClick = () => {
@@ -14,11 +14,22 @@ class ParamsInput extends Component {
       });
     this.refs.input.value = "";
   };
+  onDelParamClick = (paramName, e) => {
+    e.preventDefault();
+    const data = { ...this.state.data };
+    const params = { ...this.state.params };
+    delete data[paramName];
+    delete params[paramName];
+    this.setState({
+      data,
+      params
+    });
+  };
   componentDidMount = () => {
     const { params } = this.props;
     const data = {};
     Object.keys(params).forEach((key, idx) => {
-      data[key] = "";
+      data[key] = params[key] ? params[key] : "";
     });
     this.setState({
       data,
@@ -45,14 +56,21 @@ class ParamsInput extends Component {
       const paramName = param[0];
       const paramOptions = param[1];
       paramsFields.push(
-        <TextInput
-          name={paramName}
-          value={this.state.data[paramName] || ""}
-          type={paramOptions.type}
-          onChange={this.onParamChange}
-          label={paramName}
-          key={idx}
-        />
+        <div className="d-flex" key={idx}>
+          <TextInput
+            name={paramName}
+            value={this.state.data[paramName] || ""}
+            type={paramOptions.type}
+            onChange={this.onParamChange}
+            label={paramName}
+          />
+          <button
+            className="btn ml-3 mb-3 align-self-end"
+            onClick={e => this.onDelParamClick(paramName, e)}
+          >
+            del
+          </button>
+        </div>
       );
     });
     return paramsFields;

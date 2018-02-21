@@ -46,14 +46,22 @@ class CollectionSlideList extends Component {
     this.setState({ current: next });
   };
   render = () => {
-    const { current, list,collection } = this.state;
+    const { current, list, collection } = this.state;
     const items = this.state.collection.items;
     return (
       <div>
         <div className="slide-list">
-          {items.map((item, idx) => (
-            <ItemPreview key={idx} item={item} current={current} idx={idx} />
-          ))}
+          {items.map(
+            (item, idx) =>
+              item && (
+                <ItemPreview
+                  key={idx}
+                  item={item}
+                  current={current}
+                  idx={idx}
+                />
+              )
+          )}
         </div>
         <style jsx>
           {`

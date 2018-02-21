@@ -7,12 +7,13 @@ class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
   state = {
     loading: false,
-    data: {
+    data: this.props.collection || {
       image: {},
       name: "",
       description: "",
       items: []
-    }
+    },
+    errors: {}
   };
   onChange = e => {
     this.setState({
@@ -21,7 +22,12 @@ class AddCollectionForm extends Component {
   };
   validate = data => {
     const errors = {};
-
+    if (!data.name) {
+      errors.name = "this is required field";
+    }
+    if (!data.description) {
+      errors.description = "Can't be blank!";
+    }
     return errors;
   };
   onSubmit = e => {
@@ -45,7 +51,10 @@ class AddCollectionForm extends Component {
       name: "",
       description: "",
       tags: [],
-      params: {},
+      params: {
+        width: "",
+        height: ""
+      },
       images: []
     };
     this.setState({
@@ -75,7 +84,7 @@ class AddCollectionForm extends Component {
     const { errors, data, loading } = this.state;
     return (
       <div className="row justify-content-center">
-        <div className="col-9 pt-4">
+        <div className="col-9">
           <h3>Add Collection</h3>
           <Spinner loading={loading} transparent>
             <form className="pt-4 pb-5" onSubmit={this.onSubmit}>
@@ -88,11 +97,13 @@ class AddCollectionForm extends Component {
                 onChange={this.onChange}
                 name="name"
                 label="Name"
+                error={errors.name}
               />
               <TextInput
                 value={data.description}
                 onChange={this.onChange}
                 name="description"
+                error={errors.description}
                 label="Description"
                 textarea
               />

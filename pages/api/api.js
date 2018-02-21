@@ -15,11 +15,18 @@ const GET_OPTION = {
 const url = {
   collections: {
     fetchActual: "/api/collections/actual",
-    get: '/api/collections/get',
-    addCollection: "/api/collections"
+    get: "/api/collections/get",
+    getAll: "/api/collections/getAll",
+    addCollection: "/api/collections",
+    change: "/api/collections/change",
+    delete: "/api/collections/delete"
   },
-  items : {
-    get : '/api/items/get'
+  items: {
+    get: "/api/items/get",
+    getAll: "/api/items/getAll",
+    addItem: "/api/items",
+    change: "/api/items/change",
+    delete: "/api/items/delete"
   }
 };
 
@@ -29,18 +36,25 @@ export default {
       fetch(baseUrl + url.collections.fetchActual, GET_OPTION).then(res =>
         res.json().then(rs => rs.collections)
       ),
-    get: (baseUrl,id) =>
+    get: (baseUrl = "", id) =>
       fetch(baseUrl + url.collections.get + `?id=${id}`, GET_OPTION).then(res =>
         res.json().then(rs => rs.collection)
       ),
-
+    change: (id, data) => axios.post(url.collections.change, { id, data }),
     addCollection: collection =>
-      axios.post(url.collections.addCollection, { collection })
+      axios.post(url.collections.addCollection, { collection }),
+    getAll: () =>
+      axios(url.collections.getAll).then(res => res.data.collections),
+    delete: id => axios.post(url.collections.delete, { id })
   },
-  items : {
-    get : (baseUrl,id) =>
-    fetch(baseUrl + url.items.get + `?id=${id}`, GET_OPTION).then(res =>
-      res.json().then(rs => rs.item)
-    )
+  items: {
+    addItem: item => axios.post(url.items.addItem, { item }),
+    get: (baseUrl, id) =>
+      fetch(baseUrl + url.items.get + `?id=${id}`, GET_OPTION).then(res =>
+        res.json().then(rs => rs.item)
+      ),
+    getAll: () => axios(url.items.getAll).then(res => res.data.items),
+    change: (id, data) => axios.post(url.items.change, { id, data }),
+    delete: id => axios.post(url.items.delete, { id })
   }
 };
