@@ -17,12 +17,12 @@ export default ({ animate }) => {
         .logo {
           display: flex;
           font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-          font-size: 1.3em;
+          font-size: 1em;
           cursor: pointer;
           color: rgb(65, 100, 196);
           font-weight: bold;
           position: absolute;
-          left: 2%;
+          left: 10px
           top: 5px;
           text-transform: uppercase;
           align-items: center;

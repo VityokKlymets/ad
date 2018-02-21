@@ -16,7 +16,7 @@ export default () => {
           top: 0;
           bottom: 0;
           right: 0;
-          width: 6%;
+          width: 80px;
           border-left: 1px solid rgb(37, 52, 95);
           display: flex;
           flex-direction: column;

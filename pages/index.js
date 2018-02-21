@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 class index extends Component {
   displayName = "index";
   renderSecondLinePosters = () => (
-    <PostersView.Poster invert next="Контакти">
+    <PostersView.Poster next="Контакти">
       <CollectionsPoster collections={this.props.collections} />
     </PostersView.Poster>
   );
