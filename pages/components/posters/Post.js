@@ -1,7 +1,7 @@
 import React from "react";
+import { h1Color } from "../css_constants";
 import Link from "next/link";
 const textColor = "#6d6d6d";
-const headColor = "#1a3059";
 export default ({
   id,
   header,
@@ -13,22 +13,19 @@ export default ({
   return (
     <div>
       <div className="free-space">
-        <div className="row pl-5">
-          {header && <h1>{header}</h1>}
-        </div>
+        <div className="row pl-5">{header && <h1>{header}</h1>}</div>
         <div className="row">
           <div className="col-md-6 col-sm-12">
             <img className="img-fluid " src={image} />
           </div>
           <div className="col-md-6 col-sm-12">
-            
-              <div className="text">{text && <p>{text}</p>}</div>
-              <Link href={{ pathname: "/collection", query: { id } }}>
-                <button className="hola-btn mt-5">
-                  <div className="mask" />
-                  <span>{btnText}</span>
-                </button>
-              </Link>
+            <div className="text">{text && <p>{text}</p>}</div>
+            <Link href={{ pathname: "/collection", query: { id } }}>
+              <button className="hola-btn mt-5">
+                <div className="mask" />
+                <span>{btnText}</span>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -48,7 +45,7 @@ export default ({
           }
           h1 {
             text-align: center;
-            color: ${headColor};
+            color: ${h1Color};
             text-transform: uppercase;
           }
           p {
@@ -111,7 +108,7 @@ export default ({
           }
 
           .hola-btn:hover {
-            border-color: ${headColor};
+            border-color: ${h1Color};
           }
 
           .hola-btn:hover span {
@@ -119,7 +116,7 @@ export default ({
           }
 
           .hola-btn:hover .mask {
-            background: ${headColor};
+            background: ${h1Color};
             opacity: 0.5;
             -webkit-transform: translate3d(120%, -100px, 0)
               rotate3d(0, 0, 1, 90deg);

@@ -22,6 +22,10 @@ class MainPreloader extends Component {
     let images = this.getAllImages();
     let counter = 0;
     let length = images.length;
+    if (length === 0)
+      this.setState({
+        actualLoaded: true
+      });
     images.forEach((src, idx) => {
       var img = new Image();
       img.onload = () => {
@@ -48,7 +52,7 @@ class MainPreloader extends Component {
         {!actualLoaded && (
           <div className="preloader">
             <div>
-              <h1 className='pb-5 prel'>Загрузка ...</h1>
+              <h1 className="pb-5 prel">Загрузка ...</h1>
             </div>
             <div className="caption">
               <div className="cube-loader">
@@ -75,10 +79,10 @@ class MainPreloader extends Component {
             z-index: 999;
             background: #fff;
           }
-          h1.prel{
+          h1.prel {
             font-size: 1.2rem;
             text-transform: capitalize;
-            color : #1a3059;
+            color: #1a3059;
           }
           .caption {
             margin: 0 auto;

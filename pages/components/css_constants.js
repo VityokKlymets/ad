@@ -1,0 +1,1 @@
+export const h1Color = '#1a3059';

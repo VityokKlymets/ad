@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PostersView from "./components/views/PostersView/PostersView";
 import PosterGui from "./components/posters/PosterGui";
+import HPost from "./components/posters/HPost";
 import Post from "./components/posters/Post";
-import HeadPost from "./components/posters/HeadPost";
 import CollectionsPoster from "./components/posters/CollectionsPoster";
 import Contact from "./components/posters/Contact";
 import MainPreloader from "./components/preloaders/MainPreloader";
@@ -19,14 +19,7 @@ class index extends Component {
   );
   renderFirstLinePosters = () => (
     <PostersView.Poster invert next="Наши Коллекции">
-      <PostersView.HorizontalPosters>
-        <PostersView.Poster>
-          <HeadPost src="/static/images/germaniia-wernigerode-doma-ploshchad-fontan.jpg" />
-        </PostersView.Poster>
-        <PostersView.Poster>
-          <HeadPost src="/static/images/derevr-listia-kraski-priamougolnik.jpg" />
-        </PostersView.Poster>
-      </PostersView.HorizontalPosters>
+      <HPost />
     </PostersView.Poster>
   );
   renderFourLinePosters = () => {
