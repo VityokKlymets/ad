@@ -2,7 +2,7 @@ import React, { Component } from "react";
 class CattegoryMenu extends Component {
   displayName = "CattegoryMenu";
   state = {
-    elements: ["Все", "столы", "стульчики", "шкафы","song"]
+    elements: ["Все",...this.props.elements] || []
   }
   renderListStyles = () =>{
       const length = this.state.elements.length;
@@ -36,6 +36,7 @@ class CattegoryMenu extends Component {
           ul li {
             display: inline;
             text-align: center;
+            text-transform: capitalize;
           }
           a {
             display: inline-block;

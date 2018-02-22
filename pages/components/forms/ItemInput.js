@@ -3,25 +3,22 @@ import TextInput from "../inputs/TextInput";
 import OptionInput from "../inputs/OptionInput";
 import FileInput from "../inputs/FileInput";
 import ParamsInput from "../inputs/ParamsInput";
+import Item from "../../class/Item";
+import Select from "../inputs/Select";
+import {
+  functionalList,
+  typeList,
+  materialList
+} from "../../class/ItemPaginator";
 class ItemInput extends Component {
   displayName = "ItemInput";
   state = {
-    item: this.props.item || {
-      name: "",
-      description: "",
-      tags: [],
-      params: {
-        width: "",
-        height: ""
-      },
-      images: []
-    },
+    item: this.props.item || new Item(),
     errors: this.props.errors || {}
   };
   onChange = item => {
     this.props.onChange(item);
   };
-  onOptionInput = () => {};
   setItem = item => {
     this.setState({
       item
@@ -30,12 +27,17 @@ class ItemInput extends Component {
   };
   onItemImageChange = data =>
     this.setItem({ ...this.state.item, images: data });
-  onItemOptionChange = data => this.setItem({ ...this.state.item, tags: data });
   onItemParamsChange = data => {
     this.setItem({ ...this.state.item, params: { ...data } });
   };
   onItemDataChange = e =>
     this.setItem({ ...this.state.item, [e.target.name]: e.target.value });
+  onSelectChange = data => {
+    this.setItem({
+      ...this.state.item,
+      [data.name]: data.value
+    });
+  };
   render = () => {
     const { item, errors } = this.state;
     return (
@@ -65,18 +67,26 @@ class ItemInput extends Component {
               textarea
               error={errors.description}
             />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <div>
-              <i>Tags :</i>
-            </div>
-            <OptionInput
-              onChange={this.onItemOptionChange}
-              options={[]}
-              onInput={this.onOptionInput}
-              name="tags"
+            <Select
+              list={materialList}
+              value={item.material}
+              name="material"
+              label="choose material"
+              onChange={this.onSelectChange}
+            />
+            <Select
+              list={functionalList}
+              value = {item.functional}
+              name="functional"
+              label="choose functional"
+              onChange={this.onSelectChange}
+            />
+            <Select
+              list={typeList}
+              value={item.type}
+              name="type"
+              label="choose category"
+              onChange={this.onSelectChange}
             />
           </div>
         </div>

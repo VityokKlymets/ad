@@ -7,9 +7,17 @@ router.get("/get", (req, res) => {
   const id = req.query.id;
   Item.findById(id).then(item => res.json({ item }));
 });
+
+router.post("/paginate", (req, res) => {
+  Item.find({}).then(items=>{
+    res.json({items})
+  })
+});
 router.post("/delete", (req, res) => {
   const { id } = req.body;
-  Item.findById(id).then(record => record.remove());
+  Item.findById(id).then(record => {
+    if (record) record.remove();
+  });
   res.json({});
 });
 router.get("/getAll", (req, res) => {

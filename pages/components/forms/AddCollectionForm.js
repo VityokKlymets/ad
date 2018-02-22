@@ -3,16 +3,12 @@ import TextInput from "../inputs/TextInput";
 import FileInput from "../inputs/FileInput";
 import Spinner from "../spinners/Spinner";
 import ItemInput from "./ItemInput";
+import Collection from "../../class/Collection";
 class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
   state = {
     loading: false,
-    data: this.props.collection || {
-      image: {},
-      name: "",
-      description: "",
-      items: []
-    },
+    data: this.props.collection || new Collection(),
     errors: {}
   };
   onChange = e => {

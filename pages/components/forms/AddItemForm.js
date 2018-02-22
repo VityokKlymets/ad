@@ -2,19 +2,11 @@ import React, { Component } from "react";
 import Spinner from "../spinners/Spinner";
 import TextInput from "../inputs/TextInput";
 import ItemInput from "./ItemInput";
+import Item from '../../class/Item'; 
 class AddItemForm extends Component {
   displayName = "AddItemForm";
   state = {
-    data: this.props.item || {
-        name: "",
-        description: "",
-        tags: [],
-        params: {
-          width: "",
-          height: ""
-        },
-        images: []
-      },
+    data: this.props.item || new Item(),
     loading: false,
     errors: {}
   };

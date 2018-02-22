@@ -16,7 +16,7 @@ export default () => {
           top: 0;
           bottom: 0;
           right: 0;
-          width: 80px;
+          width: 60px;
           border-left: 1px solid rgb(37, 52, 95);
           display: flex;
           flex-direction: column;
@@ -25,7 +25,7 @@ export default () => {
         }
         .menu .menu-icon {
           cursor: pointer;
-          padding: 20px 0;
+          padding: 10px 0;
           display: flex;
           align-items: center;
           justify-content: center;

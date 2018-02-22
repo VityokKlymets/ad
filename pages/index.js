@@ -43,7 +43,7 @@ class index extends Component {
           <PostersView gui={<PosterGui />}>
             <PostersView.VerticalPosters>
               {this.renderFirstLinePosters()}
-              {this.renderSecondLinePosters()}
+              {/* {this.renderSecondLinePosters()} */}
               {this.renderFourLinePosters()}
             </PostersView.VerticalPosters>
           </PostersView>

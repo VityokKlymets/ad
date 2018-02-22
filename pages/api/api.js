@@ -4,7 +4,8 @@ const SendDataOption = data => {
   return {
     method: "POST",
     headers: {
-      Accept: "application/json"
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
   };
@@ -26,7 +27,8 @@ const url = {
     getAll: "/api/items/getAll",
     addItem: "/api/items",
     change: "/api/items/change",
-    delete: "/api/items/delete"
+    delete: "/api/items/delete",
+    paginate : "/api/items/paginate"
   }
 };
 
@@ -55,6 +57,10 @@ export default {
       ),
     getAll: () => axios(url.items.getAll).then(res => res.data.items),
     change: (id, data) => axios.post(url.items.change, { id, data }),
-    delete: id => axios.post(url.items.delete, { id })
+    delete: id => axios.post(url.items.delete, { id }),
+    paginate: (baseUrl, paginator) =>
+      fetch(baseUrl + url.items.paginate, SendDataOption(paginator)).then(res =>
+        res.json().then(rs => rs.items)
+      )
   }
 };

@@ -3,7 +3,7 @@ const Collection = require("../models/Collection");
 const Item = require("../models/Item");
 const express = require("express");
 const router = express.Router();
-const saveItem = require('./utils').saveItem;
+const saveItem = require("./utils").saveItem;
 
 router.post("/", (req, res) => {
   const collection = req.body.collection;
@@ -25,7 +25,9 @@ router.post("/", (req, res) => {
 });
 router.post("/delete", (req, res) => {
   const { id } = req.body;
-  Collection.findById(id).then(record => record.remove());
+  Collection.findById(id).then(record => {
+    if (record) record.remove();
+  });
   res.json({});
 });
 router.post("/change", (req, res) => {

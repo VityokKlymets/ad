@@ -46,19 +46,6 @@ class RadioButton extends Component {
             -webkit-user-select: none;
             user-select: none;
           }
-          .btn-radio:not(:first-child) {
-            margin-left: 20px;
-          }
-          @media screen and (max-width: 480px) {
-            .btn-radio {
-              display: block;
-              float: none;
-            }
-            .btn-radio:not(:first-child) {
-              margin-left: 0;
-              margin-top: 15px;
-            }
-          }
           .btn-radio svg {
             fill: none;
             vertical-align: middle;
@@ -97,6 +84,7 @@ class RadioButton extends Component {
             padding-left: 0.5em;
             display: inline-block;
             vertical-align: middle;
+            text-transform : capitalize;
           }
         `}</style>
       </div>
