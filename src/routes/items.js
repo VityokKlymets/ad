@@ -5,13 +5,21 @@ const saveItem = require("./utils").saveItem;
 const router = express.Router();
 router.get("/get", (req, res) => {
   const id = req.query.id;
-  Item.findById(id).then(item => res.json({ item }));
+  Item.findById(id).then(item => {
+    if (item) {
+      item.views++;
+      item.save();
+      res.json({ item });
+    } else {
+      res.json({ item: {} });
+    }
+  });
 });
 
 router.post("/paginate", (req, res) => {
-  Item.find({}).then(items=>{
-    res.json({items})
-  })
+  Item.find({}).then(items => {
+    res.json({ items });
+  });
 });
 router.post("/delete", (req, res) => {
   const { id } = req.body;

@@ -5,9 +5,10 @@ const saveStaticFile = require("../utils/utils").saveStaticFile;
 const schema = new mongoose.Schema({
   name: { type: String, required: true, lowercase: true },
   description: { type: String, required: false, lowercase: true },
-  type: {type : String ,required : true ,lowercase : true },
-  material: {type : String ,required : true ,lowercase : true },
-  functional : {type : String ,required : true ,lowercase : true },
+  type: { type: String, required: true, lowercase: true },
+  material: { type: String, required: true, lowercase: true },
+  functional: { type: String, required: true, lowercase: true },
+  views: { type: Number, default: 0 },
   params: { type: Object, required: false },
   mesh: { type: String, required: false },
   images: [String]
