@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const path = require("path");
 const saveStaticFile = require("../utils/utils").saveStaticFile;
 const schema = new mongoose.Schema(
   {

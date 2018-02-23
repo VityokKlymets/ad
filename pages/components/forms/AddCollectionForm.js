@@ -3,6 +3,7 @@ import TextInput from "../inputs/TextInput";
 import FileInput from "../inputs/FileInput";
 import Spinner from "../spinners/Spinner";
 import ItemInput from "./ItemInput";
+import Item from '../../class/Item';
 import Collection from "../../class/Collection";
 class AddCollectionForm extends Component {
   displayName = "AddCollectionForm";
@@ -43,16 +44,7 @@ class AddCollectionForm extends Component {
     });
   };
   onAddItemClick = () => {
-    const newItem = {
-      name: "",
-      description: "",
-      tags: [],
-      params: {
-        width: "",
-        height: ""
-      },
-      images: []
-    };
+    const newItem = new Item();
     this.setState({
       data: {
         ...this.state.data,

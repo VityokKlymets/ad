@@ -59,7 +59,7 @@ export default {
     change: (id, data) => axios.post(url.items.change, { id, data }),
     delete: id => axios.post(url.items.delete, { id }),
     paginate: (baseUrl, paginator) =>
-      fetch(baseUrl + url.items.paginate, SendDataOption(paginator)).then(res =>
+      fetch(baseUrl + url.items.paginate, SendDataOption({paginator})).then(res =>
         res.json().then(rs => rs.items)
       )
   }

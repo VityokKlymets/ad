@@ -13,63 +13,92 @@ import {
 class ItemGridView extends Component {
   displayName = "ItemGridView";
   state = {
-    items: this.props.items || []
+    items: this.props.items || [],
+    paginator: this.props.paginator
   };
-  onRadioButtonChange = data => {
-    console.log(data);
+  componentWillReceiveProps = props => {
+    this.setState({
+      paginator: props.paginator,
+      items: props.items
+    });
   };
-  onCheckBoxChange = data => {
-    console.log(data);
+  setPaginator = paginator => {
+    this.setState(
+      {
+        paginator
+      },
+      this.onPaginatorChange(paginator)
+    );
   };
-  renderSidebar = () => (
-    <div className="sidebar">
-      <div className="d-flex flex-column">
-        <span>по функциональности: </span>
-        {functionalList.map((fc, idx) => {
-          return (
-            <RadioButton
-              onChange={this.onRadioButtonChange}
-              label={fc}
-              name="functional"
-              idx={idx}
-              key={idx}
-            />
-          );
-        })}
+  onTypeChange = value => {
+    this.setPaginator({
+      ...this.state.paginator,
+      type: value
+    });
+  };
+  onFunctionalChange = data => {
+    this.setPaginator({ ...this.state.paginator, functional: data.name });
+  };
+  onMaterialChange = data => {
+    this.setPaginator({ ...this.state.paginator, material: data.name });
+  };
+  onPaginatorChange = paginator => {
+    this.props.onPaginatorChange(paginator);
+  };
+  renderSidebar = () => {
+    const { functional, material, type } = this.state.paginator;
+    return (
+      <div className="sidebar">
+        <div className="d-flex flex-column">
+          <span>по функциональности: </span>
+          {functionalList.map((fc, idx) => {
+            return (
+              <RadioButton
+                onChange={this.onFunctionalChange}
+                label={fc}
+                checked={fc === functional}
+                name={fc}
+                idx={idx}
+                key={idx}
+              />
+            );
+          })}
+        </div>
+        <div className="d-flex flex-column">
+          <span>Материал: </span>
+          {materialList.map((mat, idx) => {
+            return (
+              <CheckBox
+                name={mat}
+                checked={material === mat}
+                idx={idx}
+                key={idx}
+                onChange={this.onMaterialChange}
+                label={mat}
+              />
+            );
+          })}
+        </div>
+        <style jsx>{`
+          .sidebar {
+            width: 100%;
+            height: 100%;
+            border-right: 1px solid #ccc;
+          }
+          .sidebar span {
+            color: #aaa;
+            display: inline-block;
+            padding: 0 0 0.5em 1em;
+            text-transform: capitalize;
+            font-size: 0.8em;
+            font-weight: bold;
+          }
+        `}</style>
       </div>
-      <div className="d-flex flex-column">
-        <span>Материал: </span>
-        {materialList.map((mat, idx) => {
-          return (
-            <CheckBox
-              name="material"
-              idx={idx}
-              key={idx}
-              onChange={this.onCheckBoxChange}
-              label={mat}
-            />
-          );
-        })}
-      </div>
-      <style jsx>{`
-        .sidebar {
-          width: 100%;
-          height: 100%;
-          border-right: 1px solid #ccc;
-        }
-        .sidebar span {
-          color: #aaa;
-          display: inline-block;
-          padding: 0 0 0.5em 1em;
-          text-transform: capitalize;
-          font-size: 0.8em;
-          font-weight: bold;
-        }
-      `}</style>
-    </div>
-  );
-  renderItem = item => (
-    <div className="col-3 item">
+    );
+  };
+  renderItem = (item, idx) => (
+    <div key={idx} className="col-3 item">
       <Link href={{ pathname: "/item", query: { id: item._id } }}>
         <div>
           <h3>{item.name}</h3>
@@ -100,24 +129,23 @@ class ItemGridView extends Component {
   );
   render = () => {
     const { items } = this.props;
-    const item = items[0];
+    const { type } = this.state.paginator;
     return (
       <div className="view">
         <LeftTopLogo />
         <div className="container-fluid">
-          <CattegoryMenu elements={typeList} />
+          <CattegoryMenu
+            elements={typeList}
+            onChose={this.onTypeChange}
+            chosed={type}
+          />
           <div className="row">
             <div className="col-2">{this.renderSidebar()}</div>
             <div className="col-10">
               <div className="row">
-                {this.renderItem(item)}
-                {this.renderItem(item)}
-                {this.renderItem(item)}
-                {this.renderItem(item)}
-                {this.renderItem(item)}
-                {this.renderItem(item)}
-                {this.renderItem(item)}
-                {this.renderItem(item)}
+                {items.map((item, idx) => {
+                  return this.renderItem(item, idx);
+                })}
               </div>
             </div>
           </div>

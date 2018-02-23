@@ -1,37 +1,100 @@
 import React from "react";
-const textColor = "#fff";
-export default ({ src, visible }) => {
+import Button from "../buttons/HolaBtn";
+export default ({ src, visible, right = false }) => {
   return (
     <div
+      className="image"
       style={{
         backgroundImage: `url(${src})`
       }}
     >
-      <div className={`caption ${visible ? "visible" : ""}`}>
-        <h1>terc design</h1>
-        <span>we always do it better</span>
+      <div className={`welcome ${visible ? "anim" : ""}`}>
+        welcome to <span>Terc design</span>
+      </div>
+      <div className={`text-wrap ${right ? "right" : ""}`}>
+        <div className="text">
+          <h1>добро пожаловать</h1>
+          <p>
+            <p>
+              Мы занимаемся разработкой и проектированием мебели в{" "}
+              <span>минималистическом стиле </span>
+              для <span>современных домов</span>{" "}
+            </p>
+            <p>здесь вы найдете лучшие дизайнерские решения для вашего дома</p>{" "}
+            <p>
+              а также многофункциональные <span>мебель трансформеры</span>{" "}
+              которые помогут рационально использовать каждый квадратный метр в
+              вашем доме
+            </p>
+          </p>
+          <div className="mt-5 d-flex justify-content-center">
+            <Button text="магазин" invert />
+          </div>
+        </div>
       </div>
       <style jsx>{`
-        .caption {
-          color: ${textColor};
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+        .text h1 {
+          color: #fff;
         }
-        .caption.visible {
+        .text p:first-letter {
+          text-transform: uppercase;
+        }
+        .welcome {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 20px;
+          color: #fff;
+          text-transform: capitalize;
+          font-size: 1.4em;
+          font-weight: bold;
+        }
+        .welcome.anim {
           animation: fadeIn 2s ease-in-out 1;
         }
-        .caption span {
+        .welcome span {
+          color: #5bffee;
+        }
+        .text-wrap {
+          perspective: 800px;
+          position: absolute;
+          left: 60px;
+          width: 400px;
+          top: 120px;
+          z-index: 1;
+        }
+        .text-wrap.right {
+          left: auto;
+          right: 80px;
+        }
+        .text {
+          transition: transform 0.5s ease-in-out;
+          transform: rotateY(30deg);
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 20px;
+          padding: 20px;
+        }
+        .text-wrap.right .text {
+          transform: rotateY(-30deg);
+        }
+        .text-wrap:hover .text {
+          transform: rotateY(0deg);
+        }
+        .text span {
+          color: #5bffee;
+        }
+        .text p {
           font-weight: bold;
+          color: #fff;
         }
         h1 {
           font-family: serif;
           text-transform: capitalize;
           font-weight: bold;
           font-size: 2em;
-          color: ${textColor};
+          color: #fff;
         }
-        div {
+        .image {
           position: absolute;
           width: 100%;
           height: 100%;
@@ -41,13 +104,12 @@ export default ({ src, visible }) => {
           justify-content: center;
           align-items: center;
         }
+
         @keyframes fadeIn {
           from {
-            transform: translateY(-5%);
             opacity: 0;
           }
           to {
-            transform: translateY(0%);
             opacity: 1;
           }
         }

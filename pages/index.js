@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PostersView from "./components/views/PostersView/PostersView";
 import PosterGui from "./components/posters/PosterGui";
-import HPost from "./components/posters/HPost";
+import HPost from "./components/posters/HeadPost";
 import Post from "./components/posters/Post";
 import CollectionsPoster from "./components/posters/CollectionsPoster";
 import Contact from "./components/posters/Contact";
@@ -19,7 +19,14 @@ class index extends Component {
   );
   renderFirstLinePosters = () => (
     <PostersView.Poster invert next="Наши Коллекции">
-      <HPost />
+      <PostersView.HorizontalPosters>
+        <PostersView.Poster>
+          <HPost src="/static/images/modern-komnata-divan-kartina-gostinaia-lampa.jpg" />
+        </PostersView.Poster>
+        <PostersView.Poster>
+          <HPost right src="/static/images/detskaia-komnata-mebel-interer-stil.jpg" />
+        </PostersView.Poster>
+      </PostersView.HorizontalPosters>
     </PostersView.Poster>
   );
   renderFourLinePosters = () => {
@@ -43,7 +50,7 @@ class index extends Component {
           <PostersView gui={<PosterGui />}>
             <PostersView.VerticalPosters>
               {this.renderFirstLinePosters()}
-              {/* {this.renderSecondLinePosters()} */}
+              {this.renderSecondLinePosters()}
               {this.renderFourLinePosters()}
             </PostersView.VerticalPosters>
           </PostersView>

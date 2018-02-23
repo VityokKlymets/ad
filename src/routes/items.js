@@ -17,9 +17,38 @@ router.get("/get", (req, res) => {
 });
 
 router.post("/paginate", (req, res) => {
-  Item.find({}).then(items => {
-    res.json({ items });
-  });
+  const ITEM_ON_PAGE = 14;
+  const paginator = req.body.paginator;
+  const { functional, material, type } = paginator;
+  if (type === "все" && material === "любой") {
+    Item.find({
+      functional
+    }).then(items => {
+      res.json({ items });
+    });
+  } else if (type === "все") {
+    Item.find({
+      functional,
+      material
+    }).then(items => {
+      res.json({ items });
+    });
+  } else if (material === "любой") {
+    Item.find({
+      functional,
+      type
+    }).then(items => {
+      res.json({ items });
+    });
+  } else {
+    Item.find({
+      functional,
+      material,
+      type
+    }).then(items => {
+      res.json({ items });
+    });
+  }
 });
 router.post("/delete", (req, res) => {
   const { id } = req.body;

@@ -12,6 +12,11 @@ class RadioButton extends Component {
       name: this.state.name
     });
   };
+  componentWillReceiveProps = props =>{
+    this.setState({
+      checked: props.checked
+    })
+  }
   render = () => {
     const { checked, name } = this.state;
     const { label = "Option" } = this.props;

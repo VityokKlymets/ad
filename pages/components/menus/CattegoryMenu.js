@@ -2,63 +2,67 @@ import React, { Component } from "react";
 class CattegoryMenu extends Component {
   displayName = "CattegoryMenu";
   state = {
-    elements: ["Все",...this.props.elements] || []
+    elements: this.props.elements || [],
+    chosed: this.props.chosed || this.props.elements[0] || ""
+  };
+  componentWillReceiveProps = props =>{
+    this.setState({
+      chosed: props.chosed
+    })
   }
-  renderListStyles = () =>{
-      const length = this.state.elements.length;
-      let style = '';
-      this.state.elements.forEach((value,idx)=>{
-          style+=`li.child-${idx}:hover ~ hr {
-            margin-left : ${100/length*(idx)}%;
-          }`;
-      })
-      return style;
-  }
+  choose = value => {
+    this.setState({
+      chosed: value
+    });
+   this.props.onChose(value);
+  };
   render = () => {
-    const {elements} = this.state;
+    const { elements, chosed } = this.state;
     return (
       <div>
         <nav>
           <ul>
             {elements.map((elem, idx) => (
-              <li key={idx} className={`child-${idx}`}>
-                <a href="#">{elem}</a>
+              <li
+                onClick={() => this.choose(elem)}
+                key={idx}
+                className={`${chosed === elem ? "chosed" : ""}`}
+              >
+                <span>{elem}</span>
               </li>
             ))}
-            <hr />
           </ul>
         </nav>
         <style jsx>{`
           nav {
-              width : 50%;
-              margin : 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
           }
           ul li {
-            display: inline;
+            display: inline-block;
             text-align: center;
             text-transform: capitalize;
+            cursor: pointer;
+            transition: border-color 0.5s ease-in-out;
+            border-right: 2px solid transparent;
           }
-          a {
+          ul li:hover {
+            border-right-color: #1a3059;
+          }
+          ul li.chosed {
+            border-bottom: 2px solid #1a3059;
+          }
+          span {
             display: inline-block;
-            width: ${100/this.state.elements.length}%;
-            padding: 0.75rem 0;
+            padding: 0rem 1em;
             margin: 0;
             text-decoration: none;
             color: #333;
-          }
-          ${this.renderListStyles()}
-          hr {
-            height: 0.25rem;
-            width: ${100/this.state.elements.length}%;
-            margin: 0;
-            background: #1a3059;
-            border: none;
-            transition: 0.3s ease-in-out;
           }
         `}</style>
       </div>
     );
   };
 }
-
 export default CattegoryMenu;

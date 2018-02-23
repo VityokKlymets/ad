@@ -12,16 +12,21 @@ class CheckBox extends Component {
       name: this.state.name
     });
   };
+  componentWillReceiveProps = props => {
+    this.setState({
+      checked: props.checked
+    });
+  };
   render = () => {
     const { checked, name } = this.state;
-    const { label = "Checkbox",idx=0 } = this.props;
+    const { label = "Checkbox", idx = 0 } = this.props;
     return (
       <div className="cntr">
-        <label htmlFor={name+idx} className="label-cbx">
+        <label htmlFor={name + idx} className="label-cbx">
           <input
             type="checkbox"
             className="invisible"
-            id={name+idx}
+            id={name + idx}
             name={name}
             onChange={this.onChange}
             checked={checked}
@@ -39,7 +44,7 @@ class CheckBox extends Component {
             user-select: none;
             cursor: pointer;
             margin-bottom: 0;
-            text-transform : capitalize;
+            text-transform: capitalize;
           }
           .label-cbx input:checked + .checkbox {
             border-color: #20c2e0;
