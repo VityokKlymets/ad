@@ -1,5 +1,5 @@
 export const materialList = ["дерево", "стекло", "метал"];
-export const functionalList = ["обычный", "трансформер","раскладной"];
+export const functionalList = ["обычный", "трансформер", "раскладной"];
 export const typeList = [
   "столы",
   "кресла",
@@ -8,15 +8,16 @@ export const typeList = [
   "кровати",
   "диваны"
 ];
-
+export const typeDefault = "все";
+export const materialDefault = "любой";
 export class Paginator {
-  page= {
+  page = {
     itemsCount: 0,
-    itemPerPage : 8,
+    itemPerPage: 8,
     pagesLength: 0,
-    currentPage : 0
+    currentPage: 0
   };
-  type = typeList[0];
-  material = materialList[0];
+  type = typeDefault;
+  material = materialDefault;
   functional = functionalList[0];
 }

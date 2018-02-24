@@ -8,7 +8,7 @@ class CollectionSlideList extends Component {
     collection: this.props.collection || {
       items: []
     }
-  };
+    };
   canUseDom = canUseDOM();
   attachEvents = () => {
     window.addEventListener("keydown", this.onKeyDown, false);
@@ -42,34 +42,41 @@ class CollectionSlideList extends Component {
   };
   slideRight = () => {
     const next = this.state.current + 1;
-    if (next === this.state.list.length) return;
+    if (next === this.state.collection.items.length) return;
     this.setState({ current: next });
   };
+
   render = () => {
     const { current, list, collection } = this.state;
+    console.log(current);
     const items = this.state.collection.items;
     return (
       <div>
-        <div className="slide-list">
+        <div
+          style={{ transform: `translate(-${(current-1) * (100/items.length)}%,-50%)` }}
+          className="slide-list"
+        >
           {items.map(
             (item, idx) =>
               item && (
-                <ItemPreview
-                  key={idx}
-                  item={item}
-                  current={current}
-                  idx={idx}
-                />
+                <div key={idx} className="image">
+                  <ItemPreview item={item} current={current} idx={idx} />
+                </div>
               )
           )}
         </div>
         <style jsx>
           {`
+            .image {
+              display: inline-block;
+            }
             .slide-list {
-              position: absolute;
+              transition: transform 1s ease-in-out;
+              position: fixed;
               left: 0;
               top: 50%;
-              transform: translateY(-50%);
+              transform: translate(0%,-50%);
+              display: flex;
             }
           `}
         </style>

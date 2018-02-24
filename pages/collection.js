@@ -9,8 +9,19 @@ class collection extends Component {
   render = () => {
     return (
       <div>
-        <NavBar />
+        <div className="navbar">
+          <NavBar />
+        </div>
         <CollectionSlideList collection={this.props.collection} />
+        <style jsx>{`
+          .navbar {
+            padding: 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+          }
+        `}</style>
       </div>
     );
   };

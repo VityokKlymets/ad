@@ -6,7 +6,7 @@ class TopMenuNavbar extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className='nav-wrap'>
         <LeftTopLogo />
         <div className="navbar">
           <Link href="/collections">
@@ -39,9 +39,12 @@ class TopMenuNavbar extends Component {
             .navbar {
               display: flex;
               justify-content: center;
-              border-bottom: 1px solid #ccc;
-              padding: 20px 0;
               z-index: 10;
+              padding: 20px 0;
+            }
+            .nav-wrap{
+              width:100%;
+              border-bottom: 1px solid #ccc;
             }
           `}
         </style>

@@ -10,7 +10,9 @@ import RightSideMenu from "../menus/RightSideMenu";
 import {
   functionalList,
   materialList,
-  typeList
+  typeList,
+  typeDefault,
+  materialDefault
 } from "../../class/ItemPaginator";
 import PaginationArrow from "../pagination/PaginationArrow";
 class ItemGridView extends Component {
@@ -47,21 +49,39 @@ class ItemGridView extends Component {
   onTypeChange = value => {
     this.setPaginator({
       ...this.state.paginator,
-      type: value
+      type: value,
+      page: {
+        ...this.state.paginator.page,
+        currentPage: 0
+      }
     });
   };
   onFunctionalChange = data => {
-    this.setPaginator({ ...this.state.paginator, functional: data.name });
+    this.setPaginator({
+      ...this.state.paginator,
+      functional: data.name,
+      page: {
+        ...this.state.paginator.page,
+        currentPage: 0
+      }
+    });
   };
   onMaterialChange = data => {
-    this.setPaginator({ ...this.state.paginator, material: data.name });
+    this.setPaginator({
+      ...this.state.paginator,
+      material: data.name,
+      page: {
+        ...this.state.paginator.page,
+        currentPage: 0
+      }
+    });
   };
   onPaginatorChange = paginator => {
     this.props.onPaginatorChange(paginator);
   };
   renderSidebar = () => {
     const { functional, material, type } = this.state.paginator;
-    const mList = ["любой", ...materialList];
+    const mList = [materialDefault, ...materialList];
 
     return (
       <div className="sidebar">
@@ -172,7 +192,7 @@ class ItemGridView extends Component {
           position: absolute;
           border-radius: 5px;
           width: 100px;
-          right: -10%;
+          right: 0%;
           top: -10px;
           background: #2a9112;
           font-weight: bold;
@@ -203,7 +223,7 @@ class ItemGridView extends Component {
     const { items } = this.props;
     const { type } = this.state.paginator;
     const { pagesLength, currentPage } = this.state.paginator.page;
-    const tList = ["все", ...typeList];
+    const tList = [typeDefault, ...typeList];
     const firstRow = items.slice(0, 4);
     const secondRow = items.slice(4, 8);
     return (
