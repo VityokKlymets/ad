@@ -22,7 +22,9 @@ export default ({
           <div className="col-md-6 col-sm-12">
             <div className="text">{text && <p>{text}</p>}</div>
             <Link href={{ pathname: "/collection", query: { id } }}>
-              <HolaBtn text={btnText}/>
+              <div>
+                <HolaBtn text={btnText} />
+              </div>
             </Link>
           </div>
         </div>

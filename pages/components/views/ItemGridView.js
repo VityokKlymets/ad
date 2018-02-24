@@ -5,6 +5,7 @@ import CattegoryMenu from "../menus/CattegoryMenu";
 import Link from "next/link";
 import Button from "../buttons/HolaBtn";
 import LeftTopLogo from "../logos/LeftTopLogo";
+import Spinner from "../spinners/Spinner";
 import RightSideMenu from "../menus/RightSideMenu";
 import {
   functionalList,
@@ -16,12 +17,14 @@ class ItemGridView extends Component {
   displayName = "ItemGridView";
   state = {
     items: this.props.items || [],
-    paginator: this.props.paginator
+    paginator: this.props.paginator,
+    loading: !!this.props.loading
   };
   componentWillReceiveProps = props => {
     this.setState({
       paginator: props.paginator,
-      items: props.items
+      items: props.items,
+      loading: props.loading
     });
   };
   setPaginator = paginator => {
@@ -124,6 +127,9 @@ class ItemGridView extends Component {
             <div className="btn">
               <Button text="Подробней" invert />
             </div>
+            <div className="price">
+              <span>{item.params.price} грн.</span>
+            </div>
             <div className="views d-flex justify-content-end align-items-center">
               <span>{item.views}</span>
               <svg
@@ -162,6 +168,20 @@ class ItemGridView extends Component {
           background-position: center;
           position: relative;
         }
+        .price {
+          position: absolute;
+          border-radius: 5px;
+          width: 100px;
+          right: -10%;
+          top: -10px;
+          background: #2a9112;
+          font-weight: bold;
+          text-align: center;
+        }
+        .price span {
+          color: #fff;
+          padding: 0.4em 0.6em;
+        }
         .btn {
           display: none;
           position: absolute;
@@ -171,8 +191,7 @@ class ItemGridView extends Component {
         }
         h3 {
           font-size: 0.9em;
-          height: 2.5em;
-          border-bottom: 1px solid #ccc;
+          height: 3em;
           text-align: center;
           color: #777;
           font-weight: bold;
@@ -196,19 +215,24 @@ class ItemGridView extends Component {
             onChose={this.onTypeChange}
             chosed={type}
           />
+
           <div className="row">
             <div className="col-2">{this.renderSidebar()}</div>
             <div className="col-10">
-              <div className="row">
-                {firstRow.map((item, idx) => {
-                  return this.renderItem(item, idx);
-                })}
-              </div>
-              <div className="row">
-                {secondRow.map((item, idx) => {
-                  return this.renderItem(item, idx);
-                })}
-              </div>
+              <Spinner size="medium" type="light" loading={this.state.loading}>
+                <div>
+                  <div className="row">
+                    {firstRow.map((item, idx) => {
+                      return this.renderItem(item, idx);
+                    })}
+                  </div>
+                  <div className="row">
+                    {secondRow.map((item, idx) => {
+                      return this.renderItem(item, idx);
+                    })}
+                  </div>
+                </div>
+              </Spinner>
             </div>
           </div>
         </div>

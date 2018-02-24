@@ -9,13 +9,18 @@ class store extends Component {
   displayName = "store";
   state = {
     paginator: this.props.paginator,
-    items: this.props.items
+    items: this.props.items,
+    loading: false
   };
   onPaginatorChange = paginator => {
+    this.setState({
+      loading: true
+    });
     api.items.paginate("", paginator).then(res => {
       this.setState({
         items: res.items,
-        paginator: res.paginator
+        paginator: res.paginator,
+        loading: false
       });
     });
   };
@@ -26,6 +31,7 @@ class store extends Component {
           onPaginatorChange={this.onPaginatorChange}
           items={this.state.items}
           paginator={this.state.paginator}
+          loading={this.state.loading}
         />
       </div>
     );
@@ -36,10 +42,10 @@ class store extends Component {
       : "";
     const reqPagin = new Paginator();
     const responce = await api.items.paginate(baseUrl, reqPagin);
-    
+
     const items = responce.items;
     const paginator = responce.paginator;
-    return { items ,paginator};
+    return { items, paginator };
   }
 }
 export default page(connect(state => state)(store));

@@ -1,15 +1,29 @@
 import React, { Component } from "react";
+import LeftTopLogo from "../logos/LeftTopLogo";
+import Link from "next/link";
 class TopMenuNavbar extends Component {
   displayName = "TopMenuNavbar";
 
   render = () => {
     return (
       <div>
-        <div className='navbar'>
-          <a href="/collections">Collections</a>
-          <a href="/about">About us</a>
-          <a href="/contact">Contact</a>
-          <a href="/">Home</a>
+        <LeftTopLogo />
+        <div className="navbar">
+          <Link href="/collections">
+            <a href="#">коллекции</a>
+          </Link>
+          <Link href="/about">
+            <a href="#">о нас</a>
+          </Link>
+          <Link href="/contact">
+            <a href="#">Контакты</a>
+          </Link>
+          <Link href="/store">
+            <a href="#">магазин</a>
+          </Link>
+          <Link href="/">
+            <a href="#">домой</a>
+          </Link>
         </div>
         <style jsx>
           {`
@@ -27,7 +41,7 @@ class TopMenuNavbar extends Component {
               justify-content: center;
               border-bottom: 1px solid #ccc;
               padding: 20px 0;
-              z-index : 10;
+              z-index: 10;
             }
           `}
         </style>

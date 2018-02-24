@@ -15,5 +15,8 @@ class contact extends Component {
       </div>
     );
   };
+  static async getInitialProps({ req }) {
+    return {};
+  }
 }
 export default page(connect(state => state)(contact));

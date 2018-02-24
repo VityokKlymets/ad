@@ -10,16 +10,14 @@ class Spinner extends Component {
     });
   };
   render() {
-    const { children, transparent, size, className } = this.props;
+    const { children, transparent, size='', className ,type=""} = this.props;
     const { loading } = this.state;
     return loading ? (
       <div>
         <div className={`Spinner ${className ? className : ""}`}>
           {children && React.cloneElement(children, ...this.props)}
           <div
-            className={`spinner ${transparent ? "transparent" : ""} ${
-              size ? size : ""
-            }`}
+            className={`spinner ${transparent ? "transparent" : ""} ${size} ${type}`}
           >
             <div className="circle-spin" />
           </div>
@@ -39,6 +37,9 @@ class Spinner extends Component {
             background: rgba(0, 0, 0, 0.5);
             z-index: 10;
           }
+          .Spinner .spinner.light{
+            background: rgba(255, 255, 255, 0.5);
+          }
           .Spinner .spinner.transparent {
             background: inherit;
           }
@@ -46,6 +47,7 @@ class Spinner extends Component {
             min-width: 35px;
             min-height: 35px;
           }
+          
           .Spinner .spinner.small .circle-spin {
             border-width: 2px;
             min-width: 25px;

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Button from "../buttons/HolaBtn";
 export default ({ src, visible, right = false }) => {
   return (
@@ -28,7 +29,11 @@ export default ({ src, visible, right = false }) => {
             </p>
           </p>
           <div className="mt-5 d-flex justify-content-center">
-            <Button text="магазин" invert />
+            <Link href="/store">
+              <div>
+                <Button text="магазин" invert />
+              </div>
+            </Link>
           </div>
         </div>
       </div>
