@@ -6,7 +6,7 @@ class CollectionsPoster extends Component {
   render = () => {
     const { collections, rec } = this.props;
     return (
-      <PostersView.HorizontalPosters rec={rec}>
+      <PostersView.HorizontalPosters counter rec={rec}>
         {this.props.collections.map((collection, idx) => {
           return (
             <PostersView.Poster key={idx}>

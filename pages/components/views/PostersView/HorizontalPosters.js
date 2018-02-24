@@ -4,7 +4,7 @@ import HGUI from "./PostersGui/HGUI";
 class HorizontalPosters extends Component {
   displayName = "HorizontalPosters";
   state = {
-    currentPoster: this.props.rec.currentColumn-1,
+    currentPoster: this.props.rec.currentColumn - 1,
     postersCount: this.props.children.length,
     row: this.props.rec.row,
     column: this.props.rec.column
@@ -82,10 +82,8 @@ class HorizontalPosters extends Component {
       this.props.children instanceof Array
         ? this.props.children
         : [this.props.children];
-    const guiInvert =
-      posters[currentPoster].props.invert === undefined
-        ? false
-        : posters[currentPoster].props.invert;
+    const guiInvert = posters[currentPoster].props.invert || false;
+    const counter = !!this.props.counter;
     return (
       <div className="HorizontalPosters">
         <HGUI
@@ -94,6 +92,7 @@ class HorizontalPosters extends Component {
           slideRight={this.slideRight}
           count={postersCount}
           invert={guiInvert}
+          counter={counter}
         />
         <div
           className="posters"
