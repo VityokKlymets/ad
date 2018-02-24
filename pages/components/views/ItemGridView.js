@@ -184,7 +184,6 @@ class ItemGridView extends Component {
     const { items } = this.props;
     const { type } = this.state.paginator;
     const { pagesLength, currentPage } = this.state.paginator.page;
-    console.log(currentPage);
     const tList = ["все", ...typeList];
     const firstRow = items.slice(0, 4);
     const secondRow = items.slice(4, 8);

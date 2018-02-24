@@ -18,7 +18,6 @@ router.get("/get", (req, res) => {
 
 router.post("/paginate", (req, res) => {
   const paginator = req.body.paginator;
-  console.log(paginator);
   const { itemPerPage, currentPage } = paginator.page;
   const resPaginator = { ...paginator };
   const { functional, material, type } = paginator;
