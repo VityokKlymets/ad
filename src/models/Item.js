@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const countAndFind = require("mongoose-count-and-find");
 const path = require("path");
 const saveStaticFile = require("../utils/utils").saveStaticFile;
 
@@ -27,18 +28,18 @@ schema.methods.saveImages = function saveImages(images) {
 };
 schema.methods.checkAndUpdateImgs = function checkAndUpdateImgs(images) {
   const filePath = path.join("collections", "items", this._id.toString());
+  const newImages = [];
   images.forEach((image, idx) => {
-    let newImage = "";
     if (image instanceof Object) {
-      let data = imageData.fileResult;
-      let fileName = `${this.name}${idx > 0 ? `(${idx})` : ""}${
-        imageData.format
-      }`;
+      let data = image.fileResult;
+      let fileName = `${this.name}${idx > 0 ? `(${idx})` : ""}${image.format}`;
       newImage = saveStaticFile(data, fileName, filePath);
+      newImages.push(newImage);
     } else {
-      newImage = image;
+      newImages.push(image);
     }
-    this.images[idx] = newImage;
+    this.images = newImages;
   });
 };
+schema.plugin(countAndFind);
 module.exports = mongoose.model("Item", schema);

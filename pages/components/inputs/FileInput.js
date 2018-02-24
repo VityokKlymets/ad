@@ -37,11 +37,12 @@ class FileInput extends Component {
   };
   render = () => {
     const { length } = this.state;
+    const {name='file'} = this.props;
     const placeholder= this.props.placeholder || 'Choose File'
     return (
       <div>
         <div>
-          <label htmlFor="file-loader">
+          <label htmlFor={name}>
             <figure>
               <div>
                 <span>{placeholder}</span>
@@ -54,10 +55,10 @@ class FileInput extends Component {
               </figcaption>
             </figure>
           </label>
-          <input multiple={true} id="file-loader" type="file" onChange={this.onChange} />
+          <input multiple={true} id={name} className='file-loader' type="file" onChange={this.onChange} />
         </div>
         <style jsx>{`
-          #file-loader {
+          .file-loader {
             display: none;
           }
           figure > div {

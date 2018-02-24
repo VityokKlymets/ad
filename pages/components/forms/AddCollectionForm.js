@@ -63,6 +63,7 @@ class AddCollectionForm extends Component {
     return (
       <ItemInput
         key={idx}
+        idx={idx}
         item={item}
         onChange={item => this.onItemChange(item, idx)}
       />

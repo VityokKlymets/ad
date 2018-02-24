@@ -11,6 +11,8 @@ class Select extends Component {
     this.props.onChange({ value: e.target.value, name: this.props.name });
   };
   render = () => {
+    const { value } = this.state;
+    console.log(value);
     const { list = [], name, label = "Select somth :" } = this.props;
     return (
       <div className="form-group">
@@ -18,7 +20,11 @@ class Select extends Component {
           {label}
         </label>
         <select onChange={this.onChange} className="form-control" id={name}>
-          {list.map((opn, idx) => <option key={idx}>{opn}</option>)}
+          {value && <option>{value}</option>}
+          {list.map(
+            (opn, idx) =>
+              opn !== value ? <option key={idx}>{opn}</option> : null
+          )}
         </select>
       </div>
     );

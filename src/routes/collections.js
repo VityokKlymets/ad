@@ -53,10 +53,13 @@ router.post("/change", (req, res) => {
             }
           })
         )
-      ).then(itemsIds => {
-        collection.items = itemsIds;
-      });
-      collection.save();
+      )
+        .then(itemsIds => {
+          collection.items = itemsIds;
+        })
+        .then(() => {
+          collection.save();
+        });
     }
   });
   res.json({});

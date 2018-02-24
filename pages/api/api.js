@@ -4,8 +4,8 @@ const SendDataOption = data => {
   return {
     method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
   };
@@ -28,7 +28,7 @@ const url = {
     addItem: "/api/items",
     change: "/api/items/change",
     delete: "/api/items/delete",
-    paginate : "/api/items/paginate"
+    paginate: "/api/items/paginate"
   }
 };
 
@@ -59,8 +59,11 @@ export default {
     change: (id, data) => axios.post(url.items.change, { id, data }),
     delete: id => axios.post(url.items.delete, { id }),
     paginate: (baseUrl, paginator) =>
-      fetch(baseUrl + url.items.paginate, SendDataOption({paginator})).then(res =>
-        res.json().then(rs => rs.items)
+      fetch(baseUrl + url.items.paginate, SendDataOption({ paginator })).then(
+        res =>
+          res.json().then(rs => {
+            return { items: rs.items, paginator: rs.paginator };
+          })
       )
   }
 };

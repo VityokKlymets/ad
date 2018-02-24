@@ -8,14 +8,14 @@ import { Paginator } from "./class/ItemPaginator";
 class store extends Component {
   displayName = "store";
   state = {
-    paginator: new Paginator(),
+    paginator: this.props.paginator,
     items: this.props.items
   };
   onPaginatorChange = paginator => {
-    api.items.paginate("", paginator).then(items => {
+    api.items.paginate("", paginator).then(res => {
       this.setState({
-        items,
-        paginator
+        items: res.items,
+        paginator: res.paginator
       });
     });
   };
@@ -34,9 +34,12 @@ class store extends Component {
     const baseUrl = ctx.req
       ? `${ctx.req.protocol}://${ctx.req.get("Host")}`
       : "";
-    const paginator = new Paginator();
-    const items = await api.items.paginate(baseUrl, paginator);
-    return { items };
+    const reqPagin = new Paginator();
+    const responce = await api.items.paginate(baseUrl, reqPagin);
+    
+    const items = responce.items;
+    const paginator = responce.paginator;
+    return { items ,paginator};
   }
 }
 export default page(connect(state => state)(store));

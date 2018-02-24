@@ -40,12 +40,17 @@ class ItemInput extends Component {
   };
   render = () => {
     const { item, errors } = this.state;
+    console.log(item);
+    const { idx = 0 } = this.props;
     return (
       <div>
         <h3>{item.name}</h3>
         <div className="row">
           <div className="col">
-            <FileInput onChange={this.onItemImageChange} />
+            <FileInput
+              onChange={this.onItemImageChange}
+              name={"file-loader-" + idx.toString()}
+            />
             <ParamsInput
               params={item.params}
               onChange={this.onItemParamsChange}
@@ -76,7 +81,7 @@ class ItemInput extends Component {
             />
             <Select
               list={functionalList}
-              value = {item.functional}
+              value={item.functional}
               name="functional"
               label="choose functional"
               onChange={this.onSelectChange}
