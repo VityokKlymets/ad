@@ -23,9 +23,16 @@ class VerticalPosters extends Component {
         break;
     }
   };
+  scrollStub = true;
   onMouseWheel = e => {
     const deltaY = e.deltaY;
-    deltaY > 0 ? this.slideDown() : this.slideUp();
+    if (this.scrollStub) {
+      deltaY > 0 ? this.slideDown() : this.slideUp();
+      this.scrollStub = false;
+      this.scorollInterval = setTimeout(() => {
+        this.scrollStub = true;
+      },400);
+    }
   };
   setPoster = poster => {
     this.setState({

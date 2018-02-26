@@ -20,16 +20,8 @@ class ItemGridView extends Component {
       loading: props.loading
     });
   };
-  setPaginator = paginator => {
-    this.setState(
-      {
-        paginator
-      },
-      this.onPaginatorChange(paginator)
-    );
-  };
   onPageChange = data => {
-    this.setPaginator({
+    this.onPaginatorChange({
       ...this.state.paginator,
       page: {
         ...this.state.paginator.page,
@@ -38,6 +30,9 @@ class ItemGridView extends Component {
     });
   };
   onPaginatorChange = paginator => {
+    this.setState({
+      paginator
+    })
     this.props.onPaginatorChange(paginator);
   };
 

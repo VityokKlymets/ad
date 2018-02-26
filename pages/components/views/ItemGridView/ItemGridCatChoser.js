@@ -9,6 +9,7 @@ class CattegoryMenu extends Component {
     this.setState({ paginator });
     this.props.onPaginatorChange(paginator);
   };
+  componentWillReceiveProps = ({paginator}) => this.setState({paginator})
   onTypeChange = value => {
     this.onPaginatorChange({
       ...this.state.paginator,

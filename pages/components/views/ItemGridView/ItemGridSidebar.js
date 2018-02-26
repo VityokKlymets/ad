@@ -11,6 +11,7 @@ class ItemGridSidebar extends Component {
   state = {
     paginator: this.props.paginator
   };
+  componentWillReceiveProps = ({paginator}) => this.setState({paginator})
   onPaginatorChange = paginator =>{
       this.setState({paginator})
       this.props.onPaginatorChange(paginator)
