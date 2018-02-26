@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { canUseDOM } from "../utils/Util";
 import ItemPreview from "./ItemPreview";
+import Arrow from "../pagination/PaginationArrow";
+import PaginationArrow from "../pagination/PaginationArrow";
 class CollectionSlideList extends Component {
   displayName = "CollectionSlideList";
   state = {
@@ -8,7 +10,7 @@ class CollectionSlideList extends Component {
     collection: this.props.collection || {
       items: []
     }
-    };
+  };
   canUseDom = canUseDOM();
   attachEvents = () => {
     window.addEventListener("keydown", this.onKeyDown, false);
@@ -35,6 +37,7 @@ class CollectionSlideList extends Component {
         break;
     }
   };
+  onArrowClick = data => this.setState({ current: data.index });
   slideLeft = () => {
     const next = this.state.current - 1;
     if (next < 0) return;
@@ -48,34 +51,53 @@ class CollectionSlideList extends Component {
 
   render = () => {
     const { current, list, collection } = this.state;
-    console.log(current);
     const items = this.state.collection.items;
     return (
       <div>
         <div
-          style={{ transform: `translate(-${(current-1) * (100/items.length)}%,-50%)` }}
+          style={{
+            transform: `translate(-${(current - 1) *
+              (100 / items.length)}%,-50%)`
+          }}
           className="slide-list"
         >
           {items.map(
             (item, idx) =>
               item && (
                 <div key={idx} className="image">
-                  <ItemPreview item={item} current={current} idx={idx} />
+                  <ItemPreview
+                    item={item}
+                    current={current}
+                    idx={idx}
+                  />
                 </div>
               )
           )}
         </div>
+        <div className="arrow">
+          <PaginationArrow
+            onChange={this.onArrowClick}
+            index={current}
+            length={items.length}
+          />
+        </div>
         <style jsx>
           {`
+            .arrow {
+              position: fixed;
+              left: 50%;
+              transform: translateX(-50%);
+              bottom: 10px;
+            }
             .image {
               display: inline-block;
             }
             .slide-list {
-              transition: transform 1s ease-in-out;
+              transition: transform 0.5s ease-in-out;
               position: fixed;
               left: 0;
               top: 50%;
-              transform: translate(0%,-50%);
+              transform: translate(0%, -50%);
               display: flex;
             }
           `}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import page from "./components/page";
 import { connect } from "react-redux";
 import NavBar from "./components/navbars/TopMenuNavbar";
-import ItemGridView from "./components/views/ItemGridView";
+import ItemGridView from "./components/views/ItemGridView/ItemGridView";
 import api from "./api/api";
 import { Paginator } from "./class/ItemPaginator";
 class store extends Component {

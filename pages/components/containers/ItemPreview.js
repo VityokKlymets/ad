@@ -9,9 +9,9 @@ class ItemPreview extends Component {
   };
   render = () => {
     const { item, current, idx } = this.props;
-    const id = item._id ;
+    const id = item._id;
     return (
-      <div>
+      <div >
         <Link href={{ pathname: "/item", query: { id } }}>
           <figure className={`${current === idx ? "active" : ""}`}>
             <div

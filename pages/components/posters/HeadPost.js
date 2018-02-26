@@ -15,7 +15,7 @@ export default ({ src, visible, right = false }) => {
       <div className={`text-wrap ${right ? "right" : ""}`}>
         <div className="text">
           <h1>добро пожаловать</h1>
-          <p>
+          <div>
             <p>
               Мы занимаемся разработкой и проектированием мебели в{" "}
               <span>минималистическом стиле </span>
@@ -27,7 +27,7 @@ export default ({ src, visible, right = false }) => {
               которые помогут рационально использовать каждый квадратный метр в
               вашем доме
             </p>
-          </p>
+          </div>
           <div className="mt-5 d-flex justify-content-center">
             <Link href="/store">
               <div>

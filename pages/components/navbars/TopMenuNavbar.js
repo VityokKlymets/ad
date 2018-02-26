@@ -6,8 +6,8 @@ class TopMenuNavbar extends Component {
 
   render = () => {
     return (
-      <div className='nav-wrap'>
-        <LeftTopLogo />
+      <div className="nav-wrap">
+            <LeftTopLogo />
         <div className="navbar">
           <Link href="/collections">
             <a href="#">коллекции</a>
@@ -42,8 +42,8 @@ class TopMenuNavbar extends Component {
               z-index: 10;
               padding: 20px 0;
             }
-            .nav-wrap{
-              width:100%;
+            .nav-wrap {
+              width: 100%;
               border-bottom: 1px solid #ccc;
             }
           `}

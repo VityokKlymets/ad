@@ -111,9 +111,8 @@ class HorizontalPosters extends Component {
                 row,
                 column: column++
               }
-            });
+            })
           })}
-          }
         </div>
       </div>
     );

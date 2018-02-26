@@ -1,30 +1,34 @@
 import React, { Component } from "react";
+import { typeList, typeDefault } from "../../../class/ItemPaginator";
 class CattegoryMenu extends Component {
   displayName = "CattegoryMenu";
   state = {
-    elements: this.props.elements || [],
-    chosed: this.props.chosed || this.props.elements[0] || ""
+    paginator: this.props.paginator
   };
-  componentWillReceiveProps = props =>{
-    this.setState({
-      chosed: props.chosed
-    })
-  }
-  choose = value => {
-    this.setState({
-      chosed: value
+  onPaginatorChange = paginator => {
+    this.setState({ paginator });
+    this.props.onPaginatorChange(paginator);
+  };
+  onTypeChange = value => {
+    this.onPaginatorChange({
+      ...this.state.paginator,
+      type: value,
+      page: {
+        ...this.state.paginator.page,
+        currentPage: 0
+      }
     });
-   this.props.onChose(value);
   };
   render = () => {
-    const { elements, chosed } = this.state;
+    const tList = [typeDefault, ...typeList];
+    const chosed = this.state.paginator.type;
     return (
       <div>
         <nav>
           <ul>
-            {elements.map((elem, idx) => (
+            {tList.map((elem, idx) => (
               <li
-                onClick={() => this.choose(elem)}
+                onClick={() => this.onTypeChange(elem)}
                 key={idx}
                 className={`${chosed === elem ? "chosed" : ""}`}
               >
