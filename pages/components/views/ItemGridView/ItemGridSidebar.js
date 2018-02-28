@@ -11,11 +11,11 @@ class ItemGridSidebar extends Component {
   state = {
     paginator: this.props.paginator
   };
-  componentWillReceiveProps = ({paginator}) => this.setState({paginator})
-  onPaginatorChange = paginator =>{
-      this.setState({paginator})
-      this.props.onPaginatorChange(paginator)
-  }
+  componentWillReceiveProps = ({ paginator }) => this.setState({ paginator });
+  onPaginatorChange = paginator => {
+    this.setState({ paginator });
+    this.props.onPaginatorChange(paginator);
+  };
   onFunctionalChange = data => {
     this.onPaginatorChange({
       ...this.state.paginator,
@@ -84,6 +84,15 @@ class ItemGridSidebar extends Component {
             text-transform: capitalize;
             font-size: 0.8em;
             font-weight: bold;
+          }
+          @media (max-width: 768px) {
+            .sidebar {
+              display: flex;
+              justify-content: space-around;
+              flex-wrap: wrap;
+              border: 0;
+              padding-bottom: 10px;
+            }
           }
         `}</style>
       </div>

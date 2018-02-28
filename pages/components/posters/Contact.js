@@ -57,6 +57,25 @@ class Contact extends Component {
             display: flex;
             align-items: center;
           }
+          @media (max-width: 768px) {
+            div.contact{
+             position: static;
+
+            }
+            h1 {
+              padding: 20px 0;
+              font-size: 1.3em;
+            }
+            .social {
+              flex-direction: column;
+              color: #fff;
+              background: #444;
+            }
+
+            svg {
+              fill: #eee;
+            }
+          }
         `}</style>
       </div>
     );

@@ -51,6 +51,7 @@ class CattegoryMenu extends Component {
             cursor: pointer;
             transition: border-color 0.5s ease-in-out;
             border-right: 2px solid transparent;
+            color: #333;
           }
           ul li:hover {
             border-right-color: #1a3059;
@@ -63,7 +64,33 @@ class CattegoryMenu extends Component {
             padding: 0rem 1em;
             margin: 0;
             text-decoration: none;
-            color: #333;
+            
+          }
+          @media (max-width: 768px) {
+            nav{
+              flex-direction: column;
+            }
+            ul{
+              padding: 0;
+              display:flex;
+              flex-direction: column;
+            }
+            ul li{
+              padding: 5px 0px;
+              font-weight: bold;
+            }
+            ul li:nth-child(even){
+              background: rgba(128,128,128,.3);
+            }
+            ul li:nth-child(odd){
+              background: rgba(128,128,128,.1);
+            }
+            ul li.chosed{
+              border: 0;
+              color: #fff;
+              background: #1a3059;
+            }
+           
           }
         `}</style>
       </div>

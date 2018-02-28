@@ -6,6 +6,7 @@ import PaginationArrow from "../../pagination/PaginationArrow";
 import ItemGridCatChoser from "./ItemGridCatChoser";
 import ItemGridSidebar from "./ItemGridSidebar";
 import ItemGridItem from "./ItemGridItem";
+import RightTopMenu from "../../menus/RightTopMenu";
 class ItemGridView extends Component {
   displayName = "ItemGridView";
   state = {
@@ -32,7 +33,7 @@ class ItemGridView extends Component {
   onPaginatorChange = paginator => {
     this.setState({
       paginator
-    })
+    });
     this.props.onPaginatorChange(paginator);
   };
 
@@ -45,59 +46,80 @@ class ItemGridView extends Component {
     const secondRow = items.slice(4, 8);
     return (
       <div className="view">
-        <LeftTopLogo />
+        <div className="logo">
+          <LeftTopLogo />
+        </div>
         <div className="container-fluid">
           <ItemGridCatChoser
             paginator={this.state.paginator}
             onPaginatorChange={this.onPaginatorChange}
           />
 
-          <div className="row">
-            <div className="col-2">
+          <div className="row align-items-center">
+            <div className="col-md-2 col-sm-12 align-self-start">
               <ItemGridSidebar
                 paginator={this.state.paginator}
                 onPaginatorChange={this.onPaginatorChange}
               />
             </div>
-            <div className="col-10">
+            <div className="col-md-10 col-sm-12">
               <Spinner size="medium" type="light" loading={this.state.loading}>
                 <div>
-                  <div className="row">
+                  <div className="row align-items-center">
                     {firstRow.map((item, idx) => (
                       <ItemGridItem item={item} key={idx} />
                     ))}
                   </div>
-                  <div className="row">
+                  <div className="row align-items-center">
                     {secondRow.map((item, idx) => (
                       <ItemGridItem item={item} key={idx} />
                     ))}
                   </div>
                 </div>
               </Spinner>
+              <div className="arrow align-self-end">
+                {pagesLength > 1 && (
+                  <PaginationArrow
+                    onChange={this.onPageChange}
+                    index={currentPage}
+                    length={pagesLength}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
-        <div className="arrow">
-          {pagesLength > 1 && (
-            <PaginationArrow
-              onChange={this.onPageChange}
-              index={currentPage}
-              length={pagesLength}
-            />
-          )}
+        <div className="menu">
+          <RightSideMenu />
         </div>
-        <RightSideMenu />
+        <div className="mobile-menu">
+          <RightTopMenu />
+        </div>
         <style jsx>{`
           .arrow {
-            position: absolute;
-            width: 100%;
-            right: 80px;
-            bottom: 20px;
+            padding: 10px 0;
             display: flex;
             justify-content: flex-end;
           }
           .view {
             margin-right: 80px;
+          }
+          .mobile-menu {
+            display: none;
+          }
+          @media (max-width: 768px) {
+            .view {
+              margin-right: 0px;
+            }
+            .logo {
+              display: none;
+            }
+            .menu {
+              display: none;
+            }
+            .mobile-menu {
+              display: block;
+            }
           }
         `}</style>
       </div>

@@ -7,7 +7,7 @@ class ItemGridItem extends Component {
     const item = this.props.item;
     return (
       item && (
-        <div className="col-3 item">
+        <div className="col-md-3 col-sm-12 item">
           <Link href={{ pathname: "/item", query: { id: item._id } }}>
             <div>
               <h3>{item.name}</h3>
@@ -78,6 +78,11 @@ class ItemGridItem extends Component {
               text-align: center;
               color: #777;
               font-weight: bold;
+            }
+            @media (max-width: 768px) {
+              .item-img {
+                height: 300px;
+              }
             }
           `}</style>
         </div>

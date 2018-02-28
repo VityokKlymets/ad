@@ -118,6 +118,14 @@ export default ({ src, visible, right = false }) => {
             opacity: 1;
           }
         }
+        @media (max-width: 768px) {
+          .text-wrap {
+            position: static;
+          }
+          .welcome {
+            position: static;
+          }
+        }
       `}</style>
     </div>
   );

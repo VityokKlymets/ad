@@ -22,7 +22,7 @@ export default ({
           <div className="col-md-6 col-sm-12">
             <div className="text">{text && <p>{text}</p>}</div>
             <Link href={{ pathname: "/collection", query: { id } }}>
-              <div>
+              <div className='btn'>
                 <HolaBtn text={btnText} />
               </div>
             </Link>
@@ -63,6 +63,16 @@ export default ({
             height: 100%;
             background: #000;
             opacity: 0.3;
+          }
+          @media (max-width: 768px) {
+            .free-space {
+              position: static;
+              padding: 0px 10px;
+            }
+            .btn{
+              display:flex;
+              justify-content: center;
+            }
           }
         `}
       </style>

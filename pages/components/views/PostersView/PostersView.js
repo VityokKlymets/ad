@@ -35,7 +35,6 @@ class PostersView extends Component {
           {React.cloneElement(children, {
             rec
           })}
-          }
           {gui && React.cloneElement(gui, guiProps)}
         </div>
         <style jsx global>{`
@@ -69,6 +68,28 @@ class PostersView extends Component {
           }
           .HorizontalPosters .poster {
             width: 100vw;
+          }
+          @media (max-width: 768px) {
+            .PosterView .view-area {
+              padding-top: 40px;
+              position: static;
+              height: auto;
+              overflow: visible;
+            }
+            .PosterView .posters {
+              transform : translate(0%,0%) !important;
+              position: static;
+              display: block;
+              height: auto !important;
+              width: 100% !important;
+            }
+            .VerticalPosters .poster,
+            .HorizontalPosters .poster {
+              position: static;
+              display: block;
+              height: auto !important;
+              width: 100% !important;
+            }
           }
         `}</style>
       </div>

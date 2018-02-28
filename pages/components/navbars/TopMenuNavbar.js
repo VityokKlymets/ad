@@ -1,29 +1,37 @@
 import React, { Component } from "react";
 import LeftTopLogo from "../logos/LeftTopLogo";
 import Link from "next/link";
+import RightTopMenu from "../menus/RightTopMenu";
 class TopMenuNavbar extends Component {
   displayName = "TopMenuNavbar";
 
   render = () => {
     return (
-      <div className="nav-wrap">
+      <div>
+        <div className="mobile-menu">
+          <RightTopMenu />
+        </div>
+        <div className="nav-wrap">
+          <div className="logo">
             <LeftTopLogo />
-        <div className="navbar">
-          <Link href="/collections">
-            <a href="#">коллекции</a>
-          </Link>
-          <Link href="/about">
-            <a href="#">о нас</a>
-          </Link>
-          <Link href="/contact">
-            <a href="#">Контакты</a>
-          </Link>
-          <Link href="/store">
-            <a href="#">магазин</a>
-          </Link>
-          <Link href="/">
-            <a href="#">домой</a>
-          </Link>
+          </div>
+          <div className="navbar">
+            <Link href="/collections">
+              <a href="#">коллекции</a>
+            </Link>
+            <Link href="/about">
+              <a href="#">о нас</a>
+            </Link>
+            <Link href="/contact">
+              <a href="#">Контакты</a>
+            </Link>
+            <Link href="/store">
+              <a href="#">магазин</a>
+            </Link>
+            <Link href="/">
+              <a href="#">домой</a>
+            </Link>
+          </div>
         </div>
         <style jsx>
           {`
@@ -45,6 +53,17 @@ class TopMenuNavbar extends Component {
             .nav-wrap {
               width: 100%;
               border-bottom: 1px solid #ccc;
+            }
+            .mobile-menu {
+              display: none;
+            }
+            @media (max-width: 768px) {
+              .nav-wrap {
+                display: none;
+              }
+              .mobile-menu {
+                display: block;
+              }
             }
           `}
         </style>

@@ -40,15 +40,14 @@ class RightTopMenu extends Component {
               overflow: hidden;
               position: fixed;
               right: 10px;
-              top: 10px;
+              top: 5px;
               width: auto;
-              height: 50px;
+              height: 48px;
               display: flex;
               align-items: center;
-
               background: #fff;
               border-radius: 5px;
-              box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             }
 
             .nav__cb {
@@ -162,15 +161,15 @@ class RightTopMenu extends Component {
 
             .nav__btn {
               position: absolute;
+              right: 0;
+              top: 0;
               display: flex;
               justify-content: center;
-              height: 100%;
+              height: 50px;
               width: 50px;
               flex-direction: column;
               padding: 5px;
               align-items: center;
-              right: 0;
-              top: 0;
               cursor: pointer;
             }
 
@@ -202,6 +201,27 @@ class RightTopMenu extends Component {
 
             .nav__cb:checked ~ .nav__btn:after {
               transform: translateY(-7px) rotate(225deg);
+            }
+            @media (max-width: 768px) {
+              .nav {
+                height: auto;
+                overflow: hidden;
+              }
+              .nav__item {
+                display: block;
+                padding: 5px 0;
+              }
+              .nav__items {
+                flex-direction: column;
+              }
+              .nav__content {
+                height: 48px;
+              }
+              
+              .nav__cb:checked ~ .nav__content {
+                height: auto;
+                width: 300px;
+              }
             }
           `}
         </style>
