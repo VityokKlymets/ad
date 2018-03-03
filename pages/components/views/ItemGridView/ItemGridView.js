@@ -56,22 +56,17 @@ class ItemGridView extends Component {
           />
 
           <div className="row align-items-center">
-            <div className="col-md-2 col-sm-12 align-self-start">
+            <div className="col-md-3 col-lg-2 col-sm-12 align-self-start">
               <ItemGridSidebar
                 paginator={this.state.paginator}
                 onPaginatorChange={this.onPaginatorChange}
               />
             </div>
-            <div className="col-md-10 col-sm-12">
+            <div className="col-md-9 col-lg-10 col-sm-12">
               <Spinner size="medium" type="light" loading={this.state.loading}>
                 <div>
                   <div className="row align-items-center">
-                    {firstRow.map((item, idx) => (
-                      <ItemGridItem item={item} key={idx} />
-                    ))}
-                  </div>
-                  <div className="row align-items-center">
-                    {secondRow.map((item, idx) => (
+                    {items.map((item, idx) => (
                       <ItemGridItem item={item} key={idx} />
                     ))}
                   </div>

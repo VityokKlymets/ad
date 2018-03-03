@@ -42,7 +42,11 @@ class CattegoryMenu extends Component {
           nav {
             display: flex;
             justify-content: center;
-            padding: 10px 0;
+            padding: 10px 0 10px 100px;
+          }
+          ul{
+            padding: 0;
+            margin:0;
           }
           ul li {
             display: inline-block;
@@ -64,7 +68,6 @@ class CattegoryMenu extends Component {
             padding: 0rem 1em;
             margin: 0;
             text-decoration: none;
-            
           }
           @media (max-width: 768px) {
             nav{

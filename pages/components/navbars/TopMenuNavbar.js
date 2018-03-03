@@ -7,7 +7,7 @@ class TopMenuNavbar extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className='w-100'>
         <div className="mobile-menu">
           <RightTopMenu />
         </div>
@@ -46,6 +46,7 @@ class TopMenuNavbar extends Component {
             }
             .navbar {
               display: flex;
+              width: 100%;
               justify-content: center;
               z-index: 10;
               padding: 20px 0;

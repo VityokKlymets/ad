@@ -56,10 +56,10 @@ export default ({ text = "Click", invert = false, className = "" }) => {
           padding-left: 5px;
         }
         .hola-btn.invert {
-          border-color: #2bff00;
+          border-color: #000;
         }
         .hola-btn.invert span {
-          color: #2bff00;
+          color: #000;
         }
         .hola-btn.invert .mask {
           background: #fff;

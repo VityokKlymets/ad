@@ -71,7 +71,6 @@ class PostersView extends Component {
           }
           @media (max-width: 768px) {
             .PosterView .view-area {
-              padding-top: 40px;
               position: static;
               height: auto;
               overflow: visible;

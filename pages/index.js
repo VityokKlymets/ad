@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import PostersView from "./components/views/PostersView/PostersView";
 import PosterGui from "./components/posters/PosterGui";
-import HPost from "./components/posters/HeadPost";
 import Post from "./components/posters/Post";
 import CollectionsPoster from "./components/posters/CollectionsPoster";
 import Contact from "./components/posters/Contact";
 import MainPreloader from "./components/preloaders/MainPreloader";
 import AboutAs from "./components/posters/AboutAs";
 import page from "./components/page";
+import HPost from "./components/posters/HPost";
 import api from "./api/api";
 import { connect } from "react-redux";
 class index extends Component {
@@ -19,14 +19,7 @@ class index extends Component {
   );
   renderFirstLinePosters = () => (
     <PostersView.Poster invert next="Наши Коллекции">
-      <PostersView.HorizontalPosters>
-        <PostersView.Poster>
-          <HPost src="/static/images/modern-komnata-divan-kartina-gostinaia-lampa.jpg" />
-        </PostersView.Poster>
-        <PostersView.Poster>
-          <HPost right src="/static/images/detskaia-komnata-mebel-interer-stil.jpg" />
-        </PostersView.Poster>
-      </PostersView.HorizontalPosters>
+      <HPost />
     </PostersView.Poster>
   );
   renderFourLinePosters = () => {

@@ -65,6 +65,9 @@ export default ({
             opacity: 0.3;
           }
           @media (max-width: 768px) {
+            h1{
+              font-size: 1.3em;
+            }
             .free-space {
               position: static;
               padding: 0px 10px;

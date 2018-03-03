@@ -29,8 +29,10 @@ class Contact extends Component {
         <style jsx>{`
           div.contact {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            left:0;
+            top:0;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;

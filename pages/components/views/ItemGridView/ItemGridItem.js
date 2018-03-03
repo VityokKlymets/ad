@@ -7,7 +7,7 @@ class ItemGridItem extends Component {
     const item = this.props.item;
     return (
       item && (
-        <div className="col-md-3 col-sm-12 item">
+        <div className="col-md-4 col-lg-3 col-sm-12 item">
           <Link href={{ pathname: "/item", query: { id: item._id } }}>
             <div>
               <h3>{item.name}</h3>
