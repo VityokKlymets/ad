@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import Head from "../head/Head";
-import store from "./store/store";
+import store from "../store/store";
 const page = Page => {
   return class PageWrapper extends React.Component {
     render() {
