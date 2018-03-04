@@ -31,12 +31,12 @@ class item extends Component {
       <div className="container-fluid">
         <NavBar />
         <div className="row pt-4 justify-content-center align-items-center">
-          <div className="col-4">
+          <div className="col-md-4 col-sm-12">
             <img className="img-fluid" src={item.images[0]} alt={item.name} />
           </div>
-          <div className="col-6">
+          <div className="col-md-6 col-sm-12">
             <p>{item.description}</p>
-            <table className='table table-striped'>
+            <table className="table table-striped">
               <tbody>{this.renderParams(item)}</tbody>
             </table>
           </div>

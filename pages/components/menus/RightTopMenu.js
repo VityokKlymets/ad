@@ -39,6 +39,7 @@ class RightTopMenu extends Component {
             .nav {
               overflow: hidden;
               position: fixed;
+              z-index: 100;
               right: 10px;
               top: 5px;
               width: auto;

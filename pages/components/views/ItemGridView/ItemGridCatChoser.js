@@ -72,6 +72,7 @@ class CattegoryMenu extends Component {
           @media (max-width: 768px) {
             nav{
               flex-direction: column;
+              padding: 0;
             }
             ul{
               padding: 0;
