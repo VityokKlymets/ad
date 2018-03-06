@@ -23,6 +23,7 @@ const url = {
     delete: "/api/collections/delete"
   },
   items: {
+    loadItems: "/api/items/load",
     get: "/api/items/get",
     getAll: "/api/items/getAll",
     addItem: "/api/items",
@@ -56,6 +57,10 @@ export default {
         res.json().then(rs => rs.item)
       ),
     getAll: () => axios(url.items.getAll).then(res => res.data.items),
+    loadItems: ids =>
+      axios.post(url.items.loadItems, { ids }).then(res => {
+        return res.data.data;
+      }),
     change: (id, data) => axios.post(url.items.change, { id, data }),
     delete: id => axios.post(url.items.delete, { id }),
     paginate: (baseUrl, paginator) =>

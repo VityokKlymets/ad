@@ -15,7 +15,12 @@ router.get("/get", (req, res) => {
     }
   });
 });
-
+router.post("/load", (req, res) => {
+  const { ids } = req.body;
+  Promise.all(ids.map(id => Item.findById(id))).then(data =>
+    res.json({ data })
+  );
+});
 router.post("/paginate", (req, res) => {
   const paginator = req.body.paginator;
   const { itemPerPage, currentPage } = paginator.page;
@@ -35,8 +40,8 @@ router.post("/paginate", (req, res) => {
     .limit(itemPerPage)
     .exec((err, items, count) => {
       resPaginator.page.itemsCount = count;
-      resPaginator.page.pagesLength = Math.ceil(count/itemPerPage);
-      res.json({ items ,paginator:resPaginator});
+      resPaginator.page.pagesLength = Math.ceil(count / itemPerPage);
+      res.json({ items, paginator: resPaginator });
     });
 });
 router.post("/delete", (req, res) => {

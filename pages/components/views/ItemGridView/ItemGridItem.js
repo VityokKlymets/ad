@@ -119,7 +119,5 @@ class ItemGridItem extends Component {
     );
   };
 }
-const mapStateToProps = state => ({
-  basket: state.basket
-});
-export default connect(mapStateToProps, { addItem })(ItemGridItem);
+
+export default connect(null, { addItem })(ItemGridItem);
