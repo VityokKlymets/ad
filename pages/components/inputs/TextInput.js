@@ -1,6 +1,6 @@
 import React from "react";
 const TextInput = ({
-  name="name",
+  name = "name",
   value,
   label,
   placeholder,
@@ -8,7 +8,8 @@ const TextInput = ({
   onChange,
   required,
   textarea,
-  type
+  type,
+  pattern
 }) => (
   <div className="form-group">
     <label
@@ -35,6 +36,7 @@ const TextInput = ({
         value={value}
         placeholder={placeholder ? placeholder : ""}
         onChange={onChange}
+        pattern={pattern ? pattern : ""}
       />
     )}
     <div className="invalid-feedback">{error}</div>
