@@ -59,13 +59,13 @@ class ItemGridView extends Component {
           <LeftTopLogo />
         </div>
         <div className="container-fluid">
-          <div className="d-flex justify-content-around">
+          <div className="d-flex justify-content-md-around flex-column flex-md-row">
             <ItemGridCatChoser
               paginator={this.state.paginator}
               onPaginatorChange={this.onPaginatorChange}
             />
             <div className="basket">
-              <Basket onClick={this.onBasketClick} count={basketItemsCount} />
+              {basketItemsCount > 0 && <Basket onClick={this.onBasketClick} count={basketItemsCount} />}
             </div>
           </div>
 
@@ -128,6 +128,11 @@ class ItemGridView extends Component {
             }
             .mobile-menu {
               display: block;
+            }
+            .basket{
+              display: flex;
+              justify-content: center;
+              padding: 10px 0;
             }
           }
         `}</style>

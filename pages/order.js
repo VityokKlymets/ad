@@ -3,6 +3,7 @@ import page from "./components/page";
 import { connect } from "react-redux";
 import OrderForm from "./components/forms/OrderForm";
 import { orderComplete } from "./actions/order";
+import api from "./api/api";
 class order extends Component {
   state = {
     message: {
@@ -44,6 +45,20 @@ class order extends Component {
       }
     });
     this.props.orderComplete(this.state.order);
+    api.orders
+      .addOrder(this.state.order)
+      .then(() => {
+        this.setMessage({
+          text: "Заказ успешно добавлен",
+          type: "correct"
+        });
+      })
+      .catch(() => {
+        this.setMessage({
+          text: "что-то пошло не так",
+          type: "negative"
+        });
+      });
   };
   render = () => {
     const { message } = this.state;

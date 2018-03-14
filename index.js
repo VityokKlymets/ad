@@ -1,5 +1,6 @@
 const collections = require("./src/routes/collections");
 const items = require("./src/routes/items");
+const order = require("./src/routes/order");
 const express = require("express");
 const bodyParser = require("body-parser");
 const next = require("next");
@@ -16,6 +17,7 @@ app.prepare().then(() => {
   server.use(bodyParser.json({ limit: "50mb", type: "application/json" }));
   server.use("/api/collections", collections);
   server.use("/api/items", items);
+  server.use("/api/order", order);
   server.get("*", (req, res) => {
     return handle(req, res);
   });

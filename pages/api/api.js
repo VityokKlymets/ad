@@ -30,6 +30,9 @@ const url = {
     change: "/api/items/change",
     delete: "/api/items/delete",
     paginate: "/api/items/paginate"
+  },
+  orders: {
+    order: "/api/order"
   }
 };
 
@@ -70,5 +73,8 @@ export default {
             return { items: rs.items, paginator: rs.paginator };
           })
       )
+  },
+  orders: {
+    addOrder: order => axios.post(url.orders.order, { order })
   }
 };

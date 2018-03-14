@@ -112,6 +112,15 @@ class ItemGridItem extends Component {
               .item-img {
                 height: 300px;
               }
+              .bts {
+                left: 0;
+                bottom: 0;
+                top: auto;
+                opacity: 1;
+              }
+              .views{
+                visibility: hidden;
+              }
             }
           `}</style>
         </div>

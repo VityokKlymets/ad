@@ -16,7 +16,7 @@ class OrderForm extends Component {
     this.setState({
       errors: this.validate(this.state.data)
     });
-    if (Object.keys(this.state.errors).length !== 0) {
+    if (Object.keys(this.state.errors).length === 0) {
       this.props.submit(this.state.data);
     }
   };
@@ -59,7 +59,7 @@ class OrderForm extends Component {
             placeholder="+38"
             onChange={this.onPhoneChange}
           />
-          <button>Отправить</button>
+          <button type='submit'>Отправить</button>
         </form>
         <style>
           {`
