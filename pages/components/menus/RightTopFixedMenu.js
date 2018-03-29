@@ -53,10 +53,9 @@ class RightTopFixedMenu extends Component {
             height: 100%;
           }
           nav {
-            box-shadow: 7px 0px 5px #081533 inset;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(60deg, #203666, #081533);
+            background: linear-gradient(50deg, transparent 60%, #f7f7f7 60%);
             width: 0;
             transition: width .3s ease-in-out;
             height: 100%;
@@ -70,22 +69,25 @@ class RightTopFixedMenu extends Component {
           .hamg {
             height: 50px;
             transition: height .1s linear;
-            background: #203666;
+            background: #f7f7f7;
           }
           .hamg svg {
-            fill: #fff;
+            fill: #444;
             height: 50px;
             cursor: pointer;
           }
           li {
+            text-shadow: 1px 2px 5px #fff;
             cursor: pointer;
             padding: 5px 0;
-            color: #fff;
+            color: #111;
             font-weight: bold;
             width: 100%;
             text-align: center;
             list-style: none;
-            border-bottom: 1px solid #172951;
+          }
+          li:hover{
+            color:#aaa;
           }
           .menu.toggle nav {
             width: 200px;
