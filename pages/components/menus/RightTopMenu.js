@@ -39,7 +39,7 @@ class RightTopMenu extends Component {
             .nav {
               overflow: hidden;
               position: fixed;
-              z-index: 100;
+              z-index: 9999;
               right: 10px;
               top: 5px;
               width: auto;
@@ -52,7 +52,7 @@ class RightTopMenu extends Component {
             }
 
             .nav__cb {
-              z-index: -1000;
+              z-index: 1000;
               position: absolute;
               left: 0;
               top: 0;
@@ -82,7 +82,6 @@ class RightTopMenu extends Component {
               align-items: center;
               font-size: 0;
             }
-
             .nav__item {
               display: inline-block;
               vertical-align: top;
@@ -95,11 +94,9 @@ class RightTopMenu extends Component {
               transition: color 0.3s;
               cursor: pointer;
             }
-
             .nav__item:hover {
               color: #1539cf;
             }
-
             .nav__item-text {
               display: block;
               height: 100%;
