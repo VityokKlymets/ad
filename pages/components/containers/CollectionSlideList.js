@@ -22,6 +22,11 @@ class CollectionSlideList extends Component {
   };
   componentDidMount = () => {
     if (!this.canUseDom) return;
+    if (window.innerWidth < this.state.viewWidth) {
+      this.setState({
+        viewWidth: window.innerWidth - 10
+      });
+    }
     this.attachEvents();
   };
   componentWillUnmount = () => {
@@ -63,7 +68,7 @@ class CollectionSlideList extends Component {
     }
     let touch = e.changedTouches[0],
       deltaX = touch.pageX - this.startX,
-      amount = this.state.viewWidth / 3;
+      amount = 40;
     this.setState({
       offsetLeft: deltaX
     });

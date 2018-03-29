@@ -11,7 +11,7 @@ class ItemPreview extends Component {
     const { item, current, idx } = this.props;
     const id = item._id;
     return (
-      <div >
+      <div>
         <Link href={{ pathname: "/item", query: { id } }}>
           <figure className={`${current === idx ? "active" : ""}`}>
             <div
@@ -46,6 +46,11 @@ class ItemPreview extends Component {
             text-shadow: 1px 1px 3px #ccc;
             opacity: 0;
             transition: opacity 0.5s linear;
+          }
+          @media (max-width: 768px) {
+            .image {
+              width: 300px;
+            }
           }
         `}</style>
       </div>
