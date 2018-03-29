@@ -8,7 +8,7 @@ import PaginationArrow from "../../pagination/PaginationArrow";
 import ItemGridCatChoser from "./ItemGridCatChoser";
 import ItemGridSidebar from "./ItemGridSidebar";
 import ItemGridItem from "./ItemGridItem";
-import RightTopMenu from "../../menus/RightTopMenu";
+import RightTopFixedMenu from "../../menus/RightTopFixedMenu";
 import Basket from "../../Basket";
 import OrderView from "../OrderView";
 class ItemGridView extends Component {
@@ -102,7 +102,7 @@ class ItemGridView extends Component {
           <RightSideMenu />
         </div>
         <div className="mobile-menu">
-          <RightTopMenu />
+          <RightTopFixedMenu />
         </div>
         <style jsx>{`
           .arrow {
@@ -114,6 +114,11 @@ class ItemGridView extends Component {
             margin-right: 80px;
           }
           .mobile-menu {
+            position:fixed;
+            right:0;
+            top:0;
+            bottom : 0;
+            z-index: 10
             display: none;
           }
           @media (max-width: 768px) {
