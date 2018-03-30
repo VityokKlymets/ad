@@ -7,70 +7,75 @@ class fonts extends Component {
     return (
       <div>
         <div className="fonts">
-          <div className="col">
-            <div className="logo Niconne">
-              <span>Aria-M</span>
+          <div>
+            <div className="col">
+              <div className="logo dark-blue bold shadow Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
-            <div className="logo Pinyon">
-              <span>Aria-M</span>
+            <div className="col">
+              <div className="logo hot-orange bold shadow Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
-            <div className="logo Arizonia">
-              <span>Aria-M</span>
-            </div>
-            <div className="logo Parisienne">
-              <span>Aria-M</span>
-            </div>
-            <div className="logo Monsieur">
-              <span>Aria-M</span>
-            </div>
-          </div>
-          <div className='col'>
-            <div className="logo shadow Niconne">
-              <span>Aria-M</span>
-            </div>
-            <div className="logo shadow Pinyon">
-              <span>Aria-M</span>
-            </div>
-            <div className="logo shadow Arizonia">
-              <span>Aria-M</span>
-            </div>
-            <div className="logo shadow Parisienne">
-              <span>Aria-M</span>
-            </div>
-            <div className="logo shadow Monsieur">
-              <span>Aria-M</span>
+            <div className="col">
+              <div className="logo asphalt bold shadow Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
           </div>
-          <div className='col'>
-            <div className="logo bold Niconne">
-              <span>Aria-M</span>
+
+          <div>
+            <div className="col">
+              <div className="logo dark-blue bold Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
-            <div className="logo bold Pinyon">
-              <span>Aria-M</span>
+            <div className="col">
+              <div className="logo hot-orange bold Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
-            <div className="logo bold Arizonia">
-              <span>Aria-M</span>
+            <div className="col">
+              <div className="logo asphalt bold Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
-            <div className="logo bold Parisienne">
-              <span>Aria-M</span>
+          </div>
+          <div>
+            <div className="col">
+              <div className="logo dark-blue Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
-            <div className="logo bold Monsieur">
-              <span>Aria-M</span>
+            <div className="col">
+              <div className="logo hot-orange Arizonia">
+                <span>Aria -M</span>
+              </div>
+            </div>
+            <div className="col">
+              <div className="logo asphalt Arizonia">
+                <span>Aria -M</span>
+              </div>
             </div>
           </div>
         </div>
         <style jsx>{`
-          @import url("https://fonts.googleapis.com/css?family=Arizonia|Monsieur+La+Doulaise|Niconne|Parisienne|Pinyon+Script");
+          @import url("https://fonts.googleapis.com/css?family=Arizonia");
           .fonts {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
           }
-          .col{
-              flex:1;
-              flex-basis: 200px;
+          .col {
+            flex: 1;
+            flex-basis: 200px;
           }
-          .shadow{
-              text-shadow: 1px 1px 4px #444;
+          .shadow {
+            text-shadow: 5px 5px 5px #ccc;
+          }
+          .logo small {
+            margin-right: 50px;
           }
           .logo {
             margin: 20px 0;
@@ -79,26 +84,20 @@ class fonts extends Component {
             font-size: 2em;
             text-align: center;
           }
-          .bold{
-              font-weight:bold;
+          .bold {
+            font-weight: bold;
           }
-          .blue {
-            color: #294c8e;
+          .dark-blue {
+            color: #23498c;
           }
-          .Niconne {
-            font-family: "Niconne", cursive;
+          .hot-orange {
+            color: #d8692d;
           }
-          .Pinyon {
-            font-family: "Pinyon Script", cursive;
+          .asphalt {
+            color: #505050;
           }
           .Arizonia {
             font-family: "Arizonia", cursive;
-          }
-          .Parisienne {
-            font-family: "Parisienne", cursive;
-          }
-          .Monsieur {
-            font-family: "Monsieur La Doulaise", cursive;
           }
         `}</style>
       </div>
